@@ -150,11 +150,16 @@ export default function HomeClient(props: HomeClientProps) {
                 </div>
               )}
               <h2 
-                className="text-4xl md:text-6xl lg:text-7xl font-serif italic leading-tight text-foreground/90"
+                className="text-[12vw] md:text-6xl lg:text-7xl font-serif italic leading-[1.1] text-foreground/90 tracking-tight"
                 data-tina-field={tinaField(content.offer, "headline")}
               >
                 {content.offer?.headline?.type ? (
-                  <TinaMarkdown content={content.offer.headline} />
+                  <TinaMarkdown 
+                    content={content.offer.headline} 
+                    components={{
+                      p: (props) => <>{props.children}</>,
+                    }}
+                  />
                 ) : (
                   content.offer?.headline || "Die Zukunft beginnt nicht, weil etwas völlig Neues dazukommt. Sondern weil sich das Vorhandene neu ordnet."
                 )}
@@ -249,7 +254,7 @@ export default function HomeClient(props: HomeClientProps) {
                 <FadeIn 
                   key={cat}
                   delay={catIdx * 0.1}
-                  className="bg-white/50 rounded-2xl border border-foreground/5 p-8 md:p-16 shadow-sm hover:shadow-md transition-all duration-500 will-change-transform"
+                  className="bg-[#f2efe4]/60 rounded-2xl border border-foreground/10 p-8 md:p-16 shadow-sm hover:shadow-md transition-all duration-500 will-change-transform"
                 >
                   <div className="flex flex-col lg:flex-row lg:items-center gap-12 md:gap-20">
                     <div className="text-[14px] md:text-[18px] uppercase tracking-widest opacity-20 font-bold w-12 hidden lg:block">

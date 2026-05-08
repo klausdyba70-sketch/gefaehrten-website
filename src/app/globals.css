@@ -44,7 +44,7 @@ body {
     
     /* Ensure body text is substantial and readable */
     p, .rich-text p {
-      font-size: 1.05rem !important;
+      font-size: 1.05rem;
       line-height: 1.7;
     }
     
