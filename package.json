@@ -6,7 +6,7 @@
     "predev": "node scripts/generate-redirects.mjs",
     "prebuild": "node scripts/generate-redirects.mjs",
     "dev": "tinacms dev -p 4010 -c \"next dev -p 3010\"",
-    "build": "tinacms build --local --skip-cloud-checks && tinacms dev -p 4010 -c \"next build\" && cp public/_redirects out/",
+    "build": "tinacms build && next build && cp public/_redirects out/",
     "start": "next start",
     "lint": "eslint"
   },
