@@ -1,4 +1,9 @@
 {
+  "seo": {
+    "title": "Kurs-Anmeldung | Gefährten · Traumainstitut",
+    "description": "Melden Sie sich hier verbindlich für unsere Traumatrainings, Seminare oder den Praxiskreis an. Ein sicherer Raum für professionelles Wachstum.",
+    "ogImage": "/images/hero-forest.png"
+  },
   "pageIntro": "Bitte füllen Sie das folgende Formular vollständig aus, um sich verbindlich anzumelden.",
   "seminarLabel": "Angebot auswählen",
   "introTraining": "Eine fundierte Fortbildung in traumasicherer Begleitung, die Körperarbeit, Gestalt- und systemische Ansätze vereint.\n",

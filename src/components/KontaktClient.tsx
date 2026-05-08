@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import { useTina, tinaField } from "tinacms/dist/react";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
+import FadeIn from "./FadeIn";
 
 export default function KontaktClient(props: {
   data: any;
@@ -70,10 +71,7 @@ export default function KontaktClient(props: {
           <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-[#1c211e] z-10" />
         </div>
         
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.5 }}
+        <FadeIn 
           className="relative z-20 max-w-5xl mx-auto space-y-6 pt-16"
         >
           <div 
@@ -88,7 +86,7 @@ export default function KontaktClient(props: {
           >
              {content.heroTitle || "Kontakt"}
           </h1>
-        </motion.div>
+        </FadeIn>
       </section>
 
       {/* --- CONTENT & FORM --- */}
@@ -96,8 +94,7 @@ export default function KontaktClient(props: {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-24 items-start">
           
           {/* Contact Details */}
-          <motion.div 
-            {...fadeInUp}
+          <FadeIn 
             className="lg:col-span-5 space-y-16"
           >
             <div className="space-y-8">
@@ -158,12 +155,11 @@ export default function KontaktClient(props: {
                 </div>
               </div>
             </div>
-          </motion.div>
+          </FadeIn>
 
           {/* Form */}
-          <motion.div 
-            {...fadeInUp}
-            transition={{ delay: 0.2 }}
+          <FadeIn 
+            delay={0.2}
             className="lg:col-span-7"
           >
             {formState === "success" ? (
@@ -267,7 +263,7 @@ export default function KontaktClient(props: {
                 </div>
               </form>
             )}
-          </motion.div>
+          </FadeIn>
 
         </div>
       </section>

@@ -9,6 +9,7 @@ import SuitableFor from "@/components/SuitableFor";
 
 import { useTina, tinaField } from "tinacms/dist/react";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
+import FadeIn from "./FadeIn";
 
 export default function ProgramPageClient(props: {
   data: any;
@@ -202,11 +203,7 @@ export default function ProgramPageClient(props: {
               <div className="space-y-12 pt-20 md:pt-32 border-t border-foreground/10">
                 {/* Header Section */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16 items-start">
-                  <motion.div
-                    initial={{ opacity: 0, y: 40 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 1.2 }}
+                  <FadeIn
                     className="space-y-2"
                   >
                     {content.curriculumLabel && (
@@ -220,17 +217,14 @@ export default function ProgramPageClient(props: {
                     <h3 className="text-5xl md:text-4xl font-serif italic leading-tight">
                       {content.curriculumHeadline || "Module im Überblick."}
                     </h3>
-                  </motion.div>
+                  </FadeIn>
                   {content.curriculumIntro && (
-                    <motion.div
-                      initial={{ opacity: 0, y: 40 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 1.2, delay: 0.2 }}
+                    <FadeIn
+                      delay={0.2}
                       className="text-sm font-sans font-light opacity-85 leading-relaxed md:pt-8"
                     >
                       {content.curriculumIntro}
-                    </motion.div>
+                    </FadeIn>
                   )}
                 </div>
 
@@ -255,11 +249,8 @@ export default function ProgramPageClient(props: {
 
           {/* Sidebar */}
           <div className="lg:col-span-4 flex-col order-2 lg:order-none">
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.5 }}
+            <FadeIn
+              delay={0.4}
               className="bg-[#f0ede4] p-8 md:p-12 rounded-[2rem] sticky top-32 space-y-8 md:space-y-12 shadow-md border border-foreground/5 relative"
             >
               {/* Category & Title Header */}
@@ -338,7 +329,7 @@ export default function ProgramPageClient(props: {
               >
                 {content.isFull ? "AUF WARTELISTE" : "JETZT BUCHEN"}
               </Link>
-            </motion.div>
+            </FadeIn>
           </div>
 
           {/* Shared Content Sections (Mobile: Order 3, Desktop: Below Main Content) */}
@@ -449,11 +440,8 @@ function ModuleCard({ item, index, roman }: { item: any; index: number; roman: s
   const hasContent = (item.items && item.items.length > 0) || !isDescriptionEmpty;
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-30px" }}
-      transition={{ delay: index * 0.05, duration: 0.6, ease: "easeOut" }}
+    <FadeIn
+      delay={index * 0.05}
       className={`bg-white shadow-sm border border-foreground/5 group hover:border-pink/20 transition-all duration-500 will-change-transform ${hasContent ? 'p-6 md:px-12 md:py-10 rounded-xl md:rounded-[2rem]' : 'p-4 md:px-12 md:py-6 rounded-lg md:rounded-full'
         }`}
     >
@@ -536,7 +524,7 @@ function ModuleCard({ item, index, roman }: { item: any; index: number; roman: s
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.div>
+    </FadeIn>
   );
 }
 

@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { useTina, tinaField } from "tinacms/dist/react";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
+import FadeIn from "./FadeIn";
 
 export default function AboutClient(props: {
   data: any;
@@ -43,10 +44,7 @@ export default function AboutClient(props: {
           <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[80%] h-[20%] bg-pink/20 blur-[120px] rounded-full z-10" />
         </div>
         
-        <motion.div 
-          initial={{ opacity: 0, y: 100 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 2, ease: [0.22, 1, 0.36, 1] as any }}
+        <FadeIn 
           className="relative z-20 max-w-5xl mx-auto space-y-4 pt-16"
         >
           <div 
@@ -69,7 +67,7 @@ export default function AboutClient(props: {
               {content.heroSubline}
             </h2>
           )}
-        </motion.div>
+        </FadeIn>
       </section>
 
       {/* --- CONTENT SECTIONS --- */}
@@ -79,9 +77,8 @@ export default function AboutClient(props: {
             <div className={`grid grid-cols-1 lg:grid-cols-2 gap-16 md:gap-24 items-center ${section.imageRight ? 'lg:flex-row-reverse' : ''}`}>
               
               {/* Image Column */}
-              <motion.div 
-                {...fadeInUp}
-                className={`${section.imageRight ? 'lg:order-2' : 'lg:order-1'} flex justify-center`}
+              <FadeIn 
+                className={`${section.imageRight ? 'lg:order-2' : 'lg:order-1'} flex justify-center w-full`}
               >
                 <div className="relative aspect-square w-full overflow-hidden rounded-sm bg-[#1c211e]/5">
                   {section.image ? (
@@ -97,12 +94,11 @@ export default function AboutClient(props: {
                     </div>
                   )}
                 </div>
-              </motion.div>
+              </FadeIn>
 
               {/* Text Column */}
-              <motion.div 
-                {...fadeInUp}
-                transition={{ duration: 1.5, delay: 0.2, ease: [0.22, 1, 0.36, 1] as any }}
+              <FadeIn 
+                delay={0.2}
                 className={`space-y-10 ${section.imageRight ? 'lg:order-1' : 'lg:order-2'}`}
               >
                 <div className="space-y-6">
@@ -143,7 +139,7 @@ export default function AboutClient(props: {
                     </a>
                   </div>
                 )}
-              </motion.div>
+              </FadeIn>
 
             </div>
           </section>
@@ -168,16 +164,13 @@ export default function AboutClient(props: {
             >
               "
             </motion.div>
-            <motion.blockquote 
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 1.2, delay: 0.2 }}
+            <FadeIn 
+              delay={0.2}
               className="text-lg md:text-3xl font-serif italic leading-relaxed text-[#F5F2EB]/90"
               data-tina-field={tinaField(content.quote, "text")}
             >
               {content.quote.text}
-            </motion.blockquote>
+            </FadeIn>
             
             <motion.div 
               initial={{ opacity: 0, y: 40 }}

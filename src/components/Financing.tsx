@@ -1,21 +1,13 @@
 "use client";
 
-import { motion } from "framer-motion";
+import FadeIn from "./FadeIn";
 import { sharedContent } from "@/data/shared";
-
-const fadeInUp = {
-  initial: { opacity: 0, y: 30 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true, margin: "-50px" },
-  transition: { duration: 0.8 }
-};
 
 export default function Financing() {
   const { financing } = sharedContent;
   
   return (
-    <motion.div 
-      {...fadeInUp}
+    <FadeIn 
       className="space-y-12 bg-[#f0ede4]/50 p-12 rounded-2xl md:rounded-[1.5rem] shadow-sm border border-foreground/5"
     >
       <h4 className="text-xs uppercase tracking-[0.3em] font-bold text-pink">{financing.headline}</h4>
@@ -30,6 +22,6 @@ export default function Financing() {
           ))}
         </div>
       </div>
-    </motion.div>
+    </FadeIn>
   );
 }

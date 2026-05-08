@@ -8,6 +8,7 @@ import { tinaField, useTina } from "tinacms/dist/react";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
 
 import NewsletterSection from "./NewsletterSection";
+import FadeIn from "./FadeIn";
 import SuitableFor from "./SuitableFor";
 import Financing from "./Financing";
 
@@ -135,11 +136,7 @@ export default function HomeClient(props: HomeClientProps) {
       <section id="angebot" className="w-full bg-[#f5f2eb] py-24 md:py-48 px-6">
         <div className="max-w-[1400px] mx-auto">
           {/* Top: Headline & Intro — Two Column Layout */}
-          <motion.div 
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
+          <FadeIn 
             className="grid grid-cols-1 lg:grid-cols-2 gap-16 md:gap-24 items-start"
           >
             {/* Left: Headline + Image */}
@@ -191,7 +188,7 @@ export default function HomeClient(props: HomeClientProps) {
                 )}
               </div>
             </div>
-          </motion.div>
+          </FadeIn>
         </div>
       </section>
 
@@ -200,7 +197,7 @@ export default function HomeClient(props: HomeClientProps) {
         <div className="max-w-[1400px] mx-auto">
           {/* Bottom: Formats List (Reverted to Rows) */}
           <h3 
-            className="text-4xl md:text-5xl font-serif italic text-foreground/90 pb-6"
+            className="text-5xl md:text-6xl font-serif italic text-foreground/90 pb-6"
             data-tina-field={tinaField(content.offer, "formatsHeadline")}
           >
             {content.offer?.formatsHeadline || "Training / Seminare / Praxiskreis"}
@@ -249,12 +246,9 @@ export default function HomeClient(props: HomeClientProps) {
               const formatInfo = formatData[cat] || formatData["Training"];
 
               return (
-                <motion.div 
+                <FadeIn 
                   key={cat}
-                  initial={{ opacity: 0, y: 80 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-50px" }}
-                  transition={{ duration: 0.8, ease: "easeOut", delay: catIdx * 0.05 }}
+                  delay={catIdx * 0.1}
                   className="bg-white/50 rounded-2xl border border-foreground/5 p-8 md:p-16 shadow-sm hover:shadow-md transition-all duration-500 will-change-transform"
                 >
                   <div className="flex flex-col lg:flex-row lg:items-center gap-12 md:gap-20">
@@ -276,7 +270,7 @@ export default function HomeClient(props: HomeClientProps) {
 
                       <div className="space-y-8 flex-grow">
                         <div className="space-y-2">
-                          <h3 className="text-[9vw] md:text-5xl font-serif italic text-foreground/90 leading-tight">
+                          <h3 className="text-[8.2vw] md:text-5xl font-serif italic text-foreground/90 leading-tight tracking-tight">
                             {formatInfo.title}
                           </h3>
                           <div className="text-sm md:text-base uppercase tracking-[0.3em] font-bold text-pink">
@@ -306,7 +300,7 @@ export default function HomeClient(props: HomeClientProps) {
                       </div>
                     </div>
                   </div>
-                </motion.div>
+                </FadeIn>
               );
             })}
           </div>
@@ -316,11 +310,7 @@ export default function HomeClient(props: HomeClientProps) {
       {/* --- ÜBER MICH SECTION --- */}
       <section className="w-full bg-[#f2efe4] py-24 md:py-48 px-6 overflow-hidden">
         <div className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 md:gap-24 items-center">
-          <motion.div 
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 1.2 }}
+          <FadeIn 
             className="relative flex justify-center"
           >
             <div className="relative aspect-[4/5] rounded-lg overflow-hidden shadow-2xl w-full">
@@ -332,13 +322,10 @@ export default function HomeClient(props: HomeClientProps) {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#1c211e]/40 to-transparent" />
             </div>
-          </motion.div>
+          </FadeIn>
           
-          <motion.div 
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 1.2, delay: 0.2 }}
+          <FadeIn 
+            delay={0.2}
             className="space-y-12"
           >
             <div className="space-y-4">
@@ -382,7 +369,7 @@ export default function HomeClient(props: HomeClientProps) {
                 </span>
               </Link>
             </div>
-          </motion.div>
+          </FadeIn>
         </div>
       </section>
 
@@ -394,31 +381,20 @@ export default function HomeClient(props: HomeClientProps) {
         </div>
         
         <div className="max-w-6xl mx-auto relative z-10 space-y-12 md:space-y-16">
-          <motion.div 
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 1.2 }}
+          <FadeIn 
             className="text-pink text-3xl md:text-4xl mb-4 md:mb-8"
           >
             "
-          </motion.div>
-          <motion.blockquote 
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 1.2, delay: 0.2 }}
+          </FadeIn>
+          <FadeIn 
+            delay={0.2}
             className="text-lg md:text-3xl font-serif italic leading-relaxed text-[#F5F2EB]/90 px-4"
-            data-tina-field={tinaField(content.quote, "text")}
           >
             {content.quote?.text}
-          </motion.blockquote>
+          </FadeIn>
           
-          <motion.div 
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 1.2, delay: 0.4 }}
+          <FadeIn 
+            delay={0.4}
             className="space-y-4"
           >
             <div className="w-12 h-px bg-pink mx-auto mb-8" />
@@ -434,7 +410,7 @@ export default function HomeClient(props: HomeClientProps) {
             >
               {content.quote?.subline}
             </p>
-          </motion.div>
+          </FadeIn>
         </div>
       </section>
 
