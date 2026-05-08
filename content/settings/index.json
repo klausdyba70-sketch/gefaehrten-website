@@ -1,4 +1,10 @@
 {
+  "siteMeta": {
+    "siteUrl": "https://gefaehrten.de",
+    "siteName": "Gefährten · Traumainstitut",
+    "defaultDescription": "GEFÄHRTEN - Institut für Humanistische Psychotherapie & Traumatherapie in Köln.",
+    "defaultOgImage": "/images/hero-forest.png"
+  },
   "mailchimpUrl": "https://gefaehrten.us21.list-manage.com/subscribe/post?u=xxx&id=xxx",
   "contactEmail": "post@gefaehrten-ausbildungen.de",
   "contactPhone": "+49 170 1234567",

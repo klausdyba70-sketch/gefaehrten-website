@@ -1,7 +1,8 @@
 {
   "seo": {
     "title": "Gefährten Traumainstitut | Traumatraining & Trauma-Begleitung",
-    "description": "Das Gefährten Traumainstitut bietet fundierte Fortbildungen in traumasicherer Begleitung. Entdecken Sie unser Traumatraining & Vertiefungsseminare."
+    "description": "Das Gefährten Traumainstitut bietet fundierte Fortbildungen in traumasicherer Begleitung. Entdecken Sie unser Traumatraining & Vertiefungsseminare.",
+    "ogImage": "/images/hero-forest.png"
   },
   "hero": {
     "label": "Gefährten",
@@ -29,7 +30,7 @@
     "label": "Wer ich bin... unter anderem",
     "title": "Dariusz",
     "content": "Ich wurde 1970 in Polen im Zeichen des Wassermanns geboren. Meine Eltern gaben mir den Namen Dariusz – nach dem persischen König. Sein Name bedeutet: das Gute bewahren und weitergeben.\n\nEin Geschenk. Und eine Aufgabe. Nicht im moralischen Sinn, sondern als eine innere Ausrichtung: in allem das Gute erkennen zu können.\n",
-    "image": "/images/69aebee0e80ce0d455463c05_gefaherten-2026-4-p-2000.jpg",
+    "image": "/images/dariusz-dahlmann-gefaehrten-traumainstitut.jpg",
     "buttonLabel": "mehr Infos"
   },
   "quote": {

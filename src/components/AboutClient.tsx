@@ -30,15 +30,15 @@ export default function AboutClient(props: {
       <section className="relative w-full min-h-[50vh] flex flex-col items-center justify-center text-center px-6 overflow-hidden bg-[#0f110e] py-32">
         <div className="absolute inset-0 z-0">
           {content.heroVideo ? (
-            <video autoPlay loop muted playsInline className="w-full h-full object-cover opacity-40 ">
+            <video autoPlay loop muted playsInline className="w-full h-full object-cover opacity-60 ">
               <source src={content.heroVideo} type="video/mp4" />
             </video>
           ) : content.heroImage ? (
-            <img src={content.heroImage} alt={content.heroImageAlt || "Hero"} className="w-full h-full object-cover opacity-40 " />
+            <img src={content.heroImage} alt={content.heroImageAlt || "Hero"} className="w-full h-full object-cover opacity-60 " />
           ) : (
-            <img src="/hero-forest-blurred.png" alt="Forest Background" className="w-full h-full object-cover opacity-40 " />
+            <img src="/hero-forest-blurred.png" alt="Forest Background" className="w-full h-full object-cover opacity-60 " />
           )}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-[#0f110e] z-10" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-[#0f110e] z-10" />
           {/* Ambient Pink Glow */}
           <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[80%] h-[20%] bg-pink/20 blur-[120px] rounded-full z-10" />
         </div>

@@ -77,7 +77,7 @@ export default function HomeClient(props: HomeClientProps) {
           ) : (
             <div className="w-full h-full bg-[#1c211e]" />
           )}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-[#1c211e] z-10" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-[#1c211e] z-10" />
         </motion.div>
         
         <motion.div 
@@ -90,10 +90,10 @@ export default function HomeClient(props: HomeClientProps) {
           transition={{ duration: 1.5, delay: 0.2 }}
           className="relative z-20 max-w-[1400px] mx-auto space-y-6"
         >
-          <div className="text-[14px] md:text-[18px] uppercase tracking-[0.6em] text-pink mb-2 font-sans font-bold" data-tina-field={tinaField(content.hero, "label")}>
+          <div className="text-[14px] md:text-[18px] uppercase tracking-[0.3em] md:tracking-[0.6em] text-pink mb-2 font-sans font-bold" data-tina-field={tinaField(content.hero, "label")}>
             {content.hero?.label || "Traumainstitut · Gefährten"}
           </div>
-          <h1 className="text-6xl md:text-8xl lg:text-[10rem] font-serif italic text-[#F5F2EB] leading-[0.85] tracking-tighter" data-tina-field={tinaField(content.hero, "title")}>
+          <h1 className="text-[13vw] md:text-8xl lg:text-[10rem] font-serif italic text-[#F5F2EB] leading-[0.85] tracking-tighter" data-tina-field={tinaField(content.hero, "title")}>
              {content.hero?.title || "Gefährten"}
           </h1>
           <h2 className="text-xl md:text-3xl text-pink/80 font-serif font-bold italic pt-4 tracking-widest" data-tina-field={tinaField(content.hero, "subtitle")}>
@@ -276,7 +276,7 @@ export default function HomeClient(props: HomeClientProps) {
 
                       <div className="space-y-8 flex-grow">
                         <div className="space-y-2">
-                          <h3 className="text-5xl md:text-5xl font-serif italic text-foreground/90 leading-tight">
+                          <h3 className="text-[9vw] md:text-5xl font-serif italic text-foreground/90 leading-tight">
                             {formatInfo.title}
                           </h3>
                           <div className="text-sm md:text-base uppercase tracking-[0.3em] font-bold text-pink">
@@ -408,7 +408,7 @@ export default function HomeClient(props: HomeClientProps) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 1.2, delay: 0.2 }}
-            className="text-4xl md:text-5xl font-serif italic leading-relaxed text-[#F5F2EB]/90"
+            className="text-lg md:text-5xl font-serif italic leading-relaxed text-[#F5F2EB]/90 px-4"
             data-tina-field={tinaField(content.quote, "text")}
           >
             {content.quote?.text}

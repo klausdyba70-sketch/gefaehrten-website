@@ -59,15 +59,15 @@ export default function KontaktClient(props: {
       <section className="relative w-full h-[50vh] flex flex-col items-center justify-center text-center px-6 overflow-hidden bg-[#1c211e]">
         <div className="absolute inset-0 z-0">
           {content.heroVideo ? (
-            <video autoPlay loop muted playsInline className="w-full h-full object-cover opacity-30 ">
+            <video autoPlay loop muted playsInline className="w-full h-full object-cover opacity-60 ">
               <source src={content.heroVideo} type="video/mp4" />
             </video>
           ) : content.heroImage ? (
-            <img src={content.heroImage} alt={content.heroImageAlt || "Hero"} className="w-full h-full object-cover opacity-30 " />
+            <img src={content.heroImage} alt={content.heroImageAlt || "Hero"} className="w-full h-full object-cover opacity-60 " />
           ) : (
-            <img src="/hero-forest-blurred.png" alt="Forest Background" className="w-full h-full object-cover opacity-30 " />
+            <img src="/hero-forest-blurred.png" alt="Forest Background" className="w-full h-full object-cover opacity-60 " />
           )}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-[#1c211e] z-10" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-[#1c211e] z-10" />
         </div>
         
         <motion.div 
