@@ -60,8 +60,8 @@ export default function ProgramPageClient(props: {
         <motion.div
           initial={{ opacity: 0, y: 100 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 2, ease: [0.22, 1, 0.36, 1] as any }}
-          className="relative z-20 max-w-5xl mx-auto space-y-4"
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="relative z-20 max-w-5xl mx-auto space-y-4 will-change-transform"
         >
           <motion.div style={{ opacity }}>
             <div className="text-[16px] md:text-[20px] font-sans font-bold uppercase tracking-[0.3em] text-pink mb-2">{content.label}</div>
@@ -397,7 +397,8 @@ function DateGroupAccordion({ group, isLongList }: { group: any; isLongList: boo
                 initial={{ height: 0, opacity: 0 }}
                 animate={{ height: "auto", opacity: 1 }}
                 exit={{ height: 0, opacity: 0 }}
-                className="space-y-4 overflow-hidden pt-2"
+                transition={{ duration: 0.3, ease: "easeOut" }}
+                className="space-y-4 overflow-hidden pt-2 will-change-transform"
               >
                 {group.dates?.map((d: any, i: number) => (
                   <li key={i} className="flex flex-col bg-foreground/[0.03] border border-foreground/[0.05] rounded-lg p-4 group relative transition-all hover:bg-foreground/[0.05] hover:border-pink/20">
@@ -451,9 +452,9 @@ function ModuleCard({ item, index, roman }: { item: any; index: number; roman: s
     <motion.div
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-50px" }}
-      transition={{ delay: index * 0.1, duration: 1.2, ease: "easeOut" }}
-      className={`bg-white shadow-sm border border-foreground/5 group hover:border-pink/20 transition-all duration-500 ${hasContent ? 'p-6 md:px-12 md:py-10 rounded-xl md:rounded-[2rem]' : 'p-4 md:px-12 md:py-6 rounded-lg md:rounded-full'
+      viewport={{ once: true, margin: "-30px" }}
+      transition={{ delay: index * 0.05, duration: 0.6, ease: "easeOut" }}
+      className={`bg-white shadow-sm border border-foreground/5 group hover:border-pink/20 transition-all duration-500 will-change-transform ${hasContent ? 'p-6 md:px-12 md:py-10 rounded-xl md:rounded-[2rem]' : 'p-4 md:px-12 md:py-6 rounded-lg md:rounded-full'
         }`}
     >
       <div
@@ -519,7 +520,8 @@ function ModuleCard({ item, index, roman }: { item: any; index: number; roman: s
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            className="md:hidden overflow-hidden"
+            transition={{ duration: 0.3, ease: "easeOut" }}
+            className="md:hidden overflow-hidden will-change-transform"
           >
             <div className="pt-6 border-t border-foreground/5 mt-6 space-y-4">
               {item.items?.map((bullet: string, bIdx: number) => (

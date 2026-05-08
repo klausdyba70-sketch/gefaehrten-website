@@ -24,6 +24,12 @@ body {
   color: var(--foreground);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
+  /* Hardware acceleration for smoother animations */
+  backface-visibility: hidden;
+}
+
+.will-change-transform {
+  will-change: transform, opacity;
 }
 
 @layer base {
