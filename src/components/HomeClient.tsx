@@ -93,7 +93,7 @@ export default function HomeClient(props: HomeClientProps) {
           <div className="text-[14px] md:text-[18px] uppercase tracking-[0.6em] text-pink mb-2 font-sans font-bold" data-tina-field={tinaField(content.hero, "label")}>
             {content.hero?.label || "Traumainstitut · Gefährten"}
           </div>
-          <h1 className="text-7xl md:text-8xl lg:text-[10rem] font-serif italic text-[#F5F2EB] leading-[0.85] tracking-tighter" data-tina-field={tinaField(content.hero, "title")}>
+          <h1 className="text-6xl md:text-8xl lg:text-[10rem] font-serif italic text-[#F5F2EB] leading-[0.85] tracking-tighter" data-tina-field={tinaField(content.hero, "title")}>
              {content.hero?.title || "Gefährten"}
           </h1>
           <h2 className="text-xl md:text-3xl text-pink/80 font-serif font-bold italic pt-4 tracking-widest" data-tina-field={tinaField(content.hero, "subtitle")}>
@@ -153,7 +153,7 @@ export default function HomeClient(props: HomeClientProps) {
                 </div>
               )}
               <h2 
-                className="text-6xl md:text-6xl lg:text-7xl font-serif italic leading-tight text-foreground/90"
+                className="text-4xl md:text-6xl lg:text-7xl font-serif italic leading-tight text-foreground/90"
                 data-tina-field={tinaField(content.offer, "headline")}
               >
                 {content.offer?.headline?.type ? (

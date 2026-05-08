@@ -65,11 +65,11 @@ export default function ProgramPageClient(props: {
         >
           <motion.div style={{ opacity }}>
             <div className="text-[16px] md:text-[20px] font-sans font-bold uppercase tracking-[0.3em] text-pink mb-2">{content.label}</div>
-            <h1 className="text-7xl md:text-6xl lg:text-[7rem] font-serif italic text-[#F5F2EB] leading-tight md:leading-none tracking-tight">
+            <h1 className="text-5xl md:text-6xl lg:text-[7rem] font-serif italic text-[#F5F2EB] leading-tight md:leading-none tracking-tight">
               {content.title}
             </h1>
             <h2
-              className="text-xl md:text-2xl text-pink/80 font-sans font-light italic pt-2 tracking-widest"
+              className="text-lg md:text-2xl text-pink/80 font-sans font-light italic pt-2 tracking-widest"
               data-tina-field={tinaField(content, "datesSubline")}
             >
               {content.datesSubline}
@@ -89,7 +89,7 @@ export default function ProgramPageClient(props: {
           transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] as any }}
           className="max-w-4xl mx-auto mb-20 md:mb-32 space-y-8 md:space-y-12 text-center border-b border-black/5 pb-20 md:pb-32"
         >
-          <h3 className="text-3xl md:text-4xl font-serif italic text-foreground/90 leading-tight">
+          <h3 className="text-2xl md:text-4xl font-serif italic text-foreground/90 leading-tight">
             {content.headerIntro?.headline}
           </h3>
           <div className="text-sm md:text-xl text-foreground/70 font-sans font-light leading-relaxed space-y-6 md:space-y-8 max-w-3xl mx-auto" data-tina-field={tinaField(content.headerIntro, "text")}>
@@ -400,14 +400,14 @@ function DateGroupAccordion({ group, isLongList }: { group: any; isLongList: boo
                 className="space-y-4 overflow-hidden pt-2"
               >
                 {group.dates?.map((d: any, i: number) => (
-                  <li key={i} className="flex flex-col border-b border-foreground/5 pb-3 last:border-0 group relative">
+                  <li key={i} className="flex flex-col bg-foreground/[0.03] border border-foreground/[0.05] rounded-lg p-4 group relative transition-all hover:bg-foreground/[0.05] hover:border-pink/20">
                     {(d.status || d.isFull) && (
-                      <span className={`absolute -top-3 -right-2 text-[9px] px-2 py-0.5 rounded-full font-bold uppercase tracking-widest shadow-sm z-10 ${d.isFull ? 'bg-pink text-white' : 'bg-pink/10 text-pink border border-pink/20 backdrop-blur-sm'}`}>
+                      <span className={`absolute -top-2.5 -right-2 text-[9px] px-2.5 py-1 rounded-full font-bold uppercase tracking-widest shadow-sm z-10 ${d.isFull ? 'bg-pink text-white' : 'bg-pink/10 text-pink border border-pink/20 backdrop-blur-sm'}`}>
                         {d.isFull ? "WARTELISTE" : d.status}
                       </span>
                     )}
-                    <span className="text-sm font-medium group-hover:text-pink transition-colors">{d.date}</span>
-                    <span className="text-[12px] opacity-40 uppercase tracking-widest">{d.location}</span>
+                    <span className="text-[13px] font-bold text-foreground/90 group-hover:text-pink transition-colors mb-1">{d.date}</span>
+                    <span className="text-[11px] opacity-50 uppercase tracking-[0.15em] font-medium">{d.location}</span>
                   </li>
                 ))}
               </motion.ul>
@@ -415,16 +415,16 @@ function DateGroupAccordion({ group, isLongList }: { group: any; isLongList: boo
           </AnimatePresence>
         </div>
       ) : (
-        <ul className="space-y-4">
+        <ul className="space-y-3">
           {group.dates?.map((d: any, i: number) => (
-            <li key={i} className="flex flex-col border-b border-foreground/5 pb-3 last:border-0 group relative">
+            <li key={i} className="flex flex-col bg-foreground/[0.03] border border-foreground/[0.05] rounded-lg p-4 group relative transition-all hover:bg-foreground/[0.05] hover:border-pink/20">
               {(d.status || d.isFull) && (
-                <span className={`absolute -top-3 -right-2 text-[9px] px-2 py-0.5 rounded-full font-bold uppercase tracking-widest shadow-sm z-10 ${d.isFull ? 'bg-pink text-white' : 'bg-pink/10 text-pink border border-pink/20 backdrop-blur-sm'}`}>
+                <span className={`absolute -top-2.5 -right-2 text-[9px] px-2.5 py-1 rounded-full font-bold uppercase tracking-widest shadow-sm z-10 ${d.isFull ? 'bg-pink text-white' : 'bg-pink/10 text-pink border border-pink/20 backdrop-blur-sm'}`}>
                   {d.isFull ? "WARTELISTE" : d.status}
                 </span>
               )}
-              <span className="text-sm font-medium group-hover:text-pink transition-colors">{d.date}</span>
-              <span className="text-[12px] opacity-40 uppercase tracking-widest">{d.location}</span>
+              <span className="text-[13px] font-bold text-foreground/90 group-hover:text-pink transition-colors mb-1">{d.date}</span>
+              <span className="text-[11px] opacity-50 uppercase tracking-[0.15em] font-medium">{d.location}</span>
             </li>
           ))}
         </ul>
