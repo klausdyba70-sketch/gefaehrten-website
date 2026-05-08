@@ -408,7 +408,7 @@ export default function HomeClient(props: HomeClientProps) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 1.2, delay: 0.2 }}
-            className="text-lg md:text-5xl font-serif italic leading-relaxed text-[#F5F2EB]/90 px-4"
+            className="text-lg md:text-3xl font-serif italic leading-relaxed text-[#F5F2EB]/90 px-4"
             data-tina-field={tinaField(content.quote, "text")}
           >
             {content.quote?.text}
@@ -453,8 +453,6 @@ export default function HomeClient(props: HomeClientProps) {
           </div>
         </section>
       )}
-
-      <NewsletterSection />
     </div>
   );
 }

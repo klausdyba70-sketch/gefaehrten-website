@@ -173,7 +173,7 @@ export default function AboutClient(props: {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 1.2, delay: 0.2 }}
-              className="text-3xl md:text-5xl font-serif italic leading-relaxed text-[#F5F2EB]/90"
+              className="text-lg md:text-3xl font-serif italic leading-relaxed text-[#F5F2EB]/90"
               data-tina-field={tinaField(content.quote, "text")}
             >
               {content.quote.text}
