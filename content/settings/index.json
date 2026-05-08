@@ -1,0 +1,66 @@
+{
+  "mailchimpUrl": "https://gefaehrten.us21.list-manage.com/subscribe/post?u=xxx&id=xxx",
+  "contactEmail": "post@gefaehrten-ausbildungen.de",
+  "contactPhone": "+49 170 1234567",
+  "address": {
+    "name": "GEFÄHRTEN · TRAUMAINSTITUT",
+    "street": "MERKENSSTRASSE 3",
+    "city": "50825 KÖLN"
+  },
+  "socials": {
+    "instagram": "https://www.instagram.com/institut_psychotherapie_koeln/",
+    "facebook": "https://www.facebook.com/HumanistischeTherapie"
+  },
+  "navLinks": [
+    {
+      "label": "Traumatraining",
+      "url": "/traumatraining"
+    },
+    {
+      "label": "Vertiefungsseminare",
+      "pageRef": "",
+      "url": "/vertiefungsseminare",
+      "subLinks": [
+        {
+          "label": "Berührung",
+          "pageRef": "content/seminars/beruehrung.mdx",
+          "url": "/beruehrung"
+        },
+        {
+          "label": "Beziehung",
+          "pageRef": "content/seminars/Beziehung.mdx",
+          "url": "/beziehung"
+        },
+        {
+          "label": "Intimität",
+          "pageRef": "content/seminars/intimitaet.mdx",
+          "url": "/intimitaet"
+        }
+      ]
+    },
+    {
+      "label": "Tanzkomplizen",
+      "pageRef": "content/seminars/tanzkomplizen.mdx",
+      "url": "/tanzkomplizen"
+    },
+    {
+      "label": "Haltung & Ansatz",
+      "url": "/haltung-und-ansatz",
+      "subLinks": [
+        {
+          "label": "Was wirkt im Training",
+          "pageRef": "content/pages/was-wirkt-im-training.mdx",
+          "url": "/was-wirkt-im-training"
+        },
+        {
+          "label": "Über uns",
+          "url": "/ueber-uns"
+        }
+      ]
+    },
+    {
+      "label": "Kontakt",
+      "url": "/kontakt"
+    }
+  ]
+}

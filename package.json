@@ -3,15 +3,20 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
+    "predev": "node scripts/generate-redirects.mjs",
+    "prebuild": "node scripts/generate-redirects.mjs",
+    "dev": "tinacms dev -p 4010 -c \"next dev -p 3010\"",
+    "build": "tinacms build --local --skip-cloud-checks && tinacms dev -p 4010 -c \"next build\" && cp public/_redirects out/",
     "start": "next start",
     "lint": "eslint"
   },
   "dependencies": {
+    "@tinacms/cli": "^2.2.5",
+    "framer-motion": "^12.38.0",
     "next": "16.2.4",
     "react": "19.2.4",
-    "react-dom": "19.2.4"
+    "react-dom": "19.2.4",
+    "tinacms": "^3.7.5"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",

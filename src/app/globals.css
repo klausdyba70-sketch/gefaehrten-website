@@ -1,26 +1,102 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #F5F2EB; /* Warm beige */
+  --foreground: #0a0c0b; /* Even darker green/black for better contrast */
+  --accent: #2c3e32; /* Dark green */
+  --accent-foreground: #F5F2EB;
+  --pink: #b87e7e; /* Darker, more saturated dusty rose */
+  --hero-bg: #0f110e; /* Very dark green for hero */
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-pink: var(--pink);
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-serif), Georgia, Cambria, "Times New Roman", Times, serif;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+@layer base {
+  html {
+    font-size: 16px;
+  }
+  
+  @media (max-width: 768px) {
+    html {
+      font-size: 17.5px; /* Increases all rem-based sizes */
+    }
+    
+    /* Ensure body text is substantial and readable */
+    p, .rich-text p {
+      font-size: 1.05rem !important;
+      line-height: 1.7;
+    }
+    
+    /* Headlines proportional bump */
+    h1, h2, h3, h4 {
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+
+    /* Small labels and metadata also need a slight bump as they are often fixed px */
+    .text-\[12px\], .text-\[11px\], .text-\[10px\] {
+      font-size: 13px !important;
+      letter-spacing: 0.1em !important;
+    }
+  }
+}
+
+/* Rich Text Styling for TinaCMS Content */
+.rich-text strong {
+  font-weight: 700;
+}
+
+.rich-text em {
+  font-style: italic;
+}
+
+.rich-text ul {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.rich-text ol {
+  list-style-type: decimal;
+  padding-left: 1.5rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.rich-text li {
+  margin-bottom: 0.5rem;
+}
+
+.rich-text a {
+  color: var(--pink);
+  text-decoration: underline;
+  transition: opacity 0.2s;
+}
+
+.rich-text a:hover {
+  opacity: 0.8;
+}
+
+.rich-text p {
+  margin-bottom: 1.5rem;
+}
+
+.rich-text p:last-child {
+  margin-bottom: 0;
 }

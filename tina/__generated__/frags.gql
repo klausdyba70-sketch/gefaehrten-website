@@ -1,0 +1,552 @@
+fragment HomepageParts on Homepage {
+  __typename
+  seo {
+    __typename
+    title
+    description
+    canonical
+    ogImage
+    noIndex
+  }
+  hero {
+    __typename
+    label
+    title
+    subtitle
+    text
+    video
+    image
+    imageAlt
+  }
+  offer {
+    __typename
+    label
+    headline
+    offerImage
+    offerImageAlt
+    text
+    formatsHeadline
+    formatsIntro
+    trainingImage
+    trainingSummary
+    seminarImage
+    seminarSummary
+    praxiskreisImage
+    praxiskreisSummary
+  }
+  about {
+    __typename
+    label
+    title
+    content
+    image
+    imageAlt
+    buttonLabel
+  }
+  quote {
+    __typename
+    text
+    label
+    subline
+  }
+  testimonials {
+    __typename
+    name
+    training
+    quote
+    image
+    imageAlt
+  }
+}
+
+fragment AnmeldenParts on Anmelden {
+  __typename
+  seo {
+    __typename
+    title
+    description
+    canonical
+    ogImage
+    noIndex
+  }
+  pageIntro
+  seminarLabel
+  heroImage
+  heroImageAlt
+  heroVideo
+  introTraining
+  introSeminar
+  introPraxiskreis
+  legalDatenschutz
+  legalTeilnahme
+  legalVerschwiegenheit
+  legalRuecktritt
+  bankDetails
+}
+
+fragment KontaktParts on Kontakt {
+  __typename
+  seo {
+    __typename
+    title
+    description
+    canonical
+    ogImage
+    noIndex
+  }
+  heroTitle
+  heroLabel
+  heroImage
+  heroImageAlt
+  heroVideo
+  introHeadline
+  introText
+  details {
+    __typename
+    addressHeadline
+    address1
+    address2
+    directHeadline
+    directText
+  }
+}
+
+fragment UeberunsParts on Ueberuns {
+  __typename
+  seo {
+    __typename
+    title
+    description
+    canonical
+    ogImage
+    noIndex
+  }
+  heroLabel
+  heroTitle
+  heroSubline
+  heroImage
+  heroImageAlt
+  heroVideo
+  sections {
+    __typename
+    label
+    title
+    content
+    image
+    imageAlt
+    imageRight
+  }
+  quote {
+    __typename
+    text
+    label
+    subline
+  }
+  cta {
+    __typename
+    label
+    url
+  }
+}
+
+fragment SettingsParts on Settings {
+  __typename
+  siteMeta {
+    __typename
+    siteUrl
+    siteName
+    defaultDescription
+    defaultOgImage
+  }
+  mailchimpUrl
+  contactEmail
+  contactPhone
+  address {
+    __typename
+    name
+    street
+    city
+  }
+  socials {
+    __typename
+    instagram
+    facebook
+  }
+  navLinks {
+    __typename
+    label
+    pageRef {
+      ... on Page {
+        __typename
+        seo {
+          __typename
+          title
+          description
+          canonical
+          ogImage
+          noIndex
+        }
+        title
+        heroLabel
+        heroSubline
+        heroImage
+        heroImageAlt
+        heroVideo
+        sections {
+          __typename
+          type
+          headline
+          content
+          image
+          imageAlt
+          button {
+            __typename
+            label
+            url
+          }
+        }
+      }
+      ... on Seminars {
+        __typename
+        seo {
+          __typename
+          title
+          description
+          canonical
+          ogImage
+          noIndex
+        }
+        category
+        label
+        title
+        videoSrc
+        heroImage
+        heroImageAlt
+        isFull
+        headerIntro {
+          __typename
+          headline
+          text
+        }
+        intro {
+          __typename
+          headline
+          detailedHeadline
+          summary
+          text1
+          text2
+          text3
+        }
+        showHighlight
+        highlight {
+          __typename
+          headline
+          subline
+          text
+        }
+        showWeekends
+        weekends {
+          __typename
+          title
+          subtitle
+          duration
+          items
+          text
+        }
+        showCurriculum
+        curriculumLabel
+        curriculumHeadline
+        curriculumIntro
+        curriculum {
+          __typename
+          id
+          title
+          duration
+          items
+          description
+        }
+        dateGroups {
+          __typename
+          headline
+          subline
+          dates {
+            __typename
+            date
+            location
+            isFull
+            status
+          }
+        }
+        price
+        discountPrice
+        installment {
+          __typename
+          available
+          text
+        }
+      }
+      ... on Document {
+        _sys {
+          filename
+          basename
+          hasReferences
+          breadcrumbs
+          path
+          relativePath
+          extension
+        }
+        id
+      }
+    }
+    url
+    subLinks {
+      __typename
+      label
+      pageRef {
+        ... on Page {
+          __typename
+          seo {
+            __typename
+            title
+            description
+            canonical
+            ogImage
+            noIndex
+          }
+          title
+          heroLabel
+          heroSubline
+          heroImage
+          heroImageAlt
+          heroVideo
+          sections {
+            __typename
+            type
+            headline
+            content
+            image
+            imageAlt
+            button {
+              __typename
+              label
+              url
+            }
+          }
+        }
+        ... on Seminars {
+          __typename
+          seo {
+            __typename
+            title
+            description
+            canonical
+            ogImage
+            noIndex
+          }
+          category
+          label
+          title
+          videoSrc
+          heroImage
+          heroImageAlt
+          isFull
+          headerIntro {
+            __typename
+            headline
+            text
+          }
+          intro {
+            __typename
+            headline
+            detailedHeadline
+            summary
+            text1
+            text2
+            text3
+          }
+          showHighlight
+          highlight {
+            __typename
+            headline
+            subline
+            text
+          }
+          showWeekends
+          weekends {
+            __typename
+            title
+            subtitle
+            duration
+            items
+            text
+          }
+          showCurriculum
+          curriculumLabel
+          curriculumHeadline
+          curriculumIntro
+          curriculum {
+            __typename
+            id
+            title
+            duration
+            items
+            description
+          }
+          dateGroups {
+            __typename
+            headline
+            subline
+            dates {
+              __typename
+              date
+              location
+              isFull
+              status
+            }
+          }
+          price
+          discountPrice
+          installment {
+            __typename
+            available
+            text
+          }
+        }
+        ... on Document {
+          _sys {
+            filename
+            basename
+            hasReferences
+            breadcrumbs
+            path
+            relativePath
+            extension
+          }
+          id
+        }
+      }
+      url
+    }
+  }
+}
+
+fragment PageParts on Page {
+  __typename
+  seo {
+    __typename
+    title
+    description
+    canonical
+    ogImage
+    noIndex
+  }
+  title
+  heroLabel
+  heroSubline
+  heroImage
+  heroImageAlt
+  heroVideo
+  sections {
+    __typename
+    type
+    headline
+    content
+    image
+    imageAlt
+    button {
+      __typename
+      label
+      url
+    }
+  }
+}
+
+fragment SeminarsParts on Seminars {
+  __typename
+  seo {
+    __typename
+    title
+    description
+    canonical
+    ogImage
+    noIndex
+  }
+  category
+  label
+  title
+  videoSrc
+  heroImage
+  heroImageAlt
+  isFull
+  headerIntro {
+    __typename
+    headline
+    text
+  }
+  intro {
+    __typename
+    headline
+    detailedHeadline
+    summary
+    text1
+    text2
+    text3
+  }
+  showHighlight
+  highlight {
+    __typename
+    headline
+    subline
+    text
+  }
+  showWeekends
+  weekends {
+    __typename
+    title
+    subtitle
+    duration
+    items
+    text
+  }
+  showCurriculum
+  curriculumLabel
+  curriculumHeadline
+  curriculumIntro
+  curriculum {
+    __typename
+    id
+    title
+    duration
+    items
+    description
+  }
+  dateGroups {
+    __typename
+    headline
+    subline
+    dates {
+      __typename
+      date
+      location
+      isFull
+      status
+    }
+  }
+  price
+  discountPrice
+  installment {
+    __typename
+    available
+    text
+  }
+}
+
+fragment RedirectsParts on Redirects {
+  __typename
+  items {
+    __typename
+    from
+    to
+    status
+  }
+}

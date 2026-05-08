@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Netlify Forms Helper</title>
+</head>
+<body>
+  <!-- 
+    This file is only for Netlify's build bot to detect forms in a Next.js static export.
+    The actual forms are rendered by React components.
+  -->
+
+  <!-- Kontaktformular -->
+  <form name="kontakt" data-netlify="true" netlify-honeypot="bot-field" hidden>
+    <input type="hidden" name="form-name" value="kontakt" />
+    <p class="hidden">
+      <label>Don’t fill this out if you’re human: <input name="bot-field" /></label>
+    </p>
+    <input type="text" name="name" />
+    <input type="email" name="email" />
+    <select name="anliegen">
+      <option value="traumatraining">Traumatraining</option>
+      <option value="vertiefungsseminare">Vertiefungsseminare</option>
+      <option value="tanzkomplizen">Tanzkomplizen</option>
+      <option value="allgemein">Allgemeine Anfrage</option>
+    </select>
+    <textarea name="nachricht"></textarea>
+  </form>
+
+  <!-- Anmeldeformular -->
+  <form name="anmeldung" data-netlify="true" netlify-honeypot="bot-field" hidden>
+    <input type="hidden" name="form-name" value="anmeldung" />
+    <p class="hidden">
+      <label>Don’t fill this out if you’re human: <input name="bot-field" /></label>
+    </p>
+    
+    <!-- Auswahl der Seminare (Mehrfachauswahl möglich) -->
+    <input type="checkbox" name="auswahl" />
+    <input type="checkbox" name="ratenzahlung" />
+    
+    <!-- Persönliche Daten -->
+    <textarea name="mitteilung"></textarea>
+    <input type="text" name="vorname" />
+    <input type="text" name="nachname" />
+    <input type="text" name="vorwahl" />
+    <input type="text" name="telefonnummer" />
+    <input type="email" name="email" />
+    
+    <!-- Rechnungsadresse -->
+    <input type="text" name="firmenname" />
+    <input type="text" name="strasse" />
+    <input type="text" name="stadt" />
+    <input type="text" name="plz" />
+    <select name="land">
+      <option value="Deutschland">Deutschland</option>
+      <option value="Österreich">Österreich</option>
+      <option value="Schweiz">Schweiz</option>
+      <option value="Anderes">Anderes</option>
+    </select>
+    
+    <!-- Rechtliches (Checkboxen) -->
+    <input type="checkbox" name="datenschutz_akzeptiert" />
+    <input type="checkbox" name="teilnahme_akzeptiert" />
+    <input type="checkbox" name="verschwiegenheit_akzeptiert" />
+    <input type="checkbox" name="ruecktritt_akzeptiert" />
+  </form>
+
+</body>
+</html>

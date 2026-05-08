@@ -1,0 +1,64 @@
+{
+  "items": [
+    {
+      "from": "/wer-wir-sind",
+      "to": "/ueber-uns",
+      "status": "301"
+    },
+    {
+      "from": "/buchungsformular",
+      "to": "/anmelden",
+      "status": "301"
+    },
+    {
+      "from": "/unser-weg",
+      "to": "/was-wirkt-im-training",
+      "status": "301"
+    },
+    {
+      "from": "/programm/ausbildung---trauma-verstehen-begleiten---wissen---werkzeug---haltung",
+      "to": "/traumatraining",
+      "status": "301"
+    },
+    {
+      "from": "/programm/ausbildung-systemische-therapie",
+      "to": "/",
+      "status": "301"
+    },
+    {
+      "from": "/programm/seminar-bioenergetik-und-dynamische-korpertherapie",
+      "to": "/",
+      "status": "301"
+    },
+    {
+      "from": "/programm/seminar-gesprachpsychotherapie-nach-c-rogers",
+      "to": "/",
+      "status": "301"
+    },
+    {
+      "from": "/programm/seminar-systemische-psychotherapie",
+      "to": "/",
+      "status": "301"
+    },
+    {
+      "from": "/programm/workshop-einen-therapeutischen-prozess-meistern",
+      "to": "/",
+      "status": "301"
+    },
+    {
+      "from": "/programm/workshop-einfuhrung-in-die-psychologische-kinesiologie",
+      "to": "/",
+      "status": "301"
+    },
+    {
+      "from": "/programm/workshops-die-stille-revolution",
+      "to": "/",
+      "status": "301"
+    },
+    {
+      "from": "/finanzierung",
+      "to": "/",
+      "status": "301"
+    }
+  ]
+}

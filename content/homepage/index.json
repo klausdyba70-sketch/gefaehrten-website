@@ -1,0 +1,144 @@
+{
+  "seo": {
+    "title": "Gefährten Traumainstitut | Traumatraining & Trauma-Begleitung",
+    "description": "Das Gefährten Traumainstitut bietet fundierte Fortbildungen in traumasicherer Begleitung. Entdecken Sie unser Traumatraining & Vertiefungsseminare."
+  },
+  "hero": {
+    "label": "Gefährten",
+    "title": "Traumainstitut",
+    "subtitle": "Was wir für uns tun, wirkt weiter.",
+    "text": "Herzlich willkommen im Traumainstitut Gefährten. Schön, dass du hier bist. Dein Interesse an Trauma hat dich zu uns geführt. Gut für dich – und für die Menschen, die du begleitest. Mit uns entwickelst du eine Haltung, die im eingestimmten Kontakt trägt.",
+    "video": "/images/magnific_like-a-train-goes-trough-_2933923745.mp4"
+  },
+  "offer": {
+    "label": " ",
+    "headline": "Unser Programm\n",
+    "offerImage": "/images/magnific_can-you-make-images-of-se_2940946993 (1).png",
+    "offerImageAlt": "Traumartige Landschaft an einem Meer.",
+    "text": "Die Zukunft beginnt nicht, weil etwas völlig Neues dazukommt. Sondern weil sich das Vorhandene neu ordnet.\n\nWir verbinden, was sich lange getrennt entwickelt hat, und schaffen daraus eine klare Richtung.\n\n‍\n\nDer Fokus liegt auf einem praxisnahen Verständnis von Trauma und der Frage, wie klassische humanistische Ansätze – Gestalttherapie, Bioenergetik, klientenzentrierte Haltung und systemische Arbeit – für traumatisierte Menschen wirksam und sicher werden können. Traumaarbeit bildet dabei den Rahmen, in dem sich diese Ansätze neu ausrichten.\n\n**Aus Vielem wird Eins.**\n\nAus Verbindung entsteht ein tragfähiger Ort.\n\nIm Zentrum steht das Traumatraining, ergänzt durch Vertiefungsseminare – dort, wo Themen mehr Raum und Sorgfalt brauchen.Wie entsteht Sicherheit aus Ohnmacht, Kontrolle oder Zwang? Aus genau den Strategien, die einst dem Überleben dienten.\n\nUnd welche Haltung braucht es, um diesen Wandel zu ermöglichen?\n\n**Wir verändern Menschen nicht.**\n\nWir schaffen Bedingungen, unter denen sie sich selbst wieder begegnen können.\n\nAus einem tieferen Verständnis menschlichen Leids\n\nentsteht Mitgefühl – und eine Form von Arbeit, die weniger wissen muss und mehr wahrnimmt.\n\nWenn du spürst, dass Tiefe leicht werden darf, bist du bei uns richtig.\n",
+    "formatsHeadline": "Training / Seminare / Praxiskreis",
+    "formatsIntro": "In unseren verschiedenen Formaten bieten wir Raum für tiefes Verstehen, verkörperte Erfahrung und menschliche Begegnung. Ob im intensiven Jahrestraining, in fokussierten Vertiefungsseminaren oder im bewegten Praxiskreis – wir begleiten dich auf dem Weg zu einer traumasicheren Haltung, die wirklich trägt.\n",
+    "trainingImage": "/images/magnific_can-you-make-images-of-fo_2923216927 (1).png",
+    "trainingSummary": "Eine fundierte Fortbildung in traumasicherer Begleitung, die Körperarbeit, Gestalt- und systemische Ansätze vereint.",
+    "seminarImage": "/images/magnific_can-you-make-images-of-th_2941247612.png",
+    "seminarSummary": "Dort, wo Themen mehr Raum und Sorgfalt brauchen. Wie entsteht Sicherheit aus Ohnmacht, Kontrolle oder Zwang?",
+    "praxiskreisImage": "/images/magnific_can-you-make-people-dance_2934050381.png",
+    "praxiskreisSummary": "Ein bewegter Raum für Körpererfahrung und Gemeinschaft, inspiriert von traumasensibler Haltung."
+  },
+  "about": {
+    "label": "Wer ich bin... unter anderem",
+    "title": "Dariusz",
+    "content": "Ich wurde 1970 in Polen im Zeichen des Wassermanns geboren. Meine Eltern gaben mir den Namen Dariusz – nach dem persischen König. Sein Name bedeutet: das Gute bewahren und weitergeben.\n\nEin Geschenk. Und eine Aufgabe. Nicht im moralischen Sinn, sondern als eine innere Ausrichtung: in allem das Gute erkennen zu können.\n",
+    "image": "/images/69aebee0e80ce0d455463c05_gefaherten-2026-4-p-2000.jpg",
+    "buttonLabel": "mehr Infos"
+  },
+  "quote": {
+    "text": "\"Wenn griechische Krieger auf den Wagen sprangen, bevor sie losritten, riefen sie ihren Wagengefährten. Der Gefährte stand auf einer erhöhten Plattform, ohne Zügel oder Waffen. Seine Aufgabe war die Beobachtung des Geschehens und der Umgebung. Er behielt den Überblick und gab Rückmeldung über das, was er wahrnahm. Mit weitem Blick begleitete er durch die Gefahr und trug dazu bei, wieder in Sicherheit zu kommen.\"",
+    "label": "HERKUNFT AUS DEM GRIECHISCHEN THERAPEUTOS",
+    "subline": "„DER WEGGEFÄHRTE“"
+  },
+  "testimonials": [
+    {
+      "name": "Gefährte 1",
+      "training": "Traumatraining / Seminar",
+      "quote": "Ein Raum für tiefes Verstehen und neue Erfahrungen. Die Begleitung ist einfühlsam und fachlich fundiert.",
+      "image": "/images/testimonials/testimonial-1.webp"
+    },
+    {
+      "name": "Gefährte 2",
+      "training": "Traumatraining / Seminar",
+      "quote": "Ein Raum für tiefes Verstehen und neue Erfahrungen. Die Begleitung ist einfühlsam und fachlich fundiert.",
+      "image": "/images/testimonials/testimonial-2.webp"
+    },
+    {
+      "name": "Gefährte 3",
+      "training": "Traumatraining / Seminar",
+      "quote": "Ein Raum für tiefes Verstehen und neue Erfahrungen. Die Begleitung ist einfühlsam und fachlich fundiert.",
+      "image": "/images/testimonials/testimonial-3.webp"
+    },
+    {
+      "name": "Gefährte 4",
+      "training": "Traumatraining / Seminar",
+      "quote": "Ein Raum für tiefes Verstehen und neue Erfahrungen. Die Begleitung ist einfühlsam und fachlich fundiert.",
+      "image": "/images/testimonials/testimonial-4.webp"
+    },
+    {
+      "name": "Gefährte 5",
+      "training": "Traumatraining / Seminar",
+      "quote": "Ein Raum für tiefes Verstehen und neue Erfahrungen. Die Begleitung ist einfühlsam und fachlich fundiert.",
+      "image": "/images/testimonials/testimonial-5.webp"
+    },
+    {
+      "name": "Gefährte 6",
+      "training": "Traumatraining / Seminar",
+      "quote": "Ein Raum für tiefes Verstehen und neue Erfahrungen. Die Begleitung ist einfühlsam und fachlich fundiert.",
+      "image": "/images/testimonials/testimonial-6.webp"
+    },
+    {
+      "name": "Gefährte 7",
+      "training": "Traumatraining / Seminar",
+      "quote": "Ein Raum für tiefes Verstehen und neue Erfahrungen. Die Begleitung ist einfühlsam und fachlich fundiert.",
+      "image": "/images/testimonials/testimonial-7.webp"
+    },
+    {
+      "name": "Gefährte 8",
+      "training": "Traumatraining / Seminar",
+      "quote": "Ein Raum für tiefes Verstehen und neue Erfahrungen. Die Begleitung ist einfühlsam und fachlich fundiert.",
+      "image": "/images/testimonials/testimonial-8.webp"
+    },
+    {
+      "name": "Gefährte 9",
+      "training": "Traumatraining / Seminar",
+      "quote": "Ein Raum für tiefes Verstehen und neue Erfahrungen. Die Begleitung ist einfühlsam und fachlich fundiert.",
+      "image": "/images/testimonials/testimonial-9.webp"
+    },
+    {
+      "name": "Gefährte 10",
+      "training": "Traumatraining / Seminar",
+      "quote": "Ein Raum für tiefes Verstehen und neue Erfahrungen. Die Begleitung ist einfühlsam und fachlich fundiert.",
+      "image": "/images/testimonials/testimonial-10.webp"
+    },
+    {
+      "name": "Gefährte 11",
+      "training": "Traumatraining / Seminar",
+      "quote": "Ein Raum für tiefes Verstehen und neue Erfahrungen. Die Begleitung ist einfühlsam und fachlich fundiert.",
+      "image": "/images/testimonials/testimonial-11.webp"
+    },
+    {
+      "name": "Gefährte 12",
+      "training": "Traumatraining / Seminar",
+      "quote": "Ein Raum für tiefes Verstehen und neue Erfahrungen. Die Begleitung ist einfühlsam und fachlich fundiert.",
+      "image": "/images/testimonials/testimonial-12.webp"
+    },
+    {
+      "name": "Gefährte 13",
+      "training": "Traumatraining / Seminar",
+      "quote": "Ein Raum für tiefes Verstehen und neue Erfahrungen. Die Begleitung ist einfühlsam und fachlich fundiert.",
+      "image": "/images/testimonials/testimonial-13.webp"
+    },
+    {
+      "name": "Gefährte 14",
+      "training": "Traumatraining / Seminar",
+      "quote": "Ein Raum für tiefes Verstehen und neue Erfahrungen. Die Begleitung ist einfühlsam und fachlich fundiert.",
+      "image": "/images/testimonials/testimonial-14.webp"
+    },
+    {
+      "name": "Gefährte 15",
+      "training": "Traumatraining / Seminar",
+      "quote": "Ein Raum für tiefes Verstehen und neue Erfahrungen. Die Begleitung ist einfühlsam und fachlich fundiert.",
+      "image": "/images/testimonials/testimonial-15.webp"
+    },
+    {
+      "name": "Gefährte 16",
+      "training": "Traumatraining / Seminar",
+      "quote": "Ein Raum für tiefes Verstehen und neue Erfahrungen. Die Begleitung ist einfühlsam und fachlich fundiert.",
+      "image": "/images/testimonials/testimonial-16.webp"
+    },
+    {
+      "name": "Gefährte 17",
+      "training": "Traumatraining / Seminar",
+      "quote": "Ein Raum für tiefes Verstehen und neue Erfahrungen. Die Begleitung ist einfühlsam und fachlich fundiert.",
+      "image": "/images/testimonials/testimonial-17.webp"
+    }
+  ]
+}
