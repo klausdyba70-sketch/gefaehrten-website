@@ -157,7 +157,7 @@ export default function HomeClient(props: HomeClientProps) {
                   <TinaMarkdown 
                     content={content.offer.headline} 
                     components={{
-                      p: (props) => <>{props.children}</>,
+                      p: (props: any) => <>{props.children}</>,
                     }}
                   />
                 ) : (
