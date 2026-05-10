@@ -4,6 +4,7 @@ import ContentPageClient from "@/components/ContentPageClient";
 import client from "../../../tina/__generated__/client";
 import { generatePageMetadata, generateCourseSchema, generateBreadcrumbSchema, generateVideoSchema } from "@/utils/seo";
 import Schema from "@/components/Schema";
+import { localizeTinaData } from "@/utils/tina-helper";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
@@ -11,12 +12,15 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     client.queries.settings({ relativePath: "index.json" })
   ]);
 
+  const settingsData = localizeTinaData(settingsResponse.data.settings);
+
   try {
     const programResponse = await client.queries.seminars({ relativePath: `${slug}.mdx` });
     if (programResponse.data.seminars) {
+      const seminarData = localizeTinaData(programResponse.data.seminars);
       return generatePageMetadata(
-        programResponse.data.seminars.seo, 
-        settingsResponse.data.settings, 
+        seminarData.seo, 
+        settingsData, 
         `/${slug}`
       );
     }
@@ -25,9 +29,10 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   try {
     const pageResponse = await client.queries.page({ relativePath: `${slug}.mdx` });
     if (pageResponse.data.page) {
+      const pageData = localizeTinaData(pageResponse.data.page);
       return generatePageMetadata(
-        pageResponse.data.page.seo, 
-        settingsResponse.data.settings, 
+        pageData.seo, 
+        settingsData, 
         `/${slug}`
       );
     }
@@ -47,8 +52,8 @@ export default async function DynamicPage({ params }: { params: Promise<{ slug: 
     ]);
 
     if (programResponse.data.seminars) {
-      const seminar = programResponse.data.seminars;
-      const settings = settingsResponse.data.settings;
+      const seminar = localizeTinaData(programResponse.data.seminars);
+      const settings = localizeTinaData(settingsResponse.data.settings);
       const siteUrl = settings?.siteMeta?.siteUrl || "https://gefaehrten.net";
 
       return (
@@ -69,7 +74,7 @@ export default async function DynamicPage({ params }: { params: Promise<{ slug: 
             })} />
           )}
           <ProgramPageClient 
-            data={programResponse.data} 
+            data={localizeTinaData(programResponse.data)} 
             query={programResponse.query} 
             variables={programResponse.variables} 
           />
@@ -86,7 +91,7 @@ export default async function DynamicPage({ params }: { params: Promise<{ slug: 
     if (pageResponse.data.page) {
       return (
         <ContentPageClient 
-          data={pageResponse.data} 
+          data={localizeTinaData(pageResponse.data)} 
           query={pageResponse.query} 
           variables={pageResponse.variables} 
         />
@@ -113,3 +118,4 @@ export async function generateStaticParams() {
   
   return [...seminarParams, ...pageParams];
 }
+

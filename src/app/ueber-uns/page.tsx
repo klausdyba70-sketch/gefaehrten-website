@@ -1,6 +1,7 @@
 import client from "../../../tina/__generated__/client";
 import AboutClient from "@/components/AboutClient";
 import { generatePageMetadata } from "@/utils/seo";
+import { localizeTinaData } from "@/utils/tina-helper";
 
 export async function generateMetadata() {
   const [response, settingsResponse] = await Promise.all([
@@ -8,9 +9,12 @@ export async function generateMetadata() {
     client.queries.settings({ relativePath: "index.json" })
   ]);
   
+  const ueberunsData = localizeTinaData(response.data.ueberuns);
+  const settingsData = localizeTinaData(settingsResponse.data.settings);
+
   return generatePageMetadata(
-    response.data.ueberuns.seo, 
-    settingsResponse.data.settings, 
+    ueberunsData.seo, 
+    settingsData, 
     "/ueber-uns"
   );
 }
@@ -22,7 +26,7 @@ export default async function AboutPage() {
   
   try {
     const response = await client.queries.ueberuns({ relativePath: "index.json" });
-    aboutData = response.data;
+    aboutData = localizeTinaData(response.data);
     aboutQuery = response.query;
     aboutVariables = response.variables;
   } catch (e) {
@@ -37,3 +41,4 @@ export default async function AboutPage() {
     />
   );
 }
+

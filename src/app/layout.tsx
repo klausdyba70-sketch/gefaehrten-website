@@ -8,6 +8,7 @@ import client from "../../tina/__generated__/client";
 import { generateOrganizationSchema } from "@/utils/seo";
 import Schema from "@/components/Schema";
 import Navbar from "@/components/Navbar";
+import { localizeTinaData } from "@/utils/tina-helper";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -40,7 +41,7 @@ export default async function RootLayout({
   let settings;
   try {
     const settingsResponse = await client.queries.settings({ relativePath: "index.json" });
-    settings = settingsResponse.data.settings;
+    settings = localizeTinaData(settingsResponse.data.settings);
   } catch (e) {
     // Fallback or empty settings if not found
     settings = {
