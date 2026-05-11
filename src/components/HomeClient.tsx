@@ -336,7 +336,7 @@ export default function HomeClient(props: HomeClientProps) {
       <section className="w-full bg-[#f2efe4] py-16 md:py-48 px-2 md:px-6 overflow-hidden">
         <div className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 md:gap-24 items-center">
           <FadeIn 
-            className="relative flex justify-center"
+            className="relative flex justify-center order-2 lg:order-1"
           >
             <div className="relative aspect-[4/5] rounded-lg overflow-hidden shadow-2xl w-full">
               <img 
@@ -351,7 +351,7 @@ export default function HomeClient(props: HomeClientProps) {
           
           <FadeIn 
             delay={0.2}
-            className="space-y-12"
+            className="space-y-12 order-1 lg:order-2"
           >
             <div className="space-y-4">
               <div 

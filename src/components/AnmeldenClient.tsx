@@ -93,7 +93,7 @@ export default function AnmeldenClient({ programs, query, variables, data }: Anm
   return (
     <div className="w-full bg-[#f5f2eb] min-h-screen font-sans">
       {/* --- HERO --- */}
-      <section className="relative w-full h-[30vh] md:h-[40vh] flex flex-col items-center justify-center text-center px-6 overflow-hidden bg-[#1c211e]">
+      <section className="relative w-full min-h-[50vh] md:h-[40vh] flex flex-col items-center justify-center text-center px-6 overflow-hidden bg-[#1c211e] py-20 md:py-0">
         <div className="absolute inset-0 z-0">
           {pageData.heroVideo ? (
             <video autoPlay loop muted playsInline className="w-full h-full object-cover opacity-20 ">
@@ -111,13 +111,13 @@ export default function AnmeldenClient({ programs, query, variables, data }: Anm
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.5 }}
-          className="relative z-20 max-w-5xl mx-auto space-y-6 pt-16"
+          className="relative z-20 max-w-5xl mx-auto space-y-6 md:space-y-8 pt-10"
         >
-          <div className="text-[16px] md:text-[20px] font-sans font-bold uppercase tracking-[0.3em] text-pink mb-2">Gefährten · Anmeldeformular</div>
-          <h1 className="text-4xl md:text-6xl font-serif italic text-[#F5F2EB] leading-none tracking-tight">
+          <div className="text-[clamp(14px,1.5vw,20px)] font-sans font-bold uppercase tracking-[0.3em] text-pink">Gefährten · Anmeldeformular</div>
+          <h1 className="text-[clamp(36px,8vw,100px)] font-serif italic text-[#F5F2EB] leading-none tracking-tight">
              Anmeldung
           </h1>
-          <p className="text-sm md:text-base font-sans font-light opacity-80 text-white max-w-2xl mx-auto leading-relaxed">
+          <p className="text-[clamp(16px,1.8vw,24px)] font-sans font-light opacity-80 text-white max-w-2xl mx-auto leading-relaxed px-4">
             {pageData.pageIntro || "Bitte füllen Sie das Formular vollständig aus."}
           </p>
         </motion.div>
