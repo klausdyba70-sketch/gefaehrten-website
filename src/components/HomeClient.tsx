@@ -52,7 +52,7 @@ export default function HomeClient(props: HomeClientProps) {
   return (
     <div className="w-full flex flex-col min-h-screen bg-background" ref={containerRef}>
       {/* --- HERO SECTION --- */}
-      <section className="relative w-full min-h-[100svh] md:h-screen flex flex-col items-center justify-center text-center px-6 overflow-hidden bg-[#1c211e] py-20 md:py-0">
+      <section className="relative w-full min-h-[100svh] md:h-screen flex flex-col items-center justify-center px-6 overflow-hidden bg-[#1c211e] md:pt-[100px]">
         <motion.div 
           style={{ y }} 
           className="absolute inset-0 z-0"
@@ -81,13 +81,13 @@ export default function HomeClient(props: HomeClientProps) {
           <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-[#1c211e] z-10" />
         </motion.div>
         
-        <div className="relative z-20 w-full max-w-[1400px] mx-auto flex flex-col items-center">
-          {/* Centered Headline Unit (100vh focus) */}
-          <div className="min-h-[100svh] flex flex-col items-center justify-center space-y-4 md:space-y-6 px-4 md:px-0 py-20 md:py-0">
+        <div className="relative z-20 w-full max-w-[1400px] mx-auto flex flex-col items-center text-center">
+          {/* Centered Headline Unit */}
+          <div className="min-h-[100svh] md:min-h-0 flex flex-col items-center justify-center space-y-4 md:space-y-6 px-4 md:px-0 py-20 md:py-0">
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="text-[14px] md:text-[18px] uppercase tracking-[0.3em] md:tracking-[0.6em] text-pink font-sans font-bold" 
+              className="text-[clamp(13px,1.2vw,18px)] uppercase tracking-[0.4em] md:tracking-[0.6em] text-pink font-sans font-bold" 
               data-tina-field={tinaField(content.hero, "label")}
             >
               {content.hero?.label || "Traumainstitut · Gefährten"}
@@ -96,7 +96,7 @@ export default function HomeClient(props: HomeClientProps) {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8 }}
-              className="text-[12vw] md:text-8xl lg:text-[10rem] font-serif italic text-[#F5F2EB] leading-[0.8] md:leading-[0.85] tracking-tighter px-2" 
+              className="text-[clamp(42px,11vw,140px)] font-serif italic text-[#F5F2EB] leading-[0.8] md:leading-[0.85] tracking-tighter px-2" 
               data-tina-field={tinaField(content.hero, "title")}
             >
                {content.hero?.title || "Gefährten"}
@@ -105,54 +105,50 @@ export default function HomeClient(props: HomeClientProps) {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4 }}
-              className="text-base md:text-3xl text-pink/80 font-serif font-bold italic pt-2 md:pt-4 tracking-[0.2em] md:tracking-widest" 
+              className="text-[clamp(16px,2.2vw,32px)] text-pink/80 font-serif font-bold italic pt-2 md:pt-4 tracking-[0.2em] md:tracking-widest" 
               data-tina-field={tinaField(content.hero, "subtitle")}
             >
               {content.hero?.subtitle}
             </motion.h2>
 
-            {/* Intro Text (Now part of the centered unit on mobile) */}
+            {/* Intro Text */}
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6 }}
-              className="pt-8 md:pt-16 max-w-3xl mx-auto space-y-8"
+              className="pt-8 md:pt-16 max-w-4xl mx-auto"
             >
-              <p className="text-lg md:text-3xl text-[#F5F2EB]/70 font-serif italic leading-relaxed" data-tina-field={tinaField(content.hero, "text")}>
+              <p 
+                className="text-[clamp(16px,1.8vw,26px)] text-[#F5F2EB]/70 font-serif italic leading-relaxed px-4" 
+                data-tina-field={tinaField(content.hero, "text")}
+              >
                 {content.hero?.text}
               </p>
             </motion.div>
 
-            {/* Discover Link */}
+            {/* Discover Link / Arrow */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1 }}
-              className="pt-12 md:pt-16"
+              className="pt-4 md:pt-6"
             >
               <Link 
                 href="#angebot"
-                className="group relative flex flex-col items-center gap-4 transition-all"
+                className="group relative flex flex-col items-center transition-all"
               >
-                <span className="text-[14px] uppercase tracking-[0.4em] font-bold text-[#F5F2EB]/40 group-hover:text-pink transition-colors">
-                  Entdecken
-                </span>
                 <motion.div
-                  animate={{ y: [0, 12, 0] }}
+                  animate={{ y: [0, 8, 0] }}
                   transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                  className="w-10 h-10 rounded-full border border-[#F5F2EB]/10 flex items-center justify-center text-[#F5F2EB]/40 group-hover:border-pink group-hover:text-pink transition-colors"
+                  className="w-10 h-10 md:w-12 md:h-12 rounded-full border border-[#F5F2EB]/10 flex items-center justify-center text-[#F5F2EB]/40 group-hover:border-pink group-hover:text-pink transition-colors"
                 >
-                  <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <svg width="20" height="20" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M4.5 7.5L9 12L13.5 7.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
                 </motion.div>
               </Link>
             </motion.div>
 
-            {/* Visual Hint */}
-            <div className="absolute bottom-12 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-2">
-              <div className="w-px h-12 bg-gradient-to-b from-transparent to-pink/40" />
-            </div>
           </div>
         </div>
       </section>
