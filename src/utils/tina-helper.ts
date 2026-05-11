@@ -12,8 +12,15 @@ export function localizeTinaData(data: any) {
       if (typeof obj === 'string' && obj.startsWith('https://assets.tina.io/')) {
         // Extract the filename from the URL
         const parts = obj.split('/');
-        const filename = parts[parts.length - 1];
-        return `/images/tina/${decodeURIComponent(filename)}`;
+        const filename = decodeURIComponent(parts[parts.length - 1]);
+        
+        // If it's one of our renamed images, it's in /images/
+        // Otherwise, it's in /images/tina/
+        if (filename.startsWith('dariusz-dahlmann-traumainstitut') || filename.startsWith('dariusz-dahlmann-gefaehrten')) {
+          return `/images/${filename}`;
+        }
+        
+        return `/images/tina/${filename}`;
       }
       return obj;
     }

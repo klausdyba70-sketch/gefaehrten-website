@@ -52,7 +52,7 @@ export default function HomeClient(props: HomeClientProps) {
   return (
     <div className="w-full flex flex-col min-h-screen bg-background" ref={containerRef}>
       {/* --- HERO SECTION --- */}
-      <section className="relative w-full h-screen flex flex-col items-center justify-center text-center px-6 overflow-hidden bg-[#1c211e]">
+      <section className="relative w-full min-h-[100svh] md:h-screen flex flex-col items-center justify-center text-center px-6 overflow-hidden bg-[#1c211e] py-20 md:py-0">
         <motion.div 
           style={{ y }} 
           className="absolute inset-0 z-0"
@@ -89,15 +89,15 @@ export default function HomeClient(props: HomeClientProps) {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="relative z-20 max-w-[1400px] mx-auto space-y-6 will-change-transform"
+          className="relative z-20 max-w-[1400px] mx-auto space-y-4 md:space-y-6 will-change-transform"
         >
           <div className="text-[14px] md:text-[18px] uppercase tracking-[0.3em] md:tracking-[0.6em] text-pink mb-2 font-sans font-bold" data-tina-field={tinaField(content.hero, "label")}>
             {content.hero?.label || "Traumainstitut · Gefährten"}
           </div>
-          <h1 className="text-[13vw] md:text-8xl lg:text-[10rem] font-serif italic text-[#F5F2EB] leading-[0.85] tracking-tighter" data-tina-field={tinaField(content.hero, "title")}>
+          <h1 className="text-[14vw] md:text-8xl lg:text-[10rem] font-serif italic text-[#F5F2EB] leading-[0.8] md:leading-[0.85] tracking-tighter" data-tina-field={tinaField(content.hero, "title")}>
              {content.hero?.title || "Gefährten"}
           </h1>
-          <h2 className="text-xl md:text-3xl text-pink/80 font-serif font-bold italic pt-4 tracking-widest" data-tina-field={tinaField(content.hero, "subtitle")}>
+          <h2 className="text-lg md:text-3xl text-pink/80 font-serif font-bold italic pt-2 md:pt-4 tracking-[0.2em] md:tracking-widest" data-tina-field={tinaField(content.hero, "subtitle")}>
             {content.hero?.subtitle}
           </h2>
           

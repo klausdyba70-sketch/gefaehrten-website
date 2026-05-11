@@ -69,9 +69,19 @@ async function localize() {
       const fullUrl = match[0];
       const filename = match[1];
       const decodedFilename = decodeURIComponent(filename);
-      const localPath = `/images/tina/${decodedFilename}`;
       
-      await downloadAsset(fullUrl, filename);
+      // Check if it exists in the main images folder (manually renamed ones)
+      const mainImagesPath = path.join('public/images', decodedFilename);
+      let localPath;
+      
+      if (fs.existsSync(mainImagesPath)) {
+        localPath = `/images/${decodedFilename}`;
+        console.log(`Using existing image in /images: ${decodedFilename}`);
+      } else {
+        localPath = `/images/tina/${decodedFilename}`;
+        await downloadAsset(fullUrl, filename);
+      }
+      
       content = content.replace(fullUrl, localPath);
       hasChanges = true;
     }
