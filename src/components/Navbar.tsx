@@ -43,14 +43,14 @@ export default function Navbar({ navLinks, settings }: NavbarProps) {
 
   return (
     <>
-      <header className={`fixed top-0 left-0 w-full z-[120] transition-all duration-500 py-6 px-6 md:px-12 flex justify-between items-center ${scrolled ? 'bg-[#1c211e]/80 backdrop-blur-md border-b border-white/5 py-4' : 'bg-transparent'}`}>
+      <header className={`fixed top-0 left-0 w-full z-[120] transition-all duration-500 py-4 md:py-6 px-4 md:px-12 flex justify-between items-center ${scrolled ? 'bg-[#1c211e]/80 backdrop-blur-md border-b border-white/5 py-3 md:py-4' : 'bg-transparent'}`}>
         <Link href="/" className="flex flex-col items-start hover:opacity-80 transition-opacity z-[110]">
           <span className="text-lg font-sans font-bold tracking-[0.2em] text-white">GEFÄHRTEN</span>
           <span className="text-[10px] font-serif italic tracking-[0.25em] text-white/60 -mt-1 uppercase">Traumainstitut</span>
         </Link>
 
         {/* Desktop Nav */}
-        <nav className="hidden lg:flex gap-8 text-[13px] font-medium uppercase tracking-[0.15em] text-white/90 items-center">
+        <nav className="hidden xl:flex gap-8 text-[13px] font-medium uppercase tracking-[0.15em] text-white/90 items-center">
           {navLinks.map((link, idx) => (
             <div key={idx} className="relative group h-full flex items-center">
               {link.subLinks && link.subLinks.length > 0 ? (
@@ -92,7 +92,7 @@ export default function Navbar({ navLinks, settings }: NavbarProps) {
         {/* Mobile Toggle */}
         <button 
           onClick={() => setIsOpen(!isOpen)}
-          className="lg:hidden relative z-[110] w-12 h-12 flex flex-col items-center justify-center gap-2 focus:outline-none"
+          className="xl:hidden relative z-[110] w-12 h-12 flex flex-col items-center justify-center gap-2 focus:outline-none"
           aria-label="Toggle Menu"
         >
           <motion.span 
@@ -121,7 +121,7 @@ export default function Navbar({ navLinks, settings }: NavbarProps) {
             animate="open"
             exit="closed"
             variants={menuVariants}
-            className="fixed inset-0 bg-[#1c211e] z-[105] flex flex-col pt-32 px-10 overflow-y-auto"
+            className="fixed inset-0 bg-[#1c211e] z-[105] flex flex-col pt-24 md:pt-32 px-6 md:px-10 overflow-y-auto"
           >
             <div className="flex flex-col space-y-8">
               {navLinks.map((link, idx) => {
@@ -136,13 +136,13 @@ export default function Navbar({ navLinks, settings }: NavbarProps) {
                 return (
                   <div key={idx} className={isSecondary ? "space-y-4 pt-6 border-t border-white/5" : "space-y-4"}>
                     {link.subLinks && link.subLinks.length > 0 ? (
-                      <div className={`${isSecondary ? "text-xl" : "text-4xl md:text-5xl"} font-serif italic text-white/90 hover:text-pink transition-colors block cursor-default`}>
+                      <div className={`${isSecondary ? "text-lg md:text-xl" : "text-3xl md:text-5xl"} font-serif italic text-white/90 hover:text-pink transition-colors block cursor-default`}>
                         {link.label}
                       </div>
                     ) : (
                       <Link 
                         href={link.url}
-                        className={`${isSecondary ? "text-xl" : "text-4xl md:text-5xl"} font-serif italic text-white/90 hover:text-pink transition-colors block`}
+                        className={`${isSecondary ? "text-lg md:text-xl" : "text-3xl md:text-5xl"} font-serif italic text-white/90 hover:text-pink transition-colors block`}
                       >
                         {link.label}
                       </Link>
@@ -154,7 +154,7 @@ export default function Navbar({ navLinks, settings }: NavbarProps) {
                           <Link 
                             key={sIdx} 
                             href={sub.url} 
-                            className={`${isSecondary ? "text-sm font-light text-white/40" : (isVertiefungs ? "text-xl md:text-2xl font-sans" : "text-xl md:text-2xl font-serif italic")} text-white/90 hover:text-pink transition-colors block`}
+                            className={`${isSecondary ? "text-xs md:text-sm font-light text-white/40" : (isVertiefungs ? "text-lg md:text-2xl font-sans" : "text-lg md:text-2xl font-serif italic")} text-white/90 hover:text-pink transition-colors block`}
                           >
                             {sub.label}
                           </Link>

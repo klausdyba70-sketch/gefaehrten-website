@@ -81,36 +81,48 @@ export default function HomeClient(props: HomeClientProps) {
           <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-[#1c211e] z-10" />
         </motion.div>
         
-        <motion.div 
-          style={{ 
-            opacity: useTransform(scrollYProgress, [0, 0.3], [1, 0]),
-            y: useTransform(scrollYProgress, [0, 0.3], [0, -50])
-          }}
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="relative z-20 max-w-[1400px] mx-auto space-y-4 md:space-y-6 will-change-transform"
-        >
-          <div className="text-[14px] md:text-[18px] uppercase tracking-[0.3em] md:tracking-[0.6em] text-pink mb-2 font-sans font-bold" data-tina-field={tinaField(content.hero, "label")}>
-            {content.hero?.label || "Traumainstitut · Gefährten"}
+        <div className="relative z-20 w-full max-w-[1400px] mx-auto flex flex-col items-center">
+          {/* Centered Headline Block */}
+          <div className="min-h-[50svh] flex flex-col items-center justify-center space-y-4 md:space-y-6">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="text-[14px] md:text-[18px] uppercase tracking-[0.3em] md:tracking-[0.6em] text-pink font-sans font-bold" 
+              data-tina-field={tinaField(content.hero, "label")}
+            >
+              {content.hero?.label || "Traumainstitut · Gefährten"}
+            </motion.div>
+            <motion.h1 
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8 }}
+              className="text-[15vw] md:text-8xl lg:text-[10rem] font-serif italic text-[#F5F2EB] leading-[0.8] md:leading-[0.85] tracking-tighter" 
+              data-tina-field={tinaField(content.hero, "title")}
+            >
+               {content.hero?.title || "Gefährten"}
+            </motion.h1>
+            <motion.h2 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.4 }}
+              className="text-lg md:text-3xl text-pink/80 font-serif font-bold italic pt-2 md:pt-4 tracking-[0.2em] md:tracking-widest" 
+              data-tina-field={tinaField(content.hero, "subtitle")}
+            >
+              {content.hero?.subtitle}
+            </motion.h2>
           </div>
-          <h1 className="text-[14vw] md:text-8xl lg:text-[10rem] font-serif italic text-[#F5F2EB] leading-[0.8] md:leading-[0.85] tracking-tighter" data-tina-field={tinaField(content.hero, "title")}>
-             {content.hero?.title || "Gefährten"}
-          </h1>
-          <h2 className="text-lg md:text-3xl text-pink/80 font-serif font-bold italic pt-2 md:pt-4 tracking-[0.2em] md:tracking-widest" data-tina-field={tinaField(content.hero, "subtitle")}>
-            {content.hero?.subtitle}
-          </h2>
-          
-          <div className="pt-12 md:pt-16 max-w-4xl mx-auto space-y-8">
+
+          {/* Intro Text & Discover Block (Flows below) */}
+          <motion.div 
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="pt-8 md:pt-16 max-w-4xl mx-auto space-y-8"
+          >
             <p className="text-lg md:text-3xl text-[#F5F2EB]/70 font-serif italic leading-relaxed" data-tina-field={tinaField(content.hero, "text")}>
               {content.hero?.text}
             </p>
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 1.2 }}
-              className="flex justify-center"
-            >
+            <div className="flex justify-center pb-12 md:pb-0">
               <Link 
                 href="#angebot"
                 className="group relative flex flex-col items-center gap-4 transition-all"
@@ -128,12 +140,12 @@ export default function HomeClient(props: HomeClientProps) {
                   </svg>
                 </motion.div>
               </Link>
-            </motion.div>
-          </div>
-        </motion.div>
+            </div>
+          </motion.div>
+        </div>
       </section>
       {/* --- DAS ANGEBOT INTRO --- */}
-      <section id="angebot" className="w-full bg-[#f5f2eb] py-24 md:py-48 px-6">
+      <section id="angebot" className="w-full bg-[#f5f2eb] py-16 md:py-48 px-4 md:px-6">
         <div className="max-w-[1400px] mx-auto">
           {/* Top: Headline & Intro — Two Column Layout */}
           <FadeIn 
@@ -198,7 +210,7 @@ export default function HomeClient(props: HomeClientProps) {
       </section>
 
       {/* --- ANGEBOT LINKS SECTION --- */}
-      <section className="w-full bg-[#fcfbf8] py-24 md:py-48 px-6">
+      <section className="w-full bg-[#fcfbf8] py-16 md:py-48 px-4 md:px-6">
         <div className="max-w-[1400px] mx-auto">
           {/* Bottom: Formats List (Reverted to Rows) */}
           <h3 
@@ -254,7 +266,7 @@ export default function HomeClient(props: HomeClientProps) {
                 <FadeIn 
                   key={cat}
                   delay={catIdx * 0.1}
-                  className="bg-[#f2efe4]/60 rounded-2xl border border-foreground/10 p-8 md:p-16 shadow-sm hover:shadow-md transition-all duration-500 will-change-transform"
+                  className="bg-[#f2efe4]/60 rounded-2xl border border-foreground/10 p-6 md:p-16 shadow-sm hover:shadow-md transition-all duration-500 will-change-transform"
                 >
                   <div className="flex flex-col lg:flex-row lg:items-center gap-12 md:gap-20">
                     <div className="text-[14px] md:text-[18px] uppercase tracking-widest opacity-20 font-bold w-12 hidden lg:block">
@@ -313,7 +325,7 @@ export default function HomeClient(props: HomeClientProps) {
       </section>
 
       {/* --- ÜBER MICH SECTION --- */}
-      <section className="w-full bg-[#f2efe4] py-24 md:py-48 px-6 overflow-hidden">
+      <section className="w-full bg-[#f2efe4] py-16 md:py-48 px-4 md:px-6 overflow-hidden">
         <div className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 md:gap-24 items-center">
           <FadeIn 
             className="relative flex justify-center"
@@ -379,7 +391,7 @@ export default function HomeClient(props: HomeClientProps) {
       </section>
 
       {/* --- QUOTE SECTION --- */}
-      <section className="w-full bg-[#1c211e] py-32 md:py-48 px-6 text-center relative overflow-hidden">
+      <section className="w-full bg-[#1c211e] py-24 md:py-48 px-4 md:px-6 text-center relative overflow-hidden">
         {/* Background Image/Texture */}
         <div className="absolute inset-0 opacity-10">
            <img src="/images/leaves.png" alt="Texture" className="w-full h-full object-cover opacity-20" />
@@ -421,8 +433,8 @@ export default function HomeClient(props: HomeClientProps) {
 
       {/* --- TESTIMONIALS SECTION --- */}
       {content.testimonials && content.testimonials.length > 0 && (
-        <section className="w-full py-32 md:py-48 bg-[#f5f2eb]">
-          <div className="max-w-[1400px] mx-auto px-6">
+        <section className="w-full py-24 md:py-48 bg-[#f5f2eb]">
+          <div className="max-w-[1400px] mx-auto px-4 md:px-6">
             <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
               <div className="space-y-4">
                 <div className="text-[16px] md:text-[20px] font-serif italic capitalize tracking-[0.3em] text-pink font-bold">Resonanz</div>
