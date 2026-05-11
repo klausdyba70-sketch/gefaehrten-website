@@ -20,8 +20,12 @@ export function localizeTinaData(data: any) {
         }
         
         // If it's one of our renamed images, it's in /images/
-        // Otherwise, it's in /images/tina/
-        if (filename.startsWith('dariusz-dahlmann-traumainstitut') || filename.startsWith('dariusz-dahlmann-gefaehrten')) {
+        // We check for keywords to be more flexible with spaces/hyphens
+        const isRenamed = filename.toLowerCase().includes('dariusz') || 
+                          filename.toLowerCase().includes('dahlmann') || 
+                          filename.toLowerCase().includes('gefaehrten');
+
+        if (isRenamed) {
           return `/images/${filename}`;
         }
         

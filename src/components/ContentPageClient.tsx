@@ -69,7 +69,7 @@ export default function ContentPageClient(props: {
             {content.heroLabel && (
               <div className="text-[16px] md:text-[20px] font-sans font-bold uppercase tracking-[0.3em] text-pink mb-2">{content.heroLabel}</div>
             )}
-            <h1 className="text-4xl md:text-6xl lg:text-[7rem] font-serif italic text-[#F5F2EB] leading-tight md:leading-none tracking-tight">
+            <h1 className="text-3xl md:text-6xl lg:text-[7rem] font-serif italic text-[#F5F2EB] leading-tight md:leading-none tracking-tight">
                {content.title}
             </h1>
             {content.heroSubline && (
@@ -94,7 +94,7 @@ export default function ContentPageClient(props: {
       </section>
 
       {/* --- CONTENT --- */}
-      <section className="max-w-4xl mx-auto py-20 md:py-32 px-6">
+      <section className="max-w-4xl mx-auto py-16 md:py-32 px-2 md:px-6">
         <div className="space-y-32">
           {content.sections?.map((section: any, idx: number) => {
             if (section.type === "text") {
@@ -102,7 +102,7 @@ export default function ContentPageClient(props: {
                 <motion.div key={idx} {...fadeInUp} className="space-y-8">
                   <div className="space-y-2">
                     {section.headline && (
-                      <h2 className="text-3xl md:text-5xl font-serif italic text-foreground/90 leading-tight">
+                      <h2 className="text-2xl md:text-5xl font-serif italic text-foreground/90 leading-tight">
                         {section.headline}
                       </h2>
                     )}
@@ -134,7 +134,7 @@ export default function ContentPageClient(props: {
             }
             if (section.type === "image" && section.image) {
               return (
-                <motion.div key={idx} {...fadeInUp} className="relative aspect-[4/5] md:aspect-[16/9] w-full overflow-hidden rounded-[3rem]">
+                <motion.div key={idx} {...fadeInUp} className="relative aspect-[4/5] md:aspect-[16/9] w-full overflow-hidden rounded-lg md:rounded-[3rem]">
                   <img 
                     src={section.image} 
                     alt={section.imageAlt || section.headline || "Image"} 
@@ -148,7 +148,7 @@ export default function ContentPageClient(props: {
                 <motion.div 
                   key={idx} 
                   {...fadeInUp}
-                  className="space-y-10 bg-pink/5 p-8 md:p-12 rounded-xl md:rounded-[1.5rem] border border-pink/10 shadow-sm"
+                  className="space-y-10 bg-pink/5 p-4 md:p-12 rounded-lg md:rounded-[1.5rem] border border-pink/10 shadow-sm"
                 >
                    <div className="space-y-2">
                      <h4 className="text-3xl md:text-5xl font-serif italic text-pink">{section.headline}</h4>

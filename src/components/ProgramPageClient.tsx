@@ -66,7 +66,7 @@ export default function ProgramPageClient(props: {
         >
           <motion.div style={{ opacity }}>
             <div className="text-[16px] md:text-[20px] font-sans font-bold uppercase tracking-[0.3em] text-pink mb-2">{content.label}</div>
-            <h1 className="text-5xl md:text-6xl lg:text-[7rem] font-serif italic text-[#F5F2EB] leading-tight md:leading-none tracking-tight">
+            <h1 className="text-4xl md:text-6xl lg:text-[7rem] font-serif italic text-[#F5F2EB] leading-tight md:leading-none tracking-tight">
               {content.title}
             </h1>
             <h2
@@ -80,7 +80,7 @@ export default function ProgramPageClient(props: {
       </section>
 
       {/* --- MAIN CONTENT AREA --- */}
-      <section className="max-w-[1400px] mx-auto py-20 md:py-32 px-6">
+      <section className="max-w-[1400px] mx-auto py-16 md:py-32 px-2 md:px-6">
 
         {/* Header Intro - Now below the Hero */}
         <motion.div
@@ -130,7 +130,7 @@ export default function ProgramPageClient(props: {
             {content.showWeekends && (
               <div className="space-y-12">
                 <div className="space-y-2">
-                  <h3 className="text-5xl md:text-4xl font-serif italic">Module</h3>
+                  <h3 className="text-3xl md:text-4xl font-serif italic">Module</h3>
                   <p className="text-xs md:text-sm tracking-widest opacity-40 font-bold">Die Reise im Detail</p>
                 </div>
 
@@ -142,7 +142,7 @@ export default function ProgramPageClient(props: {
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
                       transition={{ delay: i * 0.1 }}
-                      className="border border-foreground/5 rounded-2xl overflow-hidden bg-foreground/[0.01]"
+                      className="border border-foreground/5 rounded-lg md:rounded-2xl overflow-hidden bg-foreground/[0.01]"
                     >
                       <button
                         onClick={() => setOpenWeekend(openWeekend === i ? null : i)}
@@ -214,7 +214,7 @@ export default function ProgramPageClient(props: {
                         {content.curriculumLabel}
                       </div>
                     )}
-                    <h3 className="text-5xl md:text-4xl font-serif italic leading-tight">
+                    <h3 className="text-3xl md:text-4xl font-serif italic leading-tight">
                       {content.curriculumHeadline || "Module im Überblick."}
                     </h3>
                   </FadeIn>
@@ -251,7 +251,7 @@ export default function ProgramPageClient(props: {
           <div className="lg:col-span-4 flex-col order-2 lg:order-none">
             <FadeIn
               delay={0.4}
-              className="bg-[#f0ede4] p-8 md:p-12 rounded-[2rem] sticky top-32 space-y-8 md:space-y-12 shadow-md border border-foreground/5 relative"
+              className="bg-[#f0ede4] p-6 md:p-12 rounded-lg md:rounded-[2rem] sticky top-32 space-y-8 md:space-y-12 shadow-md border border-foreground/5 relative"
             >
               {/* Category & Title Header */}
               <div className="space-y-2 border-b border-foreground/5 pb-8">
@@ -349,7 +349,7 @@ function DateGroupAccordion({ group, isLongList }: { group: any; isLongList: boo
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="bg-white/40 border border-foreground/5 rounded-2xl p-6 space-y-6">
+    <div className="bg-white/40 border border-foreground/5 rounded-lg md:rounded-2xl p-4 md:p-6 space-y-6">
       <div className="space-y-1">
         <div
           className="text-[14px] uppercase tracking-[0.2em] opacity-40 font-bold"
@@ -442,7 +442,7 @@ function ModuleCard({ item, index, roman }: { item: any; index: number; roman: s
   return (
     <FadeIn
       delay={index * 0.05}
-      className={`bg-white shadow-sm border border-foreground/5 group hover:border-pink/20 transition-all duration-500 will-change-transform ${hasContent ? 'p-6 md:px-12 md:py-10 rounded-xl md:rounded-[2rem]' : 'p-4 md:px-12 md:py-6 rounded-lg md:rounded-full'
+      className={`bg-white shadow-sm border border-foreground/5 group hover:border-pink/20 transition-all duration-500 will-change-transform ${hasContent ? 'p-4 md:px-12 md:py-10 rounded-lg md:rounded-[2rem]' : 'p-3 md:px-12 md:py-6 rounded-lg md:rounded-full'
         }`}
     >
       <div

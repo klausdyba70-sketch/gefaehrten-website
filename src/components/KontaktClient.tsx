@@ -47,13 +47,6 @@ export default function KontaktClient(props: {
       });
   };
 
-  const fadeInUp = {
-    initial: { opacity: 0, y: 80 },
-    whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true },
-    transition: { duration: 1.5, ease: [0.22, 1, 0.36, 1] as any }
-  };
-
   return (
     <div className="w-full bg-background min-h-screen">
       {/* --- HERO --- */}
@@ -81,7 +74,7 @@ export default function KontaktClient(props: {
             {content.heroLabel || "Gefährten · Kontakt"}
           </div>
           <h1 
-            className="text-5xl md:text-6xl lg:text-[7rem] font-serif italic text-[#F5F2EB] leading-tight md:leading-none tracking-tight"
+            className="text-4xl md:text-6xl lg:text-[7rem] font-serif italic text-[#F5F2EB] leading-tight md:leading-none tracking-tight"
             data-tina-field={tinaField(content, "heroTitle")}
           >
              {content.heroTitle || "Kontakt"}
@@ -89,8 +82,8 @@ export default function KontaktClient(props: {
         </FadeIn>
       </section>
 
-      {/* --- CONTENT & FORM --- */}
-      <section className="max-w-[1400px] mx-auto py-32 px-6">
+      {/* --- MAIN CONTENT AREA --- */}
+      <section className="max-w-[1400px] mx-auto py-16 md:py-32 px-2 md:px-6">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-24 items-start">
           
           {/* Contact Details */}
@@ -166,7 +159,7 @@ export default function KontaktClient(props: {
               <motion.div 
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="bg-pink/5 border border-pink/20 p-16 rounded-2xl md:rounded-[2rem] text-center space-y-6"
+                className="bg-white/40 border border-foreground/5 rounded-lg md:rounded-2xl p-8 md:p-16 text-center space-y-6"
               >
                 <div className="text-5xl text-pink">✓</div>
                 <h3 className="text-3xl font-serif italic">Vielen Dank!</h3>
@@ -183,7 +176,7 @@ export default function KontaktClient(props: {
             ) : (
               <form 
                 onSubmit={handleSubmit} 
-                className="space-y-12 bg-[#f0ede4]/30 p-12 md:p-16 rounded-2xl md:rounded-[1.5rem] border border-foreground/5 shadow-sm"
+                className="space-y-12 bg-[#f0ede4]/30 p-6 md:p-16 rounded-lg md:rounded-[1.5rem] border border-foreground/5 shadow-sm"
                 data-netlify="true"
                 netlify-honeypot="bot-field"
                 name="kontakt"
@@ -195,7 +188,6 @@ export default function KontaktClient(props: {
                 </p>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-                  {/* Name */}
                   <div className="relative group">
                     <input 
                       type="text" 
@@ -209,7 +201,6 @@ export default function KontaktClient(props: {
                     </label>
                   </div>
                   
-                  {/* Email */}
                   <div className="relative group">
                     <input 
                       type="email" 
@@ -224,7 +215,6 @@ export default function KontaktClient(props: {
                   </div>
                 </div>
 
-                {/* Betreff */}
                 <div className="relative group">
                   <select name="anliegen" className="w-full bg-transparent border-b border-foreground/10 py-4 outline-none focus:border-pink transition-colors peer text-base font-sans font-light appearance-none">
                     <option value="traumatraining">Traumatraining</option>
@@ -238,7 +228,6 @@ export default function KontaktClient(props: {
                   <div className="absolute right-0 top-4 pointer-events-none opacity-40 italic">▼</div>
                 </div>
 
-                {/* Message */}
                 <div className="relative group">
                   <textarea 
                     name="nachricht"

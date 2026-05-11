@@ -96,7 +96,7 @@ export default function HomeClient(props: HomeClientProps) {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8 }}
-              className="text-[14vw] md:text-8xl lg:text-[10rem] font-serif italic text-[#F5F2EB] leading-[0.8] md:leading-[0.85] tracking-tighter px-2" 
+              className="text-[12vw] md:text-8xl lg:text-[10rem] font-serif italic text-[#F5F2EB] leading-[0.8] md:leading-[0.85] tracking-tighter px-2" 
               data-tina-field={tinaField(content.hero, "title")}
             >
                {content.hero?.title || "Gefährten"}
@@ -157,7 +157,7 @@ export default function HomeClient(props: HomeClientProps) {
         </div>
       </section>
       {/* --- DAS ANGEBOT INTRO --- */}
-      <section id="angebot" className="w-full bg-[#f5f2eb] py-16 md:py-48 px-4 md:px-6">
+      <section id="angebot" className="w-full bg-[#f5f2eb] py-16 md:py-48 px-2 md:px-6">
         <div className="max-w-[1400px] mx-auto">
           {/* Top: Headline & Intro — Two Column Layout */}
           <FadeIn 
@@ -174,7 +174,7 @@ export default function HomeClient(props: HomeClientProps) {
                 </div>
               )}
               <h2 
-                className="text-[10vw] md:text-6xl lg:text-7xl font-serif italic leading-[1.1] text-foreground/90 tracking-tight"
+                className="text-[9vw] md:text-6xl lg:text-7xl font-serif italic leading-[1.1] text-foreground/90 tracking-tight"
                 data-tina-field={tinaField(content.offer, "headline")}
               >
                 {content.offer?.headline?.type ? (
@@ -222,11 +222,11 @@ export default function HomeClient(props: HomeClientProps) {
       </section>
 
       {/* --- ANGEBOT LINKS SECTION --- */}
-      <section className="w-full bg-[#fcfbf8] py-16 md:py-48 px-4 md:px-6">
+      <section className="w-full bg-[#fcfbf8] py-16 md:py-48 px-2 md:px-6">
         <div className="max-w-[1400px] mx-auto">
           {/* Bottom: Formats List (Reverted to Rows) */}
           <h3 
-            className="text-5xl md:text-6xl font-serif italic text-foreground/90 pb-6"
+            className="text-4xl md:text-6xl font-serif italic text-foreground/90 pb-6"
             data-tina-field={tinaField(content.offer, "formatsHeadline")}
           >
             {content.offer?.formatsHeadline || "Training / Seminare / Praxiskreis"}
@@ -278,7 +278,7 @@ export default function HomeClient(props: HomeClientProps) {
                 <FadeIn 
                   key={cat}
                   delay={catIdx * 0.1}
-                  className="bg-[#f2efe4]/60 rounded-2xl border border-foreground/10 p-6 md:p-16 shadow-sm hover:shadow-md transition-all duration-500 will-change-transform"
+                  className="bg-[#f2efe4]/60 rounded-lg md:rounded-2xl border border-foreground/10 p-4 md:p-16 shadow-sm hover:shadow-md transition-all duration-500 will-change-transform"
                 >
                   <div className="flex flex-col lg:flex-row lg:items-center gap-12 md:gap-20">
                     <div className="text-[14px] md:text-[18px] uppercase tracking-widest opacity-20 font-bold w-12 hidden lg:block">
@@ -299,7 +299,7 @@ export default function HomeClient(props: HomeClientProps) {
 
                       <div className="space-y-8 flex-grow">
                         <div className="space-y-2">
-                          <h3 className="text-[8.2vw] md:text-5xl font-serif italic text-foreground/90 leading-tight tracking-tight">
+                          <h3 className="text-[7.5vw] md:text-5xl font-serif italic text-foreground/90 leading-tight tracking-tight">
                             {formatInfo.title}
                           </h3>
                           <div className="text-sm md:text-base uppercase tracking-[0.3em] font-bold text-pink">
@@ -337,7 +337,7 @@ export default function HomeClient(props: HomeClientProps) {
       </section>
 
       {/* --- ÜBER MICH SECTION --- */}
-      <section className="w-full bg-[#f2efe4] py-16 md:py-48 px-4 md:px-6 overflow-hidden">
+      <section className="w-full bg-[#f2efe4] py-16 md:py-48 px-2 md:px-6 overflow-hidden">
         <div className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 md:gap-24 items-center">
           <FadeIn 
             className="relative flex justify-center"
@@ -403,7 +403,7 @@ export default function HomeClient(props: HomeClientProps) {
       </section>
 
       {/* --- QUOTE SECTION --- */}
-      <section className="w-full bg-[#1c211e] py-24 md:py-48 px-4 md:px-6 text-center relative overflow-hidden">
+      <section className="w-full bg-[#1c211e] py-24 md:py-48 px-2 md:px-6 text-center relative overflow-hidden">
         {/* Background Image/Texture */}
         <div className="absolute inset-0 opacity-10">
            <img src="/images/leaves.png" alt="Texture" className="w-full h-full object-cover opacity-20" />
@@ -446,7 +446,7 @@ export default function HomeClient(props: HomeClientProps) {
       {/* --- TESTIMONIALS SECTION --- */}
       {content.testimonials && content.testimonials.length > 0 && (
         <section className="w-full py-24 md:py-48 bg-[#f5f2eb]">
-          <div className="max-w-[1400px] mx-auto px-4 md:px-6">
+          <div className="max-w-[1400px] mx-auto px-2 md:px-6">
             <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
               <div className="space-y-4">
                 <div className="text-[16px] md:text-[20px] font-serif italic capitalize tracking-[0.3em] text-pink font-bold">Resonanz</div>
@@ -510,7 +510,7 @@ function TestimonialSlider({ testimonials }: { testimonials: any[] }) {
         {testimonials.map((t, i) => (
           <div 
             key={i}
-            className="min-w-[92vw] md:min-w-[600px] snap-center flex flex-col md:flex-row gap-6 p-4 md:p-8 bg-white/40 rounded-xl md:rounded-2xl border border-foreground/5 hover:border-pink/20 transition-all group/card"
+            className="min-w-[92vw] md:min-w-[600px] snap-center flex flex-col md:flex-row gap-6 p-4 md:p-8 bg-white/40 rounded-lg md:rounded-2xl border border-foreground/5 hover:border-pink/20 transition-all group/card"
           >
             {/* Small Avatar/Image on left */}
             <div className="w-full md:w-48 aspect-square md:aspect-[4/5] rounded-2xl overflow-hidden shrink-0">
