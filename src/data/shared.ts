@@ -1,6 +1,7 @@
 export const sharedContent = {
   financing: {
     headline: "FINANZIERUNG",
+    title: "Fördermöglichkeiten & Finanzierung",
     text: "Für das Trauma-Jahrestraining können unter bestimmten Voraussetzungen Fördermittel beantragt werden.",
     details: [
       { 
