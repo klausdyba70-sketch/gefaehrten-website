@@ -57,11 +57,11 @@ export default function KontaktClient(props: {
               <source src={content.heroVideo} type="video/mp4" />
             </video>
           ) : content.heroImage ? (
-            <img src={content.heroImage} alt={content.heroImageAlt || "Hero"} className="w-full h-full object-cover opacity-60 " />
+            <img src={content.heroImage} alt={content.heroImageAlt || "Hero"} className="w-full h-full object-cover opacity-40 " />
           ) : (
-            <img src="/hero-forest-blurred.png" alt="Forest Background" className="w-full h-full object-cover opacity-60 " />
+            <img src="/hero-forest-blurred.png" alt="Forest Background" className="w-full h-full object-cover opacity-40 " />
           )}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-[#1c211e] z-10" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-transparent to-[#1c211e] z-10" />
         </div>
         
         <FadeIn 

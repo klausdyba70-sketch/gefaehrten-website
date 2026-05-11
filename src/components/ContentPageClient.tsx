@@ -54,7 +54,7 @@ export default function ContentPageClient(props: {
           ) : (
             <div className="w-full h-full bg-[#1c211e]" />
           )}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-[#1c211e] z-10" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-transparent to-[#1c211e] z-10" />
           {/* Ambient Pink Glow */}
           <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[80%] h-[20%] bg-pink/20 blur-[120px] rounded-full z-10" />
         </motion.div>

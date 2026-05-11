@@ -63,7 +63,7 @@ export default function HomeClient(props: HomeClientProps) {
               loop 
               muted 
               playsInline 
-              className="w-full h-full object-cover opacity-50 scale-110"
+              className="w-full h-full object-cover opacity-40 scale-110"
               data-tina-field={tinaField(content.hero, "video")}
             >
               <source src={content.hero.video} type="video/mp4" />
@@ -72,13 +72,13 @@ export default function HomeClient(props: HomeClientProps) {
             <img 
               src={content.hero.image} 
               alt={content.hero.imageAlt || content.hero.title || "Hero Background"} 
-              className="w-full h-full object-cover opacity-50 scale-110" 
+              className="w-full h-full object-cover opacity-40 scale-110" 
               data-tina-field={tinaField(content.hero, "image")}
             />
           ) : (
             <div className="w-full h-full bg-[#1c211e]" />
           )}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-[#1c211e] z-10" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-[#1c211e] z-10" />
         </motion.div>
         
         <div className="relative z-20 w-full max-w-[1400px] mx-auto flex flex-col items-center text-center">
@@ -513,7 +513,7 @@ function TestimonialSlider({ testimonials }: { testimonials: any[] }) {
               <img 
                 src={t.image || "/images/portrait-placeholder.png"} 
                 alt={t.name}
-                className="w-full h-full object-cover grayscale group-hover/card:grayscale-0 transition-all duration-700"
+                className="w-full h-full object-cover group-hover/card:scale-105 transition-all duration-700"
               />
             </div>
 
