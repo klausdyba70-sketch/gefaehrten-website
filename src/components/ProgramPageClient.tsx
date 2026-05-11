@@ -10,6 +10,7 @@ import SuitableFor from "@/components/SuitableFor";
 import { useTina, tinaField } from "tinacms/dist/react";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
 import FadeIn from "./FadeIn";
+import BackgroundVideo from "./BackgroundVideo";
 
 export default function ProgramPageClient(props: {
   data: any;
@@ -39,19 +40,13 @@ export default function ProgramPageClient(props: {
       {/* --- HERO --- */}
       <section className="relative w-full min-h-[50vh] flex flex-col items-center justify-center text-center px-6 overflow-hidden bg-[#1c211e] py-32">
         <motion.div style={{ y }} className="absolute inset-0 z-0">
-          {content.videoSrc ? (
-            <video autoPlay loop muted playsInline className="w-full h-full object-cover opacity-70 scale-110">
-              <source src={content.videoSrc} type="video/mp4" />
-            </video>
-          ) : content.heroImage ? (
-            <img
-              src={content.heroImage}
-              alt={content.heroImageAlt || content.title || "Hero Background"}
-              className="w-full h-full object-cover opacity-40 scale-110"
-            />
-          ) : (
-            <div className="w-full h-full bg-[#1c211e]" />
-          )}
+          <BackgroundVideo 
+            videoMp4={content.videoSrc}
+            externalVideoUrl={content.externalVideoUrl}
+            fallbackImage={content.heroImage}
+            imageAlt={content.heroImageAlt || content.title}
+            opacity={40}
+          />
           <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-transparent to-[#1c211e] z-10" />
           {/* Ambient Pink Glow */}
           <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[80%] h-[20%] bg-pink/20 blur-[120px] rounded-full z-10" />

@@ -84,6 +84,7 @@ export default defineConfig({
               { type: "string", name: "subtitle", label: "Unterzeile (Italic)" },
               { type: "string", name: "text", label: "Haupttext", ui: { component: "textarea" } },
               { type: "image", name: "video", label: "Hintergrund Video (mp4)" },
+              { type: "string", name: "externalVideoUrl", label: "ODER Vimeo/YouTube URL", description: "Hintergrund-Video (Autoplay, Loop, Stumm)." },
               { type: "image", name: "image", label: "Hintergrund Bild" },
               { type: "string", name: "imageAlt", label: "Hintergrund Bild Alternativtext" },
             ],
@@ -170,6 +171,7 @@ export default defineConfig({
           { type: "image", name: "heroImage", label: "Hero Bild" },
           { type: "string", name: "heroImageAlt", label: "Hero Bild Alternativtext" },
           { type: "string", name: "heroVideo", label: "Hero Video URL (mp4)" },
+          { type: "string", name: "externalVideoUrl", label: "ODER Vimeo/YouTube URL" },
           { type: "rich-text", name: "introTraining", label: "Intro Training", description: "Text unter der Überschrift TRAINING" },
           { type: "rich-text", name: "introSeminar", label: "Intro Seminar", description: "Text unter der Überschrift PRAXISVERTIEFUNG-SEMINAR" },
           { type: "rich-text", name: "introPraxiskreis", label: "Intro Praxiskreis", description: "Text unter der Überschrift PRAXISKREIS" },
@@ -196,6 +198,7 @@ export default defineConfig({
           { type: "image", name: "heroImage", label: "Hero Bild" },
           { type: "string", name: "heroImageAlt", label: "Hero Bild Alternativtext" },
           { type: "string", name: "heroVideo", label: "Hero Video URL (mp4)" },
+          { type: "string", name: "externalVideoUrl", label: "ODER Vimeo/YouTube URL" },
           { type: "rich-text", name: "introHeadline", label: "Einleitung Headline" },
           { type: "rich-text", name: "introText", label: "Einleitung Text" },
           {
@@ -229,6 +232,7 @@ export default defineConfig({
           { type: "image", name: "heroImage", label: "Hero Bild" },
           { type: "string", name: "heroImageAlt", label: "Hero Bild Alternativtext" },
           { type: "string", name: "heroVideo", label: "Hero Video URL (mp4)" },
+          { type: "string", name: "externalVideoUrl", label: "ODER Vimeo/YouTube URL" },
           {
             type: "object",
             list: true,
@@ -371,6 +375,7 @@ export default defineConfig({
           { type: "image", name: "heroImage", label: "Hero Bild" },
           { type: "string", name: "heroImageAlt", label: "Hero Bild Alternativtext" },
           { type: "string", name: "heroVideo", label: "Hero Video URL (mp4)" },
+          { type: "string", name: "externalVideoUrl", label: "ODER Vimeo/YouTube URL" },
           {
             type: "object",
             list: true,
@@ -429,12 +434,13 @@ export default defineConfig({
             required: true,
             description: "Die große Hauptüberschrift der Seite. HINWEIS: Um die URL zu ändern (z.B. /trauma), benennen Sie dieses Dokument in der Liste links um."
           },
-          { 
+           { 
             type: "image", 
             name: "videoSrc", 
-            label: "Hintergrund-Video (Hero)", 
+            label: "Hintergrund-Video (mp4)", 
             description: "Der Pfad zum Video, das hinter dem Titel läuft (z.B. /videos/hero-video.mp4)."
           },
+          { type: "string", name: "externalVideoUrl", label: "ODER Vimeo/YouTube URL" },
           { type: "image", name: "heroImage", label: "Hintergrund-Bild (Hero)" },
           { type: "string", name: "heroImageAlt", label: "Hintergrund-Bild Alternativtext" },
           { 

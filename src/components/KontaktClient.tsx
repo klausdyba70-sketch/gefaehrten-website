@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useTina, tinaField } from "tinacms/dist/react";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
 import FadeIn from "./FadeIn";
+import BackgroundVideo from "./BackgroundVideo";
 
 export default function KontaktClient(props: {
   data: any;
@@ -52,15 +53,13 @@ export default function KontaktClient(props: {
       {/* --- HERO --- */}
       <section className="relative w-full h-[50vh] flex flex-col items-center justify-center text-center px-6 overflow-hidden bg-[#1c211e]">
         <div className="absolute inset-0 z-0">
-          {content.heroVideo ? (
-            <video autoPlay loop muted playsInline className="w-full h-full object-cover opacity-60 ">
-              <source src={content.heroVideo} type="video/mp4" />
-            </video>
-          ) : content.heroImage ? (
-            <img src={content.heroImage} alt={content.heroImageAlt || "Hero"} className="w-full h-full object-cover opacity-40 " />
-          ) : (
-            <img src="/hero-forest-blurred.png" alt="Forest Background" className="w-full h-full object-cover opacity-40 " />
-          )}
+          <BackgroundVideo 
+            videoMp4={content.heroVideo}
+            externalVideoUrl={content.externalVideoUrl}
+            fallbackImage={content.heroImage || "/hero-forest-blurred.png"}
+            imageAlt={content.heroImageAlt || "Hero"}
+            opacity={40}
+          />
           <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-transparent to-[#1c211e] z-10" />
         </div>
         

@@ -11,6 +11,7 @@ import NewsletterSection from "./NewsletterSection";
 import FadeIn from "./FadeIn";
 import SuitableFor from "./SuitableFor";
 import Financing from "./Financing";
+import BackgroundVideo from "./BackgroundVideo";
 
 interface HomeClientProps {
   programs: any[];
@@ -57,27 +58,13 @@ export default function HomeClient(props: HomeClientProps) {
           style={{ y }} 
           className="absolute inset-0 z-0"
         >
-          {content.hero?.video ? (
-            <video 
-              autoPlay 
-              loop 
-              muted 
-              playsInline 
-              className="w-full h-full object-cover opacity-40 scale-110"
-              data-tina-field={tinaField(content.hero, "video")}
-            >
-              <source src={content.hero.video} type="video/mp4" />
-            </video>
-          ) : content.hero?.image ? (
-            <img 
-              src={content.hero.image} 
-              alt={content.hero.imageAlt || content.hero.title || "Hero Background"} 
-              className="w-full h-full object-cover opacity-40 scale-110" 
-              data-tina-field={tinaField(content.hero, "image")}
-            />
-          ) : (
-            <div className="w-full h-full bg-[#1c211e]" />
-          )}
+          <BackgroundVideo 
+            videoMp4={content.hero?.video}
+            externalVideoUrl={content.hero?.externalVideoUrl}
+            fallbackImage={content.hero?.image}
+            imageAlt={content.hero?.imageAlt || content.hero?.title}
+            opacity={40}
+          />
           <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-[#1c211e] z-10" />
         </motion.div>
         

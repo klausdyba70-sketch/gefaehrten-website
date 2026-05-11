@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { useTina, tinaField } from "tinacms/dist/react";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
 import FadeIn from "./FadeIn";
+import BackgroundVideo from "./BackgroundVideo";
 
 export default function AboutClient(props: {
   data: any;
@@ -30,15 +31,13 @@ export default function AboutClient(props: {
       {/* --- HERO --- */}
       <section className="relative w-full min-h-[50vh] flex flex-col items-center justify-center text-center px-6 overflow-hidden bg-[#0f110e] py-32">
         <div className="absolute inset-0 z-0">
-          {content.heroVideo ? (
-            <video autoPlay loop muted playsInline className="w-full h-full object-cover opacity-60 ">
-              <source src={content.heroVideo} type="video/mp4" />
-            </video>
-          ) : content.heroImage ? (
-            <img src={content.heroImage} alt={content.heroImageAlt || "Hero"} className="w-full h-full object-cover opacity-60 " />
-          ) : (
-            <img src="/hero-forest-blurred.png" alt="Forest Background" className="w-full h-full object-cover opacity-60 " />
-          )}
+          <BackgroundVideo 
+            videoMp4={content.heroVideo}
+            externalVideoUrl={content.externalVideoUrl}
+            fallbackImage={content.heroImage || "/hero-forest-blurred.png"}
+            imageAlt={content.heroImageAlt || "Hero"}
+            opacity={60}
+          />
           <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-[#0f110e] z-10" />
           {/* Ambient Pink Glow */}
           <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[80%] h-[20%] bg-pink/20 blur-[120px] rounded-full z-10" />
@@ -78,7 +77,7 @@ export default function AboutClient(props: {
               
               {/* Image Column */}
               <FadeIn 
-                className={`${section.imageRight ? 'lg:order-2' : 'lg:order-1'} flex justify-center w-full`}
+                className={`${section.imageRight ? 'lg:order-2' : 'lg:order-1'} order-2 lg:order-none flex justify-center w-full`}
               >
                 <div className="relative aspect-square w-full overflow-hidden rounded-sm bg-[#1c211e]/5">
                   {section.image ? (
@@ -99,7 +98,7 @@ export default function AboutClient(props: {
               {/* Text Column */}
               <FadeIn 
                 delay={0.2}
-                className={`space-y-10 ${section.imageRight ? 'lg:order-1' : 'lg:order-2'}`}
+                className={`space-y-10 ${section.imageRight ? 'lg:order-1' : 'lg:order-2'} order-1 lg:order-none`}
               >
                 <div className="space-y-6">
                   {section.label && (

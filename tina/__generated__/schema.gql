@@ -122,6 +122,7 @@ type HomepageHero {
   subtitle: String
   text: String
   video: String
+  externalVideoUrl: String
   image: String
   imageAlt: String
 }
@@ -210,6 +211,7 @@ input HomepageHeroFilter {
   subtitle: StringFilter
   text: StringFilter
   video: ImageFilter
+  externalVideoUrl: StringFilter
   image: ImageFilter
   imageAlt: StringFilter
 }
@@ -294,6 +296,7 @@ type Anmelden implements Node & Document {
   heroImage: String
   heroImageAlt: String
   heroVideo: String
+  externalVideoUrl: String
   introTraining: JSON
   introSeminar: JSON
   introPraxiskreis: JSON
@@ -322,6 +325,7 @@ input AnmeldenFilter {
   heroImage: ImageFilter
   heroImageAlt: StringFilter
   heroVideo: StringFilter
+  externalVideoUrl: StringFilter
   introTraining: RichTextFilter
   introSeminar: RichTextFilter
   introPraxiskreis: RichTextFilter
@@ -366,6 +370,7 @@ type Kontakt implements Node & Document {
   heroImage: String
   heroImageAlt: String
   heroVideo: String
+  externalVideoUrl: String
   introHeadline: JSON
   introText: JSON
   details: KontaktDetails
@@ -397,6 +402,7 @@ input KontaktFilter {
   heroImage: ImageFilter
   heroImageAlt: StringFilter
   heroVideo: StringFilter
+  externalVideoUrl: StringFilter
   introHeadline: RichTextFilter
   introText: RichTextFilter
   details: KontaktDetailsFilter
@@ -449,6 +455,7 @@ type Ueberuns implements Node & Document {
   heroImage: String
   heroImageAlt: String
   heroVideo: String
+  externalVideoUrl: String
   sections: [UeberunsSections]
   quote: UeberunsQuote
   cta: UeberunsCta
@@ -493,6 +500,7 @@ input UeberunsFilter {
   heroImage: ImageFilter
   heroImageAlt: StringFilter
   heroVideo: StringFilter
+  externalVideoUrl: StringFilter
   sections: UeberunsSectionsFilter
   quote: UeberunsQuoteFilter
   cta: UeberunsCtaFilter
@@ -649,6 +657,7 @@ type Page implements Node & Document {
   heroImage: String
   heroImageAlt: String
   heroVideo: String
+  externalVideoUrl: String
   sections: [PageSections]
   id: ID!
   _sys: SystemInfo!
@@ -685,6 +694,7 @@ input PageFilter {
   heroImage: ImageFilter
   heroImageAlt: StringFilter
   heroVideo: StringFilter
+  externalVideoUrl: StringFilter
   sections: PageSectionsFilter
 }
 
@@ -767,6 +777,7 @@ type Seminars implements Node & Document {
   label: String
   title: String!
   videoSrc: String
+  externalVideoUrl: String
   heroImage: String
   heroImageAlt: String
   isFull: Boolean
@@ -858,6 +869,7 @@ input SeminarsFilter {
   label: StringFilter
   title: StringFilter
   videoSrc: ImageFilter
+  externalVideoUrl: StringFilter
   heroImage: ImageFilter
   heroImageAlt: StringFilter
   isFull: BooleanFilter
@@ -984,6 +996,7 @@ input HomepageHeroMutation {
   subtitle: String
   text: String
   video: String
+  externalVideoUrl: String
   image: String
   imageAlt: String
 }
@@ -1051,6 +1064,7 @@ input AnmeldenMutation {
   heroImage: String
   heroImageAlt: String
   heroVideo: String
+  externalVideoUrl: String
   introTraining: JSON
   introSeminar: JSON
   introPraxiskreis: JSON
@@ -1084,6 +1098,7 @@ input KontaktMutation {
   heroImage: String
   heroImageAlt: String
   heroVideo: String
+  externalVideoUrl: String
   introHeadline: JSON
   introText: JSON
   details: KontaktDetailsMutation
@@ -1125,6 +1140,7 @@ input UeberunsMutation {
   heroImage: String
   heroImageAlt: String
   heroVideo: String
+  externalVideoUrl: String
   sections: [UeberunsSectionsMutation]
   quote: UeberunsQuoteMutation
   cta: UeberunsCtaMutation
@@ -1201,6 +1217,7 @@ input PageMutation {
   heroImage: String
   heroImageAlt: String
   heroVideo: String
+  externalVideoUrl: String
   sections: [PageSectionsMutation]
 }
 
@@ -1272,6 +1289,7 @@ input SeminarsMutation {
   label: String
   title: String
   videoSrc: String
+  externalVideoUrl: String
   heroImage: String
   heroImageAlt: String
   isFull: Boolean

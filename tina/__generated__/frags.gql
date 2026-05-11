@@ -15,6 +15,7 @@ fragment HomepageParts on Homepage {
     subtitle
     text
     video
+    externalVideoUrl
     image
     imageAlt
   }
@@ -74,6 +75,7 @@ fragment AnmeldenParts on Anmelden {
   heroImage
   heroImageAlt
   heroVideo
+  externalVideoUrl
   introTraining
   introSeminar
   introPraxiskreis
@@ -99,6 +101,7 @@ fragment KontaktParts on Kontakt {
   heroImage
   heroImageAlt
   heroVideo
+  externalVideoUrl
   introHeadline
   introText
   details {
@@ -127,6 +130,7 @@ fragment UeberunsParts on Ueberuns {
   heroImage
   heroImageAlt
   heroVideo
+  externalVideoUrl
   sections {
     __typename
     label
@@ -192,6 +196,7 @@ fragment SettingsParts on Settings {
         heroImage
         heroImageAlt
         heroVideo
+        externalVideoUrl
         sections {
           __typename
           type
@@ -220,6 +225,7 @@ fragment SettingsParts on Settings {
         label
         title
         videoSrc
+        externalVideoUrl
         heroImage
         heroImageAlt
         isFull
@@ -319,6 +325,7 @@ fragment SettingsParts on Settings {
           heroImage
           heroImageAlt
           heroVideo
+          externalVideoUrl
           sections {
             __typename
             type
@@ -347,6 +354,7 @@ fragment SettingsParts on Settings {
           label
           title
           videoSrc
+          externalVideoUrl
           heroImage
           heroImageAlt
           isFull
@@ -446,6 +454,7 @@ fragment PageParts on Page {
   heroImage
   heroImageAlt
   heroVideo
+  externalVideoUrl
   sections {
     __typename
     type
@@ -475,6 +484,7 @@ fragment SeminarsParts on Seminars {
   label
   title
   videoSrc
+  externalVideoUrl
   heroImage
   heroImageAlt
   isFull
