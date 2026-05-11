@@ -83,7 +83,7 @@ export default function HomeClient(props: HomeClientProps) {
         
         <div className="relative z-20 w-full max-w-[1400px] mx-auto flex flex-col items-center">
           {/* Centered Headline Unit (100vh focus) */}
-          <div className="h-[100svh] flex flex-col items-center justify-center space-y-4 md:space-y-6 px-4 md:px-0">
+          <div className="min-h-[100svh] flex flex-col items-center justify-center space-y-4 md:space-y-6 px-4 md:px-0 py-20 md:py-0">
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -111,28 +111,25 @@ export default function HomeClient(props: HomeClientProps) {
               {content.hero?.subtitle}
             </motion.h2>
 
-            {/* Hint to scroll */}
+            {/* Intro Text (Now part of the centered unit on mobile) */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6 }}
+              className="pt-8 md:pt-16 max-w-3xl mx-auto space-y-8"
+            >
+              <p className="text-lg md:text-3xl text-[#F5F2EB]/70 font-serif italic leading-relaxed" data-tina-field={tinaField(content.hero, "text")}>
+                {content.hero?.text}
+              </p>
+            </motion.div>
+
+            {/* Discover Link */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 1.5 }}
-              className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+              transition={{ delay: 1 }}
+              className="pt-12 md:pt-16"
             >
-              <div className="w-px h-12 bg-gradient-to-b from-transparent to-pink/40" />
-            </motion.div>
-          </div>
-
-          {/* Intro Text & Discover Block (Flows below with tight spacing) */}
-          <motion.div 
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="pt-4 md:pt-16 max-w-4xl mx-auto space-y-8 px-4"
-          >
-            <p className="text-lg md:text-3xl text-[#F5F2EB]/70 font-serif italic leading-relaxed" data-tina-field={tinaField(content.hero, "text")}>
-              {content.hero?.text}
-            </p>
-            <div className="flex justify-center pb-24 md:pb-0">
               <Link 
                 href="#angebot"
                 className="group relative flex flex-col items-center gap-4 transition-all"
@@ -150,8 +147,13 @@ export default function HomeClient(props: HomeClientProps) {
                   </svg>
                 </motion.div>
               </Link>
+            </motion.div>
+
+            {/* Visual Hint */}
+            <div className="absolute bottom-12 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-2">
+              <div className="w-px h-12 bg-gradient-to-b from-transparent to-pink/40" />
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
       {/* --- DAS ANGEBOT INTRO --- */}
