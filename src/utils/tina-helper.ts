@@ -14,6 +14,11 @@ export function localizeTinaData(data: any) {
         const parts = obj.split('/');
         const filename = decodeURIComponent(parts[parts.length - 1]);
         
+        // Handle special folders like testimonials
+        if (filename.includes('testimonial')) {
+          return `/images/testimonials/${filename}`;
+        }
+        
         // If it's one of our renamed images, it's in /images/
         // Otherwise, it's in /images/tina/
         if (filename.startsWith('dariusz-dahlmann-traumainstitut') || filename.startsWith('dariusz-dahlmann-gefaehrten')) {

@@ -82,8 +82,8 @@ export default function HomeClient(props: HomeClientProps) {
         </motion.div>
         
         <div className="relative z-20 w-full max-w-[1400px] mx-auto flex flex-col items-center">
-          {/* Centered Headline Block */}
-          <div className="min-h-[50svh] flex flex-col items-center justify-center space-y-4 md:space-y-6">
+          {/* Centered Headline Unit (100vh focus) */}
+          <div className="h-[100svh] flex flex-col items-center justify-center space-y-4 md:space-y-6 px-4 md:px-0">
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -96,7 +96,7 @@ export default function HomeClient(props: HomeClientProps) {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8 }}
-              className="text-[15vw] md:text-8xl lg:text-[10rem] font-serif italic text-[#F5F2EB] leading-[0.8] md:leading-[0.85] tracking-tighter" 
+              className="text-[14vw] md:text-8xl lg:text-[10rem] font-serif italic text-[#F5F2EB] leading-[0.8] md:leading-[0.85] tracking-tighter px-2" 
               data-tina-field={tinaField(content.hero, "title")}
             >
                {content.hero?.title || "Gefährten"}
@@ -105,24 +105,34 @@ export default function HomeClient(props: HomeClientProps) {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4 }}
-              className="text-lg md:text-3xl text-pink/80 font-serif font-bold italic pt-2 md:pt-4 tracking-[0.2em] md:tracking-widest" 
+              className="text-base md:text-3xl text-pink/80 font-serif font-bold italic pt-2 md:pt-4 tracking-[0.2em] md:tracking-widest" 
               data-tina-field={tinaField(content.hero, "subtitle")}
             >
               {content.hero?.subtitle}
             </motion.h2>
+
+            {/* Hint to scroll */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1.5 }}
+              className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+            >
+              <div className="w-px h-12 bg-gradient-to-b from-transparent to-pink/40" />
+            </motion.div>
           </div>
 
-          {/* Intro Text & Discover Block (Flows below) */}
+          {/* Intro Text & Discover Block (Flows below with tight spacing) */}
           <motion.div 
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="pt-8 md:pt-16 max-w-4xl mx-auto space-y-8"
+            className="pt-4 md:pt-16 max-w-4xl mx-auto space-y-8 px-4"
           >
             <p className="text-lg md:text-3xl text-[#F5F2EB]/70 font-serif italic leading-relaxed" data-tina-field={tinaField(content.hero, "text")}>
               {content.hero?.text}
             </p>
-            <div className="flex justify-center pb-12 md:pb-0">
+            <div className="flex justify-center pb-24 md:pb-0">
               <Link 
                 href="#angebot"
                 className="group relative flex flex-col items-center gap-4 transition-all"
@@ -162,7 +172,7 @@ export default function HomeClient(props: HomeClientProps) {
                 </div>
               )}
               <h2 
-                className="text-[12vw] md:text-6xl lg:text-7xl font-serif italic leading-[1.1] text-foreground/90 tracking-tight"
+                className="text-[10vw] md:text-6xl lg:text-7xl font-serif italic leading-[1.1] text-foreground/90 tracking-tight"
                 data-tina-field={tinaField(content.offer, "headline")}
               >
                 {content.offer?.headline?.type ? (
@@ -498,7 +508,7 @@ function TestimonialSlider({ testimonials }: { testimonials: any[] }) {
         {testimonials.map((t, i) => (
           <div 
             key={i}
-            className="min-w-[92vw] md:min-w-[600px] snap-center flex flex-col md:flex-row gap-6 p-6 md:p-8 bg-white/40 rounded-xl md:rounded-2xl border border-foreground/5 hover:border-pink/20 transition-all group/card"
+            className="min-w-[92vw] md:min-w-[600px] snap-center flex flex-col md:flex-row gap-6 p-4 md:p-8 bg-white/40 rounded-xl md:rounded-2xl border border-foreground/5 hover:border-pink/20 transition-all group/card"
           >
             {/* Small Avatar/Image on left */}
             <div className="w-full md:w-48 aspect-square md:aspect-[4/5] rounded-2xl overflow-hidden shrink-0">
