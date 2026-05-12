@@ -303,7 +303,7 @@ export default function HomeClient(props: HomeClientProps) {
                             <Link 
                               key={pIdx}
                               href={`/${p._sys.filename}`}
-                              className="px-6 py-3 bg-[#1c211e] text-[#F5F2EB] rounded-full text-[12px] md:text-[14px] uppercase tracking-widest font-bold hover:bg-pink hover:text-white transition-all shadow-lg"
+                              className="px-6 py-3 bg-pink text-white rounded-full text-[12px] md:text-[14px] uppercase tracking-widest font-bold hover:bg-[#1c211e] hover:text-[#F5F2EB] transition-all shadow-lg"
                             >
                               {isSeminarCat ? p.title : "Mehr erfahren"}
                             </Link>
