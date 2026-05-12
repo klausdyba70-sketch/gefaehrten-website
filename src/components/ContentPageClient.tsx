@@ -7,6 +7,7 @@ import { ContentPage } from "@/data/pages";
 import { useTina } from "tinacms/dist/react";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
 import BackgroundVideo from "./BackgroundVideo";
+import { localizeTinaData } from "@/utils/tina-helper";
 
 export default function ContentPageClient(props: {
   data: any;
@@ -19,7 +20,7 @@ export default function ContentPageClient(props: {
     data: props.data,
   });
 
-  const content = data?.page || props.data?.page || {};
+  const content = localizeTinaData(data?.page || props.data?.page || {});
   const containerRef = useRef(null);
 
   const { scrollYProgress } = useScroll({
@@ -89,7 +90,7 @@ export default function ContentPageClient(props: {
       </section>
 
       {/* --- CONTENT --- */}
-      <section className="max-w-4xl mx-auto py-16 md:py-32 px-2 md:px-6">
+      <section className="max-w-4xl mx-auto py-16 md:py-32 px-6 md:px-12">
         <div className="space-y-32">
           {content.sections?.map((section: any, idx: number) => {
             if (section.type === "text") {

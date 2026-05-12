@@ -23,13 +23,15 @@ export function localizeTinaData(data: any) {
         // We check for keywords to be more flexible with spaces/hyphens
         const isRenamed = filename.toLowerCase().includes('dariusz') || 
                           filename.toLowerCase().includes('dahlmann') || 
-                          filename.toLowerCase().includes('gefaehrten');
+                          filename.toLowerCase().includes('gefaherten') ||
+                          filename.toLowerCase().includes('gefaehrten') ||
+                          filename.toLowerCase().includes('hero-ueberuns');
 
         if (isRenamed) {
           return `/images/${filename}`;
         }
         
-        return `/images/tina/${filename}`;
+        return `/images/${filename}`;
       }
       return obj;
     }

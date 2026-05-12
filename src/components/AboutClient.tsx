@@ -5,6 +5,7 @@ import { useTina, tinaField } from "tinacms/dist/react";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
 import FadeIn from "./FadeIn";
 import BackgroundVideo from "./BackgroundVideo";
+import { localizeTinaData } from "@/utils/tina-helper";
 
 export default function AboutClient(props: {
   data: any;
@@ -17,7 +18,7 @@ export default function AboutClient(props: {
     data: props.data,
   });
 
-  const content = data.ueberuns;
+  const content = localizeTinaData(data.ueberuns || props.data.ueberuns || {});
 
   const fadeInUp = {
     initial: { opacity: 0, y: 80 },
@@ -79,14 +80,22 @@ export default function AboutClient(props: {
               <FadeIn 
                 className={`${section.imageRight ? 'lg:order-2' : 'lg:order-1'} order-2 lg:order-none flex justify-center w-full`}
               >
-                <div className="relative aspect-square w-full overflow-hidden rounded-sm bg-[#1c211e]/5">
+                <div className="relative aspect-square w-full overflow-hidden rounded-sm bg-[#1c211e]/5 group">
                   {section.image ? (
-                    <img 
-                      src={section.image} 
-                      alt={section.imageAlt || section.title || "Portrait"} 
-                      className="w-full h-full object-cover  hover:-0 transition-all duration-1000"
-                      data-tina-field={tinaField(section, "image")}
-                    />
+                    <a 
+                      href={content.cta?.url || "#"} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="block w-full h-full"
+                    >
+                      <img 
+                        src={section.image} 
+                        alt={section.imageAlt || section.title || "Portrait"} 
+                        className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105"
+                        data-tina-field={tinaField(section, "image")}
+                      />
+                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-700" />
+                    </a>
                   ) : (
                     <div className="w-full h-full flex items-center justify-center text-foreground/20 italic">
                       Portrait Bild
@@ -106,7 +115,7 @@ export default function AboutClient(props: {
                       className="text-[14px] md:text-[18px] font-serif italic capitalize tracking-[0.2em] text-pink font-bold"
                       data-tina-field={tinaField(section, "label")}
                     >
-                      {section.label.toLowerCase()}
+                      {section.label?.toLowerCase()}
                     </div>
                   )}
                   <h2 

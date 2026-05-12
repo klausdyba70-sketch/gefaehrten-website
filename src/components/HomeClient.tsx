@@ -70,7 +70,7 @@ export default function HomeClient(props: HomeClientProps) {
         
         <div className="relative z-20 w-full max-w-[1400px] mx-auto flex flex-col items-center text-center">
           {/* Centered Headline Unit */}
-          <div className="min-h-[100svh] md:min-h-0 flex flex-col items-center justify-center space-y-4 md:space-y-6 px-4 md:px-0 py-20 md:py-0">
+          <div className="min-h-[100svh] md:min-h-0 flex flex-col items-center justify-center space-y-4 md:space-y-6 px-6 md:px-0 py-20 md:py-0">
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -83,7 +83,7 @@ export default function HomeClient(props: HomeClientProps) {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8 }}
-              className="text-[clamp(42px,11vw,140px)] font-serif italic text-[#F5F2EB] leading-[0.8] md:leading-[0.85] tracking-tighter px-2" 
+              className="text-[clamp(42px,11vw,140px)] font-serif italic text-[#F5F2EB] leading-[0.8] md:leading-[0.85] tracking-tighter px-6" 
               data-tina-field={tinaField(content.hero, "title")}
             >
                {content.hero?.title || "Gefährten"}
@@ -106,7 +106,7 @@ export default function HomeClient(props: HomeClientProps) {
               className="pt-8 md:pt-16 max-w-4xl mx-auto"
             >
               <p 
-                className="text-[clamp(16px,1.8vw,26px)] text-[#F5F2EB]/70 font-serif italic leading-relaxed px-4" 
+                className="text-[clamp(16px,1.8vw,26px)] text-[#F5F2EB]/70 font-serif italic leading-relaxed px-6" 
                 data-tina-field={tinaField(content.hero, "text")}
               >
                 {content.hero?.text}
@@ -140,7 +140,7 @@ export default function HomeClient(props: HomeClientProps) {
         </div>
       </section>
       {/* --- DAS ANGEBOT INTRO --- */}
-      <section id="angebot" className="w-full bg-[#f5f2eb] py-16 md:py-48 px-2 md:px-6">
+      <section id="angebot" className="w-full bg-[#f5f2eb] py-16 md:py-48 px-6 md:px-12">
         <div className="max-w-[1400px] mx-auto">
           {/* Top: Headline & Intro — Two Column Layout */}
           <FadeIn 
@@ -205,7 +205,7 @@ export default function HomeClient(props: HomeClientProps) {
       </section>
 
       {/* --- ANGEBOT LINKS SECTION --- */}
-      <section className="w-full bg-[#fcfbf8] py-16 md:py-48 px-2 md:px-6">
+      <section className="w-full bg-[#fcfbf8] py-16 md:py-48 px-6 md:px-12">
         <div className="max-w-[1400px] mx-auto">
           {/* Bottom: Formats List (Reverted to Rows) */}
           <h3 
@@ -320,20 +320,23 @@ export default function HomeClient(props: HomeClientProps) {
       </section>
 
       {/* --- ÜBER MICH SECTION --- */}
-      <section className="w-full bg-[#f2efe4] py-16 md:py-48 px-2 md:px-6 overflow-hidden">
+      <section className="w-full bg-[#f2efe4] py-16 md:py-48 px-6 md:px-12 overflow-hidden">
         <div className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 md:gap-24 items-center">
           <FadeIn 
             className="relative flex justify-center order-2 lg:order-1"
           >
-            <div className="relative aspect-[4/5] rounded-lg overflow-hidden shadow-2xl w-full">
+            <Link 
+              href="/ueber-uns"
+              className="relative aspect-[4/5] rounded-lg overflow-hidden shadow-2xl w-full block group"
+            >
               <img 
                 src={content.about?.image || "/images/dariusz_portrait.png"} 
                 alt={content.about?.imageAlt || content.about?.title || "Dariusz Portrait"} 
-                className="w-full h-full object-cover  hover:-0 transition-all duration-1000 scale-105 hover:scale-100" 
+                className="w-full h-full object-cover transition-all duration-1000 scale-105 group-hover:scale-100" 
                 data-tina-field={tinaField(content.about, "image")}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#1c211e]/40 to-transparent" />
-            </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-[#1c211e]/40 to-transparent opacity-60 group-hover:opacity-30 transition-opacity" />
+            </Link>
           </FadeIn>
           
           <FadeIn 
@@ -386,7 +389,7 @@ export default function HomeClient(props: HomeClientProps) {
       </section>
 
       {/* --- QUOTE SECTION --- */}
-      <section className="w-full bg-[#1c211e] py-24 md:py-48 px-2 md:px-6 text-center relative overflow-hidden">
+      <section className="w-full bg-[#1c211e] py-24 md:py-48 px-6 md:px-12 text-center relative overflow-hidden">
         {/* Background Image/Texture */}
         <div className="absolute inset-0 opacity-10">
            <img src="/images/leaves.png" alt="Texture" className="w-full h-full object-cover opacity-20" />
@@ -429,7 +432,7 @@ export default function HomeClient(props: HomeClientProps) {
       {/* --- TESTIMONIALS SECTION --- */}
       {content.testimonials && content.testimonials.length > 0 && (
         <section className="w-full py-24 md:py-48 bg-[#f5f2eb]">
-          <div className="max-w-[1400px] mx-auto px-2 md:px-6">
+          <div className="max-w-[1400px] mx-auto px-6 md:px-12">
             <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
               <div className="space-y-4">
                 <div className="text-[16px] md:text-[20px] font-serif italic capitalize tracking-[0.3em] text-pink font-bold">Resonanz</div>

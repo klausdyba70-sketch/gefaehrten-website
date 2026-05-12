@@ -75,7 +75,7 @@ export default function ProgramPageClient(props: {
       </section>
 
       {/* --- MAIN CONTENT AREA --- */}
-      <section className="max-w-[1400px] mx-auto py-16 md:py-32 px-2 md:px-6">
+      <section className="max-w-[1400px] mx-auto py-16 md:py-32 px-6 md:px-12">
 
         {/* Header Intro - Now below the Hero */}
         <motion.div

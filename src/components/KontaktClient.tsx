@@ -82,7 +82,7 @@ export default function KontaktClient(props: {
       </section>
 
       {/* --- MAIN CONTENT AREA --- */}
-      <section className="max-w-[1400px] mx-auto py-16 md:py-32 px-2 md:px-6">
+      <section className="max-w-[1400px] mx-auto py-16 md:py-32 px-6 md:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-24 items-start">
           
           {/* Contact Details */}

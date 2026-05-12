@@ -11,10 +11,16 @@ interface FadeInProps {
 }
 
 export default function FadeIn({ children, delay = 0, className = '', ...props }: FadeInProps) {
-  // Slower, more cinematic fade on smaller screens (The "Butterfly" effect)
-  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
-  const baseDuration = isMobile ? 1.5 : 0.8; // 2.5 might be too slow for this project, let's try 1.5 first
-  const baseY = isMobile ? 40 : 60;
+  // Use consistent values for SSR to avoid hydration mismatch
+  // The subtle difference between mobile/desktop timing can be handled after mount
+  const [isMobile, setIsMobile] = React.useState(false);
+  
+  React.useEffect(() => {
+    setIsMobile(window.innerWidth < 768);
+  }, []);
+
+  const baseDuration = isMobile ? 1.5 : 1.2; 
+  const baseY = 40; // Standardized for both to avoid layout jumps and hydration errors
 
   const transition: any = { 
     duration: baseDuration, 
@@ -26,7 +32,7 @@ export default function FadeIn({ children, delay = 0, className = '', ...props }
     <motion.div
       initial={{ opacity: 0, y: baseY }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: isMobile ? '0px 0px -50px 0px' : '0px 0px -100px 0px' }}
+      viewport={{ once: true, margin: '-50px' }}
       transition={transition}
       className={className}
       {...props}

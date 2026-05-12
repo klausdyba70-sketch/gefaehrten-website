@@ -29,7 +29,7 @@ export const contentPages: ContentPage[] = [
     label: "Haltung & Ansatz",
     videoSrc: "/videos/hero-video.mp4",
     headerIntro: {
-      headline: "Was wirkt im Training",
+      headline: "Warum Begegnung oft tiefer wirkt als Methode",
       text: "1. Was wirkt im Gefährten Traumatraining? Humanistische Haltung in traumasicherer Begleitung.\nDie humanistischen Therapieformen haben über viele Jahre einen Raum geschaffen, in dem Entwicklung möglich wird – getragen von Empathie, Echtheit und der Würde des Menschen. Auf diesem Boden baut das Gefährten Traumatraining auf. Und erweitert ihn um eine Perspektive, die heute nicht mehr wegzudenken ist:\ndas Verständnis des Nervensystems und die Dynamik von Trauma. Denn Erkenntnis allein reguliert kein Nervensystem. Was sich dabei verändert, ist nicht die Haltung – sondern der Zugang. Wir schauen nicht nur auf Konflikte, sondern auf die Zustände, in denen sie entstehen. Nicht nur auf Verhalten, sondern auf die Überlebensmuster, die es geprägt haben. Nicht nur auf das, was verstanden werden will, sondern auf das, was zuerst Sicherheit braucht, um überhaupt erfahrbar zu werden."
     },
     sections: [
