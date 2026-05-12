@@ -8,7 +8,7 @@ export default function Financing() {
   
   return (
     <FadeIn 
-      className="space-y-12 bg-[#f0ede4]/50 p-6 md:p-16 rounded-lg md:rounded-[2.5rem] shadow-sm border border-foreground/5"
+      className="space-y-12 bg-[#f0ede4]/50 p-6 md:px-10 md:py-16 rounded-lg md:rounded-[2.5rem] shadow-sm border border-foreground/5"
     >
       <div className="space-y-6">
         <h4 className="text-xs md:text-sm uppercase tracking-[0.3em] font-bold text-pink">{financing.headline}</h4>

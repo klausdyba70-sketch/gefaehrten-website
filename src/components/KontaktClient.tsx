@@ -158,7 +158,7 @@ export default function KontaktClient(props: {
               <motion.div 
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="bg-white/40 border border-foreground/5 rounded-lg md:rounded-2xl p-8 md:p-16 text-center space-y-6"
+                className="bg-white/40 border border-foreground/5 rounded-lg md:rounded-2xl p-8 md:px-10 md:py-16 text-center space-y-6"
               >
                 <div className="text-5xl text-pink">✓</div>
                 <h3 className="text-3xl font-serif italic">Vielen Dank!</h3>
@@ -175,7 +175,7 @@ export default function KontaktClient(props: {
             ) : (
               <form 
                 onSubmit={handleSubmit} 
-                className="space-y-12 bg-[#f0ede4]/30 p-6 md:p-16 rounded-lg md:rounded-[1.5rem] border border-foreground/5 shadow-sm"
+                className="space-y-12 bg-[#f0ede4]/30 p-6 md:px-10 md:py-16 rounded-lg md:rounded-[1.5rem] border border-foreground/5 shadow-sm"
                 data-netlify="true"
                 netlify-honeypot="bot-field"
                 name="kontakt"

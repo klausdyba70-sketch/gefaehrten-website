@@ -246,7 +246,7 @@ export default function ProgramPageClient(props: {
           <div className="lg:col-span-4 flex-col order-2 lg:order-none">
             <FadeIn
               delay={0.4}
-              className="bg-[#f0ede4] p-6 md:p-12 rounded-lg md:rounded-[2rem] sticky top-32 space-y-8 md:space-y-12 shadow-md border border-foreground/5 relative"
+              className="bg-[#f0ede4] p-6 md:px-8 md:py-12 rounded-lg md:rounded-[2rem] sticky top-32 space-y-8 md:space-y-12 shadow-md border border-foreground/5 relative"
             >
               {/* Category & Title Header */}
               <div className="space-y-2 border-b border-foreground/5 pb-8">
@@ -344,7 +344,7 @@ function DateGroupAccordion({ group, isLongList }: { group: any; isLongList: boo
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="bg-white/40 border border-foreground/5 rounded-lg md:rounded-2xl p-4 md:p-6 space-y-6">
+    <div className="bg-white/40 border border-foreground/5 rounded-lg md:rounded-2xl p-4 md:px-5 md:py-6 space-y-6">
       <div className="space-y-1">
         <div
           className="text-[14px] uppercase tracking-[0.2em] opacity-40 font-bold"
@@ -387,7 +387,7 @@ function DateGroupAccordion({ group, isLongList }: { group: any; isLongList: boo
                 className="space-y-4 overflow-hidden pt-2 will-change-transform"
               >
                 {group.dates?.map((d: any, i: number) => (
-                  <li key={i} className="flex flex-col bg-foreground/[0.03] border border-foreground/[0.05] rounded-lg p-4 group relative transition-all hover:bg-foreground/[0.05] hover:border-pink/20">
+            <li key={i} className="flex flex-col bg-foreground/[0.03] border border-foreground/[0.05] rounded-lg p-4 md:px-4 md:py-3 group relative transition-all hover:bg-foreground/[0.05] hover:border-pink/20">
                     {(d.status || d.isFull) && (
                       <span className={`absolute -top-2.5 -right-2 text-[9px] px-2.5 py-1 rounded-full font-bold uppercase tracking-widest shadow-sm z-10 ${d.isFull ? 'bg-pink text-white' : 'bg-pink/10 text-pink border border-pink/20 backdrop-blur-sm'}`}>
                         {d.isFull ? "WARTELISTE" : d.status}
@@ -404,7 +404,7 @@ function DateGroupAccordion({ group, isLongList }: { group: any; isLongList: boo
       ) : (
         <ul className="space-y-3">
           {group.dates?.map((d: any, i: number) => (
-            <li key={i} className="flex flex-col bg-foreground/[0.03] border border-foreground/[0.05] rounded-lg p-4 group relative transition-all hover:bg-foreground/[0.05] hover:border-pink/20">
+            <li key={i} className="flex flex-col bg-foreground/[0.03] border border-foreground/[0.05] rounded-lg p-4 md:px-4 md:py-3 group relative transition-all hover:bg-foreground/[0.05] hover:border-pink/20">
               {(d.status || d.isFull) && (
                 <span className={`absolute -top-2.5 -right-2 text-[9px] px-2.5 py-1 rounded-full font-bold uppercase tracking-widest shadow-sm z-10 ${d.isFull ? 'bg-pink text-white' : 'bg-pink/10 text-pink border border-pink/20 backdrop-blur-sm'}`}>
                   {d.isFull ? "WARTELISTE" : d.status}

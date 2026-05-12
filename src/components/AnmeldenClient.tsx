@@ -157,7 +157,7 @@ export default function AnmeldenClient({ programs, query, variables, data }: Anm
             </p>
             
             {/* --- BOX 1: SEMINAR SELECTION --- */}
-            <div className="bg-white/50 p-6 md:p-12 rounded-2xl md:rounded-[1.5rem] border border-[#1c211e]/5 shadow-sm space-y-16">
+            <div className="bg-white/50 p-6 md:px-8 md:py-12 rounded-2xl md:rounded-[1.5rem] border border-[#1c211e]/5 shadow-sm space-y-16">
               <div className="space-y-16">
                 <h3 
                   className="text-2xl font-serif italic text-[#1c211e]/90 border-b border-[#1c211e]/10 pb-4"
@@ -311,7 +311,7 @@ export default function AnmeldenClient({ programs, query, variables, data }: Anm
             </div>
 
             {/* --- BOX 2: PERSONAL DETAILS & MESSAGE --- */}
-            <div className="bg-[#1c211e]/5 p-6 md:p-12 rounded-2xl md:rounded-[1.5rem] border border-[#1c211e]/5 shadow-sm space-y-16">
+            <div className="bg-[#1c211e]/5 p-6 md:px-8 md:py-12 rounded-2xl md:rounded-[1.5rem] border border-[#1c211e]/5 shadow-sm space-y-16">
               {/* 1. MITTEILUNG */}
               <div className="space-y-8">
                 <h3 className="text-2xl font-serif italic text-[#1c211e]/90 border-b border-[#1c211e]/10 pb-4">Mitteilung</h3>

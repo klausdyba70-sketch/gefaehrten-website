@@ -144,7 +144,7 @@ export default function ContentPageClient(props: {
                 <motion.div 
                   key={idx} 
                   {...fadeInUp}
-                  className="space-y-10 bg-pink/5 p-4 md:p-12 rounded-lg md:rounded-[1.5rem] border border-pink/10 shadow-sm"
+                  className="space-y-10 bg-pink/5 p-4 md:px-8 md:py-12 rounded-lg md:rounded-[1.5rem] border border-pink/10 shadow-sm"
                 >
                    <div className="space-y-2">
                      <h4 className="text-3xl md:text-5xl font-serif italic text-pink">{section.headline}</h4>
