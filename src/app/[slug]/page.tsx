@@ -68,7 +68,7 @@ export default async function DynamicPage({ params }: { params: Promise<{ slug: 
             <Schema data={generateVideoSchema({
               name: seminar.title,
               description: seminar.intro?.summary || seminar.seo?.description,
-              thumbnailUrl: `${siteUrl}/images/hero-forest.png`, // Fallback thumbnail
+              thumbnailUrl: `${siteUrl}/images/hero-forest.webp`, // Fallback thumbnail
               contentUrl: `${siteUrl}${seminar.videoSrc}`,
               uploadDate: "2024-01-01T08:00:00+08:00"
             })} />

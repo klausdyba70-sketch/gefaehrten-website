@@ -59,7 +59,7 @@ export const contentPages: ContentPage[] = [
       {
         type: "image",
         content: "Dariusz Portrait",
-        image: "/images/dariusz_portrait.png"
+        image: "/images/dariusz_portrait.webp"
       },
       {
         type: "text",

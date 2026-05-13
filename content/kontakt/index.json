@@ -2,11 +2,11 @@
   "seo": {
     "title": "Kontakt & Anfahrt | Gefährten · Traumainstitut",
     "description": "Wir freuen uns auf deine Nachricht. Kontaktiere das Gefährten Traumainstitut für Fragen zu Ausbildungen, Seminaren oder Inhalten in Köln.",
-    "ogImage": "/images/hero-forest.png"
+    "ogImage": "/images/hero-forest.webp"
   },
   "heroTitle": "Kontakt",
   "heroLabel": "Gefährten",
-  "heroImage": "/images/hero-forest.png",
+  "heroImage": "/images/hero-forest.webp",
   "introHeadline": "Hier können Sie Kontakt zu uns aufnehmen.\n\nsie können sich bei uns telefonisch, online oder persönlich anmelden.\n",
   "introText": "",
   "details": {

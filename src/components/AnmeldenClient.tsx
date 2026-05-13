@@ -99,7 +99,7 @@ export default function AnmeldenClient({ programs, query, variables, data }: Anm
           <BackgroundVideo 
             videoMp4={pageData.heroVideo}
             externalVideoUrl={pageData.externalVideoUrl}
-            fallbackImage={pageData.heroImage || "/images/leaves.png"}
+            fallbackImage={pageData.heroImage || "/images/leaves.webp"}
             imageAlt={pageData.heroImageAlt || "Hero"}
             opacity={20}
           />

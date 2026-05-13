@@ -233,7 +233,7 @@ export default function HomeClient(props: HomeClientProps) {
                 "Training": {
                   title: "Traumatraining",
                   label: "Trauma verstehen & begleiten",
-                  image: content.offer?.trainingImage || "/images/hero-forest.png",
+                  image: content.offer?.trainingImage || "/images/hero-forest.webp",
                   summary: content.offer?.trainingSummary || (catPrograms[0]?.intro?.summary || catPrograms[0]?.datesSubline),
                   imageField: "trainingImage",
                   summaryField: "trainingSummary"
@@ -241,7 +241,7 @@ export default function HomeClient(props: HomeClientProps) {
                 "Seminar": {
                   title: "Vertiefungsseminare",
                   label: catPrograms.map((p: any) => p.title).join(" · "),
-                  image: content.offer?.seminarImage || "/images/hero-forest.png",
+                  image: content.offer?.seminarImage || "/images/hero-forest.webp",
                   summary: content.offer?.seminarSummary || "Dort, wo Themen mehr Raum und Sorgfalt brauchen. Wie entsteht Sicherheit aus Ohnmacht, Kontrolle oder Zwang?",
                   imageField: "seminarImage",
                   summaryField: "seminarSummary"
@@ -249,7 +249,7 @@ export default function HomeClient(props: HomeClientProps) {
                 "Praxiskreis": {
                   title: "Tanzkomplizen",
                   label: "Praxiskreis · monatlich",
-                  image: content.offer?.praxiskreisImage || "/images/hero-forest.png",
+                  image: content.offer?.praxiskreisImage || "/images/hero-forest.webp",
                   summary: content.offer?.praxiskreisSummary || (catPrograms[0]?.intro?.summary || catPrograms[0]?.datesSubline),
                   imageField: "praxiskreisImage",
                   summaryField: "praxiskreisSummary"
@@ -330,7 +330,7 @@ export default function HomeClient(props: HomeClientProps) {
               className="relative aspect-[4/5] rounded-lg overflow-hidden shadow-2xl w-full block group"
             >
               <img 
-                src={content.about?.image || "/images/dariusz_portrait.png"} 
+                src={content.about?.image || "/images/dariusz_portrait.webp"} 
                 alt={content.about?.imageAlt || content.about?.title || "Dariusz Portrait"} 
                 className="w-full h-full object-cover transition-all duration-1000 scale-105 group-hover:scale-100" 
                 data-tina-field={tinaField(content.about, "image")}
@@ -392,7 +392,7 @@ export default function HomeClient(props: HomeClientProps) {
       <section className="w-full bg-[#1c211e] py-24 md:py-48 px-6 md:px-12 text-center relative overflow-hidden">
         {/* Background Image/Texture */}
         <div className="absolute inset-0 opacity-10">
-           <img src="/images/leaves.png" alt="Texture" className="w-full h-full object-cover opacity-20" />
+           <img src="/images/leaves.webp" alt="Texture" className="w-full h-full object-cover opacity-20" />
         </div>
         
         <div className="max-w-6xl mx-auto relative z-10 space-y-12 md:space-y-16">

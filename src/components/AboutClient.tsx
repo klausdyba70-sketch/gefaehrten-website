@@ -159,7 +159,7 @@ export default function AboutClient(props: {
         <section className="w-full bg-[#1c211e] py-32 md:py-48 px-6 text-center relative overflow-hidden">
           {/* Background Image/Texture */}
           <div className="absolute inset-0 opacity-10">
-             <img src="/images/leaves.png" alt="Texture" className="w-full h-full object-cover opacity-20" />
+             <img src="/images/leaves.webp" alt="Texture" className="w-full h-full object-cover opacity-20" />
           </div>
           
           <div className="max-w-6xl mx-auto relative z-10 space-y-12 md:space-y-16">
