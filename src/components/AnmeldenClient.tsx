@@ -417,7 +417,7 @@ export default function AnmeldenClient({ programs, query, variables, data }: Anm
                     </div>
                     <div>
                       <label className="text-[14px] font-serif italic capitalize tracking-widest text-pink font-bold block mb-2">{item.label} <span className="text-pink">*</span></label>
-                      <div className="text-sm text-[#1c211e]/70 font-sans font-light leading-relaxed prose prose-sm prose-p:my-1">
+                      <div className="text-sm text-[#1c211e]/70 font-sans font-light leading-relaxed prose prose-sm">
                         {item.content && typeof item.content === 'object' ? (
                           <TinaMarkdown content={item.content} />
                         ) : (
@@ -428,7 +428,7 @@ export default function AnmeldenClient({ programs, query, variables, data }: Anm
                   </div>
                 ))}
 
-                <div className="bg-[#f5f2eb]/50 border border-foreground/5 p-8 rounded-2xl md:rounded-[1.5rem] text-sm text-[#1c211e]/80 leading-relaxed font-sans font-light prose prose-sm prose-p:my-1 prose-strong:font-bold prose-strong:text-pink">
+                <div className="bg-[#f5f2eb]/50 border border-foreground/5 p-8 rounded-2xl md:rounded-[1.5rem] text-sm text-[#1c211e]/80 leading-relaxed font-sans font-light prose prose-sm prose-strong:font-bold prose-strong:text-pink">
                   {pageData.bankDetails && typeof pageData.bankDetails === 'object' ? (
                     <TinaMarkdown content={pageData.bankDetails} />
                   ) : (

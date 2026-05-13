@@ -294,7 +294,7 @@ export default function ProgramPageClient(props: {
                   <div className="text-[14px] uppercase tracking-[0.2em] text-pink font-bold" data-tina-field={tinaField(content.highlight, "headline")}>
                     {content.highlight.headline || "Ablauf"}
                   </div>
-                  <div className="text-sm font-sans font-light opacity-85 leading-relaxed rich-text prose-sm prose-p:my-1" data-tina-field={tinaField(content.highlight, "text")}>
+                  <div className="text-sm font-sans font-light opacity-85 leading-relaxed rich-text prose-sm" data-tina-field={tinaField(content.highlight, "text")}>
                     <TinaMarkdown content={content.highlight.text} />
                   </div>
                 </div>

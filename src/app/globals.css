@@ -101,6 +101,7 @@ body {
 
 .rich-text p {
   margin-bottom: 1.5rem;
+  min-height: 1.5rem; /* Ensure empty paragraphs take up space */
 }
 
 .rich-text p:last-child {
