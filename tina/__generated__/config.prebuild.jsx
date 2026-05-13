@@ -89,7 +89,7 @@ var config_default = defineConfig({
             fields: [
               { type: "string", name: "label", label: "Kleines Label (Rose)", description: "Z.B. 'Das Angebot'" },
               { type: "rich-text", name: "headline", label: "Haupt-Headline" },
-              { type: "image", name: "offerImage", label: "Angebot Einleitungs-Bild", description: "Erscheint neben dem Text." },
+              { type: "image", name: "offerImage", label: "Angebot Einleitungs-Bild", description: "Erscheits neben dem Text." },
               { type: "string", name: "offerImageAlt", label: "Bild Alternativtext" },
               { type: "rich-text", name: "text", label: "Einleitungstext" },
               { type: "string", name: "formatsHeadline", label: "\xDCberschrift Formate (Training/Seminare...)" },
@@ -127,8 +127,8 @@ var config_default = defineConfig({
           },
           {
             type: "object",
-            list: true,
             name: "testimonials",
+            list: true,
             label: "Testimonials (Kundenstimmen)",
             ui: {
               itemProps: (item) => ({ label: item?.name || "Neues Testimonial" })
@@ -139,6 +139,214 @@ var config_default = defineConfig({
               { type: "string", name: "quote", label: "Zitat", ui: { component: "textarea" } },
               { type: "image", name: "image", label: "Profilbild" },
               { type: "string", name: "imageAlt", label: "Bild Alternativtext" }
+            ]
+          }
+        ]
+      },
+      {
+        name: "seminars",
+        label: "Ausbildungen & Seminare",
+        path: "content/seminars",
+        format: "mdx",
+        ui: {
+          router: ({ document }) => `/${document._sys.filename}`
+        },
+        fields: [
+          seoFields,
+          {
+            type: "string",
+            name: "category",
+            label: "Kategorie",
+            options: ["Training", "Seminar", "Praxiskreis"],
+            description: "WICHTIG: Bestimmt, in welchem Bereich das Programm im Anmeldeformular erscheint."
+          },
+          {
+            type: "string",
+            name: "label",
+            label: "Ober-\xDCberschrift (Label)",
+            description: "Erscheint ganz oben in kleiner, rosafarbener Schrift (z.B. 'Gef\xE4hrten \xB7 Training')."
+          },
+          {
+            type: "string",
+            name: "title",
+            label: "Haupt-Titel",
+            isTitle: true,
+            required: true,
+            description: "Die gro\xDFe Haupt\xFCberschrift der Seite. HINWEIS: Um die URL zu \xE4ndern (z.B. /trauma), benennen Sie dieses Dokument in der Liste links um."
+          },
+          {
+            type: "image",
+            name: "videoSrc",
+            label: "Hintergrund-Video (mp4)",
+            description: "Der Pfad zum Video, das hinter dem Titel l\xE4uft (z.B. /videos/hero-video.mp4)."
+          },
+          { type: "string", name: "externalVideoUrl", label: "ODER Vimeo/YouTube URL" },
+          { type: "image", name: "heroImage", label: "Hintergrund-Bild (Hero)" },
+          { type: "string", name: "heroImageAlt", label: "Hintergrund-Bild Alternativtext" },
+          {
+            type: "boolean",
+            name: "isFull",
+            label: "Programm Ausgebucht / Warteliste?",
+            description: "Wenn aktiv, \xE4ndert sich der Button zu 'WARTELISTE'."
+          },
+          {
+            type: "object",
+            name: "headerIntro",
+            label: "Header Einleitung",
+            fields: [
+              { type: "string", name: "headline", label: "Headline" },
+              { type: "rich-text", name: "text", label: "Text" }
+            ]
+          },
+          {
+            type: "object",
+            name: "intro",
+            label: "Detail Einleitung",
+            fields: [
+              { type: "string", name: "headline", label: "Headline" },
+              { type: "string", name: "detailedHeadline", label: "Kleine Headline" },
+              { type: "string", name: "summary", label: "Kurz-Zusammenfassung (f\xFCr Startseite)", ui: { component: "textarea" } },
+              { type: "rich-text", name: "text1", label: "Absatz 1" },
+              { type: "rich-text", name: "text2", label: "Absatz 2" },
+              { type: "rich-text", name: "text3", label: "Absatz 3" }
+            ]
+          },
+          { type: "boolean", name: "showHighlight", label: "Highlight Box (Rose) anzeigen?" },
+          {
+            type: "object",
+            name: "highlight",
+            label: "Highlight Box",
+            fields: [
+              { type: "string", name: "headline", label: "Headline" },
+              { type: "string", name: "subline", label: "Subline" },
+              { type: "rich-text", name: "text", label: "Text" }
+            ]
+          },
+          { type: "boolean", name: "showWeekends", label: "Wochenenden/Module (Akkordeon) anzeigen?" },
+          {
+            type: "object",
+            list: true,
+            name: "weekends",
+            label: "Wochenenden / Bl\xF6cke (Akkordeon)",
+            description: "Die aufklappbaren Bereiche f\xFCr die einzelnen Termine.",
+            ui: {
+              itemProps: (item) => ({ label: item?.title || "Neuer Block" })
+            },
+            fields: [
+              { type: "string", name: "title", label: "Block Titel (z.B. Block 1)" },
+              { type: "string", name: "subtitle", label: "Thema (z.B. Die Haltung)" },
+              { type: "string", name: "duration", label: "Dauer Label (z.B. 4 TAGE)" },
+              { type: "string", list: true, name: "items", label: "Inhalt / Aufz\xE4hlungspunkte" },
+              { type: "rich-text", name: "text", label: "Beschreibung (Rich Text)" }
+            ]
+          },
+          { type: "boolean", name: "showCurriculum", label: "Curriculum (Raster) anzeigen?" },
+          { type: "string", name: "curriculumLabel", label: "Curriculum \xDCber-\xDCberschrift (Label)", description: "Standard: Curriculum \xB7 Module" },
+          { type: "string", name: "curriculumHeadline", label: "Curriculum \xDCberschrift", description: "Standard: Module im \xDCberblick." },
+          { type: "string", name: "curriculumIntro", label: "Curriculum Einleitungstext", description: "Erscheint rechts neben der \xDCberschrift." },
+          {
+            type: "object",
+            list: true,
+            name: "curriculum",
+            label: "Curriculum / Module",
+            description: "Die Liste der Lerninhalte im Raster-Layout.",
+            ui: { itemProps: (item) => ({ label: item?.title || "Neues Modul" }) },
+            fields: [
+              { type: "string", name: "id", label: "Nummer (z.B. 01)" },
+              { type: "string", name: "title", label: "Modul Name" },
+              { type: "string", name: "duration", label: "Dauer Label (z.B. 4 TAGE)" },
+              { type: "string", list: true, name: "items", label: "Aufz\xE4hlungspunkte" },
+              { type: "rich-text", name: "description", label: "Inhalt / Beschreibung" }
+            ]
+          },
+          {
+            type: "object",
+            list: true,
+            name: "dateGroups",
+            label: "Termin-Gruppen (Sidebar)",
+            description: "Hier k\xF6nnen Sie eine oder mehrere Termin-Listen f\xFCr die Sidebar anlegen.",
+            ui: {
+              itemProps: (item) => ({ label: item?.headline || "Neue Termin-Gruppe" })
+            },
+            fields: [
+              { type: "string", name: "headline", label: "Termine \xDCberschrift", description: "Z.B. 'Termine 2026' oder 'Gruppe A'" },
+              { type: "string", name: "subline", label: "Termine Unterzeile", description: "Erscheint unter der \xDCberschrift." },
+              {
+                type: "object",
+                list: true,
+                name: "dates",
+                label: "Termine",
+                description: "Die einzelnen Termine dieser Gruppe.",
+                ui: { itemProps: (item) => ({ label: `${item?.date || "Neuer Termin"} ${item?.isFull ? "(VOLL)" : ""}` }) },
+                fields: [
+                  { type: "string", name: "date", label: "Datum" },
+                  { type: "string", name: "location", label: "L\xE4nge/Zeit" },
+                  { type: "boolean", name: "isFull", label: "Termin voll? (Warteliste)" },
+                  { type: "string", name: "status", label: "Zusatz-Info (z.B. 'Nur noch 1 Platz')" }
+                ]
+              }
+            ]
+          },
+          {
+            type: "string",
+            name: "price",
+            label: "Regul\xE4rer Preis",
+            description: "Erscheint in der Sidebar und im Anmeldeformular (z.B. '2.400 \u20AC')."
+          },
+          {
+            type: "string",
+            name: "discountPrice",
+            label: "Rabatt-Preis (Optional)",
+            description: "Falls ausgef\xFCllt, wird dieser Preis als reduzierter Preis angezeigt."
+          },
+          {
+            type: "object",
+            name: "installment",
+            label: "Ratenzahlung (Formular)",
+            fields: [
+              { type: "boolean", name: "available", label: "Ratenzahlung m\xF6glich?" },
+              { type: "string", name: "text", label: "Frei editierbarer Text (z.B. '4 Raten \xE0 600 \u20AC')" }
+            ]
+          }
+        ]
+      },
+      {
+        name: "page",
+        label: "Seiten (\xDCber mich, Haltung...)",
+        path: "content/pages",
+        format: "mdx",
+        fields: [
+          seoFields,
+          { type: "string", name: "title", label: "Titel", isTitle: true, required: true },
+          { type: "string", name: "heroLabel", label: "Hero Label (klein, oben)" },
+          { type: "string", name: "heroSubline", label: "Hero Unterzeile (unter Titel)" },
+          { type: "image", name: "heroImage", label: "Hero Bild" },
+          { type: "string", name: "heroImageAlt", label: "Hero Bild Alternativtext" },
+          { type: "string", name: "heroVideo", label: "Hero Video URL (mp4)" },
+          { type: "string", name: "externalVideoUrl", label: "ODER Vimeo/YouTube URL" },
+          {
+            type: "object",
+            list: true,
+            name: "sections",
+            label: "Inhaltsabschnitte",
+            ui: {
+              itemProps: (item) => ({ label: `${item?.type || "Abschnitt"}: ${item?.headline || "(ohne Headline)"}` })
+            },
+            fields: [
+              { type: "string", name: "type", label: "Typ", options: ["text", "highlight", "image"] },
+              { type: "string", name: "headline", label: "Headline (Optional)" },
+              { type: "rich-text", name: "content", label: "Inhalt" },
+              { type: "image", name: "image", label: "Bild (nur bei Typ Image)" },
+              { type: "string", name: "imageAlt", label: "Bild Alternativtext" },
+              {
+                type: "object",
+                name: "button",
+                label: "Button (Optional)",
+                fields: [
+                  { type: "string", name: "label", label: "Button Text" },
+                  { type: "string", name: "url", label: "Button Link" }
+                ]
+              }
             ]
           }
         ]
@@ -351,214 +559,6 @@ var config_default = defineConfig({
                   { type: "string", name: "url", label: "ODER Manuelle URL" }
                 ]
               }
-            ]
-          }
-        ]
-      },
-      {
-        name: "page",
-        label: "Seiten (\xDCber mich, Haltung...)",
-        path: "content/pages",
-        format: "mdx",
-        fields: [
-          seoFields,
-          { type: "string", name: "title", label: "Titel", isTitle: true, required: true },
-          { type: "string", name: "heroLabel", label: "Hero Label (klein, oben)" },
-          { type: "string", name: "heroSubline", label: "Hero Unterzeile (unter Titel)" },
-          { type: "image", name: "heroImage", label: "Hero Bild" },
-          { type: "string", name: "heroImageAlt", label: "Hero Bild Alternativtext" },
-          { type: "string", name: "heroVideo", label: "Hero Video URL (mp4)" },
-          { type: "string", name: "externalVideoUrl", label: "ODER Vimeo/YouTube URL" },
-          {
-            type: "object",
-            list: true,
-            name: "sections",
-            label: "Inhaltsabschnitte",
-            ui: {
-              itemProps: (item) => ({ label: `${item?.type || "Abschnitt"}: ${item?.headline || "(ohne Headline)"}` })
-            },
-            fields: [
-              { type: "string", name: "type", label: "Typ", options: ["text", "highlight", "image"] },
-              { type: "string", name: "headline", label: "Headline (Optional)" },
-              { type: "rich-text", name: "content", label: "Inhalt" },
-              { type: "image", name: "image", label: "Bild (nur bei Typ Image)" },
-              { type: "string", name: "imageAlt", label: "Bild Alternativtext" },
-              {
-                type: "object",
-                name: "button",
-                label: "Button (Optional)",
-                fields: [
-                  { type: "string", name: "label", label: "Button Text" },
-                  { type: "string", name: "url", label: "Button Link" }
-                ]
-              }
-            ]
-          }
-        ]
-      },
-      {
-        name: "seminars",
-        label: "Ausbildungen & Seminare",
-        path: "content/seminars",
-        format: "mdx",
-        ui: {
-          router: ({ document }) => `/${document._sys.filename}`
-        },
-        fields: [
-          seoFields,
-          {
-            type: "string",
-            name: "category",
-            label: "Kategorie",
-            options: ["Training", "Seminar", "Praxiskreis"],
-            description: "WICHTIG: Bestimmt, in welchem Bereich das Programm im Anmeldeformular erscheint."
-          },
-          {
-            type: "string",
-            name: "label",
-            label: "Ober-\xDCberschrift (Label)",
-            description: "Erscheint ganz oben in kleiner, rosafarbener Schrift (z.B. 'Gef\xE4hrten \xB7 Training')."
-          },
-          {
-            type: "string",
-            name: "title",
-            label: "Haupt-Titel",
-            isTitle: true,
-            required: true,
-            description: "Die gro\xDFe Haupt\xFCberschrift der Seite. HINWEIS: Um die URL zu \xE4ndern (z.B. /trauma), benennen Sie dieses Dokument in der Liste links um."
-          },
-          {
-            type: "image",
-            name: "videoSrc",
-            label: "Hintergrund-Video (mp4)",
-            description: "Der Pfad zum Video, das hinter dem Titel l\xE4uft (z.B. /videos/hero-video.mp4)."
-          },
-          { type: "string", name: "externalVideoUrl", label: "ODER Vimeo/YouTube URL" },
-          { type: "image", name: "heroImage", label: "Hintergrund-Bild (Hero)" },
-          { type: "string", name: "heroImageAlt", label: "Hintergrund-Bild Alternativtext" },
-          {
-            type: "boolean",
-            name: "isFull",
-            label: "Programm Ausgebucht / Warteliste?",
-            description: "Wenn aktiv, \xE4ndert sich der Button zu 'WARTELISTE'."
-          },
-          {
-            type: "object",
-            name: "headerIntro",
-            label: "Header Einleitung",
-            fields: [
-              { type: "string", name: "headline", label: "Headline" },
-              { type: "rich-text", name: "text", label: "Text" }
-            ]
-          },
-          {
-            type: "object",
-            name: "intro",
-            label: "Detail Einleitung",
-            fields: [
-              { type: "string", name: "headline", label: "Headline" },
-              { type: "string", name: "detailedHeadline", label: "Kleine Headline" },
-              { type: "string", name: "summary", label: "Kurz-Zusammenfassung (f\xFCr Startseite)", ui: { component: "textarea" } },
-              { type: "rich-text", name: "text1", label: "Absatz 1" },
-              { type: "rich-text", name: "text2", label: "Absatz 2" },
-              { type: "rich-text", name: "text3", label: "Absatz 3" }
-            ]
-          },
-          { type: "boolean", name: "showHighlight", label: "Highlight Box (Rose) anzeigen?" },
-          {
-            type: "object",
-            name: "highlight",
-            label: "Highlight Box",
-            fields: [
-              { type: "string", name: "headline", label: "Headline" },
-              { type: "string", name: "subline", label: "Subline" },
-              { type: "rich-text", name: "text", label: "Text" }
-            ]
-          },
-          { type: "boolean", name: "showWeekends", label: "Wochenenden/Module (Akkordeon) anzeigen?" },
-          {
-            type: "object",
-            list: true,
-            name: "weekends",
-            label: "Wochenenden / Bl\xF6cke (Akkordeon)",
-            description: "Die aufklappbaren Bereiche f\xFCr die einzelnen Termine.",
-            ui: {
-              itemProps: (item) => ({ label: item?.title || "Neuer Block" })
-            },
-            fields: [
-              { type: "string", name: "title", label: "Block Titel (z.B. Block 1)" },
-              { type: "string", name: "subtitle", label: "Thema (z.B. Die Haltung)" },
-              { type: "string", name: "duration", label: "Dauer Label (z.B. 4 TAGE)" },
-              { type: "string", list: true, name: "items", label: "Inhalt / Aufz\xE4hlungspunkte" },
-              { type: "rich-text", name: "text", label: "Beschreibung (Rich Text)" }
-            ]
-          },
-          { type: "boolean", name: "showCurriculum", label: "Curriculum (Raster) anzeigen?" },
-          { type: "string", name: "curriculumLabel", label: "Curriculum \xDCber-\xDCberschrift (Label)", description: "Standard: Curriculum \xB7 Module" },
-          { type: "string", name: "curriculumHeadline", label: "Curriculum \xDCberschrift", description: "Standard: Module im \xDCberblick." },
-          { type: "string", name: "curriculumIntro", label: "Curriculum Einleitungstext", description: "Erscheint rechts neben der \xDCberschrift." },
-          {
-            type: "object",
-            list: true,
-            name: "curriculum",
-            label: "Curriculum / Module",
-            description: "Die Liste der Lerninhalte im Raster-Layout.",
-            ui: { itemProps: (item) => ({ label: item?.title || "Neues Modul" }) },
-            fields: [
-              { type: "string", name: "id", label: "Nummer (z.B. 01)" },
-              { type: "string", name: "title", label: "Modul Name" },
-              { type: "string", name: "duration", label: "Dauer Label (z.B. 4 TAGE)" },
-              { type: "string", list: true, name: "items", label: "Aufz\xE4hlungspunkte" },
-              { type: "rich-text", name: "description", label: "Inhalt / Beschreibung" }
-            ]
-          },
-          {
-            type: "object",
-            list: true,
-            name: "dateGroups",
-            label: "Termin-Gruppen (Sidebar)",
-            description: "Hier k\xF6nnen Sie eine oder mehrere Termin-Listen f\xFCr die Sidebar anlegen.",
-            ui: {
-              itemProps: (item) => ({ label: item?.headline || "Neue Termin-Gruppe" })
-            },
-            fields: [
-              { type: "string", name: "headline", label: "Termine \xDCberschrift", description: "Z.B. 'Termine 2026' oder 'Gruppe A'" },
-              { type: "string", name: "subline", label: "Termine Unterzeile", description: "Erscheint unter der \xDCberschrift." },
-              {
-                type: "object",
-                list: true,
-                name: "dates",
-                label: "Termine",
-                description: "Die einzelnen Termine dieser Gruppe.",
-                ui: { itemProps: (item) => ({ label: `${item?.date || "Neuer Termin"} ${item?.isFull ? "(VOLL)" : ""}` }) },
-                fields: [
-                  { type: "string", name: "date", label: "Datum" },
-                  { type: "string", name: "location", label: "L\xE4nge/Zeit" },
-                  { type: "boolean", name: "isFull", label: "Termin voll? (Warteliste)" },
-                  { type: "string", name: "status", label: "Zusatz-Info (z.B. 'Nur noch 1 Platz')" }
-                ]
-              }
-            ]
-          },
-          {
-            type: "string",
-            name: "price",
-            label: "Regul\xE4rer Preis",
-            description: "Erscheint in der Sidebar und im Anmeldeformular (z.B. '2.400 \u20AC')."
-          },
-          {
-            type: "string",
-            name: "discountPrice",
-            label: "Rabatt-Preis (Optional)",
-            description: "Falls ausgef\xFCllt, wird dieser Preis als reduzierter Preis angezeigt."
-          },
-          {
-            type: "object",
-            name: "installment",
-            label: "Ratenzahlung (Formular)",
-            fields: [
-              { type: "boolean", name: "available", label: "Ratenzahlung m\xF6glich?" },
-              { type: "string", name: "text", label: "Frei editierbarer Text (z.B. '4 Raten \xE0 600 \u20AC')" }
             ]
           }
         ]

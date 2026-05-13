@@ -60,6 +60,119 @@ fragment HomepageParts on Homepage {
   }
 }
 
+fragment SeminarsParts on Seminars {
+  __typename
+  seo {
+    __typename
+    title
+    description
+    canonical
+    ogImage
+    noIndex
+  }
+  category
+  label
+  title
+  videoSrc
+  externalVideoUrl
+  heroImage
+  heroImageAlt
+  isFull
+  headerIntro {
+    __typename
+    headline
+    text
+  }
+  intro {
+    __typename
+    headline
+    detailedHeadline
+    summary
+    text1
+    text2
+    text3
+  }
+  showHighlight
+  highlight {
+    __typename
+    headline
+    subline
+    text
+  }
+  showWeekends
+  weekends {
+    __typename
+    title
+    subtitle
+    duration
+    items
+    text
+  }
+  showCurriculum
+  curriculumLabel
+  curriculumHeadline
+  curriculumIntro
+  curriculum {
+    __typename
+    id
+    title
+    duration
+    items
+    description
+  }
+  dateGroups {
+    __typename
+    headline
+    subline
+    dates {
+      __typename
+      date
+      location
+      isFull
+      status
+    }
+  }
+  price
+  discountPrice
+  installment {
+    __typename
+    available
+    text
+  }
+}
+
+fragment PageParts on Page {
+  __typename
+  seo {
+    __typename
+    title
+    description
+    canonical
+    ogImage
+    noIndex
+  }
+  title
+  heroLabel
+  heroSubline
+  heroImage
+  heroImageAlt
+  heroVideo
+  externalVideoUrl
+  sections {
+    __typename
+    type
+    headline
+    content
+    image
+    imageAlt
+    button {
+      __typename
+      label
+      url
+    }
+  }
+}
+
 fragment AnmeldenParts on Anmelden {
   __typename
   seo {
@@ -435,119 +548,6 @@ fragment SettingsParts on Settings {
       }
       url
     }
-  }
-}
-
-fragment PageParts on Page {
-  __typename
-  seo {
-    __typename
-    title
-    description
-    canonical
-    ogImage
-    noIndex
-  }
-  title
-  heroLabel
-  heroSubline
-  heroImage
-  heroImageAlt
-  heroVideo
-  externalVideoUrl
-  sections {
-    __typename
-    type
-    headline
-    content
-    image
-    imageAlt
-    button {
-      __typename
-      label
-      url
-    }
-  }
-}
-
-fragment SeminarsParts on Seminars {
-  __typename
-  seo {
-    __typename
-    title
-    description
-    canonical
-    ogImage
-    noIndex
-  }
-  category
-  label
-  title
-  videoSrc
-  externalVideoUrl
-  heroImage
-  heroImageAlt
-  isFull
-  headerIntro {
-    __typename
-    headline
-    text
-  }
-  intro {
-    __typename
-    headline
-    detailedHeadline
-    summary
-    text1
-    text2
-    text3
-  }
-  showHighlight
-  highlight {
-    __typename
-    headline
-    subline
-    text
-  }
-  showWeekends
-  weekends {
-    __typename
-    title
-    subtitle
-    duration
-    items
-    text
-  }
-  showCurriculum
-  curriculumLabel
-  curriculumHeadline
-  curriculumIntro
-  curriculum {
-    __typename
-    id
-    title
-    duration
-    items
-    description
-  }
-  dateGroups {
-    __typename
-    headline
-    subline
-    dates {
-      __typename
-      date
-      location
-      isFull
-      status
-    }
-  }
-  price
-  discountPrice
-  installment {
-    __typename
-    available
-    text
   }
 }
 

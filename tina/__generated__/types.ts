@@ -84,6 +84,10 @@ export type Query = {
   document: DocumentNode;
   homepage: Homepage;
   homepageConnection: HomepageConnection;
+  seminars: Seminars;
+  seminarsConnection: SeminarsConnection;
+  page: Page;
+  pageConnection: PageConnection;
   anmelden: Anmelden;
   anmeldenConnection: AnmeldenConnection;
   kontakt: Kontakt;
@@ -92,10 +96,6 @@ export type Query = {
   ueberunsConnection: UeberunsConnection;
   settings: Settings;
   settingsConnection: SettingsConnection;
-  page: Page;
-  pageConnection: PageConnection;
-  seminars: Seminars;
-  seminarsConnection: SeminarsConnection;
   redirects: Redirects;
   redirectsConnection: RedirectsConnection;
 };
@@ -134,6 +134,36 @@ export type QueryHomepageConnectionArgs = {
   last?: InputMaybe<Scalars['Float']['input']>;
   sort?: InputMaybe<Scalars['String']['input']>;
   filter?: InputMaybe<HomepageFilter>;
+};
+
+
+export type QuerySeminarsArgs = {
+  relativePath?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+export type QuerySeminarsConnectionArgs = {
+  before?: InputMaybe<Scalars['String']['input']>;
+  after?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Float']['input']>;
+  last?: InputMaybe<Scalars['Float']['input']>;
+  sort?: InputMaybe<Scalars['String']['input']>;
+  filter?: InputMaybe<SeminarsFilter>;
+};
+
+
+export type QueryPageArgs = {
+  relativePath?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+export type QueryPageConnectionArgs = {
+  before?: InputMaybe<Scalars['String']['input']>;
+  after?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Float']['input']>;
+  last?: InputMaybe<Scalars['Float']['input']>;
+  sort?: InputMaybe<Scalars['String']['input']>;
+  filter?: InputMaybe<PageFilter>;
 };
 
 
@@ -197,36 +227,6 @@ export type QuerySettingsConnectionArgs = {
 };
 
 
-export type QueryPageArgs = {
-  relativePath?: InputMaybe<Scalars['String']['input']>;
-};
-
-
-export type QueryPageConnectionArgs = {
-  before?: InputMaybe<Scalars['String']['input']>;
-  after?: InputMaybe<Scalars['String']['input']>;
-  first?: InputMaybe<Scalars['Float']['input']>;
-  last?: InputMaybe<Scalars['Float']['input']>;
-  sort?: InputMaybe<Scalars['String']['input']>;
-  filter?: InputMaybe<PageFilter>;
-};
-
-
-export type QuerySeminarsArgs = {
-  relativePath?: InputMaybe<Scalars['String']['input']>;
-};
-
-
-export type QuerySeminarsConnectionArgs = {
-  before?: InputMaybe<Scalars['String']['input']>;
-  after?: InputMaybe<Scalars['String']['input']>;
-  first?: InputMaybe<Scalars['Float']['input']>;
-  last?: InputMaybe<Scalars['Float']['input']>;
-  sort?: InputMaybe<Scalars['String']['input']>;
-  filter?: InputMaybe<SeminarsFilter>;
-};
-
-
 export type QueryRedirectsArgs = {
   relativePath?: InputMaybe<Scalars['String']['input']>;
 };
@@ -243,12 +243,12 @@ export type QueryRedirectsConnectionArgs = {
 
 export type DocumentFilter = {
   homepage?: InputMaybe<HomepageFilter>;
+  seminars?: InputMaybe<SeminarsFilter>;
+  page?: InputMaybe<PageFilter>;
   anmelden?: InputMaybe<AnmeldenFilter>;
   kontakt?: InputMaybe<KontaktFilter>;
   ueberuns?: InputMaybe<UeberunsFilter>;
   settings?: InputMaybe<SettingsFilter>;
-  page?: InputMaybe<PageFilter>;
-  seminars?: InputMaybe<SeminarsFilter>;
   redirects?: InputMaybe<RedirectsFilter>;
 };
 
@@ -289,7 +289,7 @@ export type CollectionDocumentsArgs = {
   folder?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type DocumentNode = Homepage | Anmelden | Kontakt | Ueberuns | Settings | Page | Seminars | Redirects | Folder;
+export type DocumentNode = Homepage | Seminars | Page | Anmelden | Kontakt | Ueberuns | Settings | Redirects | Folder;
 
 export type HomepageSeo = {
   __typename?: 'HomepageSeo';
@@ -471,6 +471,298 @@ export type HomepageConnection = Connection & {
   pageInfo: PageInfo;
   totalCount: Scalars['Float']['output'];
   edges?: Maybe<Array<Maybe<HomepageConnectionEdges>>>;
+};
+
+export type SeminarsSeo = {
+  __typename?: 'SeminarsSeo';
+  title?: Maybe<Scalars['String']['output']>;
+  description?: Maybe<Scalars['String']['output']>;
+  canonical?: Maybe<Scalars['String']['output']>;
+  ogImage?: Maybe<Scalars['String']['output']>;
+  noIndex?: Maybe<Scalars['Boolean']['output']>;
+};
+
+export type SeminarsHeaderIntro = {
+  __typename?: 'SeminarsHeaderIntro';
+  headline?: Maybe<Scalars['String']['output']>;
+  text?: Maybe<Scalars['JSON']['output']>;
+};
+
+export type SeminarsIntro = {
+  __typename?: 'SeminarsIntro';
+  headline?: Maybe<Scalars['String']['output']>;
+  detailedHeadline?: Maybe<Scalars['String']['output']>;
+  summary?: Maybe<Scalars['String']['output']>;
+  text1?: Maybe<Scalars['JSON']['output']>;
+  text2?: Maybe<Scalars['JSON']['output']>;
+  text3?: Maybe<Scalars['JSON']['output']>;
+};
+
+export type SeminarsHighlight = {
+  __typename?: 'SeminarsHighlight';
+  headline?: Maybe<Scalars['String']['output']>;
+  subline?: Maybe<Scalars['String']['output']>;
+  text?: Maybe<Scalars['JSON']['output']>;
+};
+
+export type SeminarsWeekends = {
+  __typename?: 'SeminarsWeekends';
+  title?: Maybe<Scalars['String']['output']>;
+  subtitle?: Maybe<Scalars['String']['output']>;
+  duration?: Maybe<Scalars['String']['output']>;
+  items?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  text?: Maybe<Scalars['JSON']['output']>;
+};
+
+export type SeminarsCurriculum = {
+  __typename?: 'SeminarsCurriculum';
+  id?: Maybe<Scalars['String']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
+  duration?: Maybe<Scalars['String']['output']>;
+  items?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  description?: Maybe<Scalars['JSON']['output']>;
+};
+
+export type SeminarsDateGroupsDates = {
+  __typename?: 'SeminarsDateGroupsDates';
+  date?: Maybe<Scalars['String']['output']>;
+  location?: Maybe<Scalars['String']['output']>;
+  isFull?: Maybe<Scalars['Boolean']['output']>;
+  status?: Maybe<Scalars['String']['output']>;
+};
+
+export type SeminarsDateGroups = {
+  __typename?: 'SeminarsDateGroups';
+  headline?: Maybe<Scalars['String']['output']>;
+  subline?: Maybe<Scalars['String']['output']>;
+  dates?: Maybe<Array<Maybe<SeminarsDateGroupsDates>>>;
+};
+
+export type SeminarsInstallment = {
+  __typename?: 'SeminarsInstallment';
+  available?: Maybe<Scalars['Boolean']['output']>;
+  text?: Maybe<Scalars['String']['output']>;
+};
+
+export type Seminars = Node & Document & {
+  __typename?: 'Seminars';
+  seo?: Maybe<SeminarsSeo>;
+  category?: Maybe<Scalars['String']['output']>;
+  label?: Maybe<Scalars['String']['output']>;
+  title: Scalars['String']['output'];
+  videoSrc?: Maybe<Scalars['String']['output']>;
+  externalVideoUrl?: Maybe<Scalars['String']['output']>;
+  heroImage?: Maybe<Scalars['String']['output']>;
+  heroImageAlt?: Maybe<Scalars['String']['output']>;
+  isFull?: Maybe<Scalars['Boolean']['output']>;
+  headerIntro?: Maybe<SeminarsHeaderIntro>;
+  intro?: Maybe<SeminarsIntro>;
+  showHighlight?: Maybe<Scalars['Boolean']['output']>;
+  highlight?: Maybe<SeminarsHighlight>;
+  showWeekends?: Maybe<Scalars['Boolean']['output']>;
+  weekends?: Maybe<Array<Maybe<SeminarsWeekends>>>;
+  showCurriculum?: Maybe<Scalars['Boolean']['output']>;
+  curriculumLabel?: Maybe<Scalars['String']['output']>;
+  curriculumHeadline?: Maybe<Scalars['String']['output']>;
+  curriculumIntro?: Maybe<Scalars['String']['output']>;
+  curriculum?: Maybe<Array<Maybe<SeminarsCurriculum>>>;
+  dateGroups?: Maybe<Array<Maybe<SeminarsDateGroups>>>;
+  price?: Maybe<Scalars['String']['output']>;
+  discountPrice?: Maybe<Scalars['String']['output']>;
+  installment?: Maybe<SeminarsInstallment>;
+  id: Scalars['ID']['output'];
+  _sys: SystemInfo;
+  _values: Scalars['JSON']['output'];
+};
+
+export type SeminarsSeoFilter = {
+  title?: InputMaybe<StringFilter>;
+  description?: InputMaybe<StringFilter>;
+  canonical?: InputMaybe<StringFilter>;
+  ogImage?: InputMaybe<ImageFilter>;
+  noIndex?: InputMaybe<BooleanFilter>;
+};
+
+export type SeminarsHeaderIntroFilter = {
+  headline?: InputMaybe<StringFilter>;
+  text?: InputMaybe<RichTextFilter>;
+};
+
+export type SeminarsIntroFilter = {
+  headline?: InputMaybe<StringFilter>;
+  detailedHeadline?: InputMaybe<StringFilter>;
+  summary?: InputMaybe<StringFilter>;
+  text1?: InputMaybe<RichTextFilter>;
+  text2?: InputMaybe<RichTextFilter>;
+  text3?: InputMaybe<RichTextFilter>;
+};
+
+export type SeminarsHighlightFilter = {
+  headline?: InputMaybe<StringFilter>;
+  subline?: InputMaybe<StringFilter>;
+  text?: InputMaybe<RichTextFilter>;
+};
+
+export type SeminarsWeekendsFilter = {
+  title?: InputMaybe<StringFilter>;
+  subtitle?: InputMaybe<StringFilter>;
+  duration?: InputMaybe<StringFilter>;
+  items?: InputMaybe<StringFilter>;
+  text?: InputMaybe<RichTextFilter>;
+};
+
+export type SeminarsCurriculumFilter = {
+  id?: InputMaybe<StringFilter>;
+  title?: InputMaybe<StringFilter>;
+  duration?: InputMaybe<StringFilter>;
+  items?: InputMaybe<StringFilter>;
+  description?: InputMaybe<RichTextFilter>;
+};
+
+export type SeminarsDateGroupsDatesFilter = {
+  date?: InputMaybe<StringFilter>;
+  location?: InputMaybe<StringFilter>;
+  isFull?: InputMaybe<BooleanFilter>;
+  status?: InputMaybe<StringFilter>;
+};
+
+export type SeminarsDateGroupsFilter = {
+  headline?: InputMaybe<StringFilter>;
+  subline?: InputMaybe<StringFilter>;
+  dates?: InputMaybe<SeminarsDateGroupsDatesFilter>;
+};
+
+export type SeminarsInstallmentFilter = {
+  available?: InputMaybe<BooleanFilter>;
+  text?: InputMaybe<StringFilter>;
+};
+
+export type SeminarsFilter = {
+  seo?: InputMaybe<SeminarsSeoFilter>;
+  category?: InputMaybe<StringFilter>;
+  label?: InputMaybe<StringFilter>;
+  title?: InputMaybe<StringFilter>;
+  videoSrc?: InputMaybe<ImageFilter>;
+  externalVideoUrl?: InputMaybe<StringFilter>;
+  heroImage?: InputMaybe<ImageFilter>;
+  heroImageAlt?: InputMaybe<StringFilter>;
+  isFull?: InputMaybe<BooleanFilter>;
+  headerIntro?: InputMaybe<SeminarsHeaderIntroFilter>;
+  intro?: InputMaybe<SeminarsIntroFilter>;
+  showHighlight?: InputMaybe<BooleanFilter>;
+  highlight?: InputMaybe<SeminarsHighlightFilter>;
+  showWeekends?: InputMaybe<BooleanFilter>;
+  weekends?: InputMaybe<SeminarsWeekendsFilter>;
+  showCurriculum?: InputMaybe<BooleanFilter>;
+  curriculumLabel?: InputMaybe<StringFilter>;
+  curriculumHeadline?: InputMaybe<StringFilter>;
+  curriculumIntro?: InputMaybe<StringFilter>;
+  curriculum?: InputMaybe<SeminarsCurriculumFilter>;
+  dateGroups?: InputMaybe<SeminarsDateGroupsFilter>;
+  price?: InputMaybe<StringFilter>;
+  discountPrice?: InputMaybe<StringFilter>;
+  installment?: InputMaybe<SeminarsInstallmentFilter>;
+};
+
+export type SeminarsConnectionEdges = {
+  __typename?: 'SeminarsConnectionEdges';
+  cursor: Scalars['String']['output'];
+  node?: Maybe<Seminars>;
+};
+
+export type SeminarsConnection = Connection & {
+  __typename?: 'SeminarsConnection';
+  pageInfo: PageInfo;
+  totalCount: Scalars['Float']['output'];
+  edges?: Maybe<Array<Maybe<SeminarsConnectionEdges>>>;
+};
+
+export type PageSeo = {
+  __typename?: 'PageSeo';
+  title?: Maybe<Scalars['String']['output']>;
+  description?: Maybe<Scalars['String']['output']>;
+  canonical?: Maybe<Scalars['String']['output']>;
+  ogImage?: Maybe<Scalars['String']['output']>;
+  noIndex?: Maybe<Scalars['Boolean']['output']>;
+};
+
+export type PageSectionsButton = {
+  __typename?: 'PageSectionsButton';
+  label?: Maybe<Scalars['String']['output']>;
+  url?: Maybe<Scalars['String']['output']>;
+};
+
+export type PageSections = {
+  __typename?: 'PageSections';
+  type?: Maybe<Scalars['String']['output']>;
+  headline?: Maybe<Scalars['String']['output']>;
+  content?: Maybe<Scalars['JSON']['output']>;
+  image?: Maybe<Scalars['String']['output']>;
+  imageAlt?: Maybe<Scalars['String']['output']>;
+  button?: Maybe<PageSectionsButton>;
+};
+
+export type Page = Node & Document & {
+  __typename?: 'Page';
+  seo?: Maybe<PageSeo>;
+  title: Scalars['String']['output'];
+  heroLabel?: Maybe<Scalars['String']['output']>;
+  heroSubline?: Maybe<Scalars['String']['output']>;
+  heroImage?: Maybe<Scalars['String']['output']>;
+  heroImageAlt?: Maybe<Scalars['String']['output']>;
+  heroVideo?: Maybe<Scalars['String']['output']>;
+  externalVideoUrl?: Maybe<Scalars['String']['output']>;
+  sections?: Maybe<Array<Maybe<PageSections>>>;
+  id: Scalars['ID']['output'];
+  _sys: SystemInfo;
+  _values: Scalars['JSON']['output'];
+};
+
+export type PageSeoFilter = {
+  title?: InputMaybe<StringFilter>;
+  description?: InputMaybe<StringFilter>;
+  canonical?: InputMaybe<StringFilter>;
+  ogImage?: InputMaybe<ImageFilter>;
+  noIndex?: InputMaybe<BooleanFilter>;
+};
+
+export type PageSectionsButtonFilter = {
+  label?: InputMaybe<StringFilter>;
+  url?: InputMaybe<StringFilter>;
+};
+
+export type PageSectionsFilter = {
+  type?: InputMaybe<StringFilter>;
+  headline?: InputMaybe<StringFilter>;
+  content?: InputMaybe<RichTextFilter>;
+  image?: InputMaybe<ImageFilter>;
+  imageAlt?: InputMaybe<StringFilter>;
+  button?: InputMaybe<PageSectionsButtonFilter>;
+};
+
+export type PageFilter = {
+  seo?: InputMaybe<PageSeoFilter>;
+  title?: InputMaybe<StringFilter>;
+  heroLabel?: InputMaybe<StringFilter>;
+  heroSubline?: InputMaybe<StringFilter>;
+  heroImage?: InputMaybe<ImageFilter>;
+  heroImageAlt?: InputMaybe<StringFilter>;
+  heroVideo?: InputMaybe<StringFilter>;
+  externalVideoUrl?: InputMaybe<StringFilter>;
+  sections?: InputMaybe<PageSectionsFilter>;
+};
+
+export type PageConnectionEdges = {
+  __typename?: 'PageConnectionEdges';
+  cursor: Scalars['String']['output'];
+  node?: Maybe<Page>;
+};
+
+export type PageConnection = Connection & {
+  __typename?: 'PageConnection';
+  pageInfo: PageInfo;
+  totalCount: Scalars['Float']['output'];
+  edges?: Maybe<Array<Maybe<PageConnectionEdges>>>;
 };
 
 export type AnmeldenSeo = {
@@ -746,9 +1038,9 @@ export type SettingsSocials = {
   facebook?: Maybe<Scalars['String']['output']>;
 };
 
-export type SettingsNavLinksPageRef = Page | Seminars;
+export type SettingsNavLinksPageRef = Seminars | Page;
 
-export type SettingsNavLinksSubLinksPageRef = Page | Seminars;
+export type SettingsNavLinksSubLinksPageRef = Seminars | Page;
 
 export type SettingsNavLinksSubLinks = {
   __typename?: 'SettingsNavLinksSubLinks';
@@ -798,13 +1090,13 @@ export type SettingsSocialsFilter = {
 };
 
 export type SettingsNavLinksPageRefFilter = {
-  page?: InputMaybe<PageFilter>;
   seminars?: InputMaybe<SeminarsFilter>;
+  page?: InputMaybe<PageFilter>;
 };
 
 export type SettingsNavLinksSubLinksPageRefFilter = {
-  page?: InputMaybe<PageFilter>;
   seminars?: InputMaybe<SeminarsFilter>;
+  page?: InputMaybe<PageFilter>;
 };
 
 export type SettingsNavLinksSubLinksFilter = {
@@ -841,298 +1133,6 @@ export type SettingsConnection = Connection & {
   pageInfo: PageInfo;
   totalCount: Scalars['Float']['output'];
   edges?: Maybe<Array<Maybe<SettingsConnectionEdges>>>;
-};
-
-export type PageSeo = {
-  __typename?: 'PageSeo';
-  title?: Maybe<Scalars['String']['output']>;
-  description?: Maybe<Scalars['String']['output']>;
-  canonical?: Maybe<Scalars['String']['output']>;
-  ogImage?: Maybe<Scalars['String']['output']>;
-  noIndex?: Maybe<Scalars['Boolean']['output']>;
-};
-
-export type PageSectionsButton = {
-  __typename?: 'PageSectionsButton';
-  label?: Maybe<Scalars['String']['output']>;
-  url?: Maybe<Scalars['String']['output']>;
-};
-
-export type PageSections = {
-  __typename?: 'PageSections';
-  type?: Maybe<Scalars['String']['output']>;
-  headline?: Maybe<Scalars['String']['output']>;
-  content?: Maybe<Scalars['JSON']['output']>;
-  image?: Maybe<Scalars['String']['output']>;
-  imageAlt?: Maybe<Scalars['String']['output']>;
-  button?: Maybe<PageSectionsButton>;
-};
-
-export type Page = Node & Document & {
-  __typename?: 'Page';
-  seo?: Maybe<PageSeo>;
-  title: Scalars['String']['output'];
-  heroLabel?: Maybe<Scalars['String']['output']>;
-  heroSubline?: Maybe<Scalars['String']['output']>;
-  heroImage?: Maybe<Scalars['String']['output']>;
-  heroImageAlt?: Maybe<Scalars['String']['output']>;
-  heroVideo?: Maybe<Scalars['String']['output']>;
-  externalVideoUrl?: Maybe<Scalars['String']['output']>;
-  sections?: Maybe<Array<Maybe<PageSections>>>;
-  id: Scalars['ID']['output'];
-  _sys: SystemInfo;
-  _values: Scalars['JSON']['output'];
-};
-
-export type PageSeoFilter = {
-  title?: InputMaybe<StringFilter>;
-  description?: InputMaybe<StringFilter>;
-  canonical?: InputMaybe<StringFilter>;
-  ogImage?: InputMaybe<ImageFilter>;
-  noIndex?: InputMaybe<BooleanFilter>;
-};
-
-export type PageSectionsButtonFilter = {
-  label?: InputMaybe<StringFilter>;
-  url?: InputMaybe<StringFilter>;
-};
-
-export type PageSectionsFilter = {
-  type?: InputMaybe<StringFilter>;
-  headline?: InputMaybe<StringFilter>;
-  content?: InputMaybe<RichTextFilter>;
-  image?: InputMaybe<ImageFilter>;
-  imageAlt?: InputMaybe<StringFilter>;
-  button?: InputMaybe<PageSectionsButtonFilter>;
-};
-
-export type PageFilter = {
-  seo?: InputMaybe<PageSeoFilter>;
-  title?: InputMaybe<StringFilter>;
-  heroLabel?: InputMaybe<StringFilter>;
-  heroSubline?: InputMaybe<StringFilter>;
-  heroImage?: InputMaybe<ImageFilter>;
-  heroImageAlt?: InputMaybe<StringFilter>;
-  heroVideo?: InputMaybe<StringFilter>;
-  externalVideoUrl?: InputMaybe<StringFilter>;
-  sections?: InputMaybe<PageSectionsFilter>;
-};
-
-export type PageConnectionEdges = {
-  __typename?: 'PageConnectionEdges';
-  cursor: Scalars['String']['output'];
-  node?: Maybe<Page>;
-};
-
-export type PageConnection = Connection & {
-  __typename?: 'PageConnection';
-  pageInfo: PageInfo;
-  totalCount: Scalars['Float']['output'];
-  edges?: Maybe<Array<Maybe<PageConnectionEdges>>>;
-};
-
-export type SeminarsSeo = {
-  __typename?: 'SeminarsSeo';
-  title?: Maybe<Scalars['String']['output']>;
-  description?: Maybe<Scalars['String']['output']>;
-  canonical?: Maybe<Scalars['String']['output']>;
-  ogImage?: Maybe<Scalars['String']['output']>;
-  noIndex?: Maybe<Scalars['Boolean']['output']>;
-};
-
-export type SeminarsHeaderIntro = {
-  __typename?: 'SeminarsHeaderIntro';
-  headline?: Maybe<Scalars['String']['output']>;
-  text?: Maybe<Scalars['JSON']['output']>;
-};
-
-export type SeminarsIntro = {
-  __typename?: 'SeminarsIntro';
-  headline?: Maybe<Scalars['String']['output']>;
-  detailedHeadline?: Maybe<Scalars['String']['output']>;
-  summary?: Maybe<Scalars['String']['output']>;
-  text1?: Maybe<Scalars['JSON']['output']>;
-  text2?: Maybe<Scalars['JSON']['output']>;
-  text3?: Maybe<Scalars['JSON']['output']>;
-};
-
-export type SeminarsHighlight = {
-  __typename?: 'SeminarsHighlight';
-  headline?: Maybe<Scalars['String']['output']>;
-  subline?: Maybe<Scalars['String']['output']>;
-  text?: Maybe<Scalars['JSON']['output']>;
-};
-
-export type SeminarsWeekends = {
-  __typename?: 'SeminarsWeekends';
-  title?: Maybe<Scalars['String']['output']>;
-  subtitle?: Maybe<Scalars['String']['output']>;
-  duration?: Maybe<Scalars['String']['output']>;
-  items?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
-  text?: Maybe<Scalars['JSON']['output']>;
-};
-
-export type SeminarsCurriculum = {
-  __typename?: 'SeminarsCurriculum';
-  id?: Maybe<Scalars['String']['output']>;
-  title?: Maybe<Scalars['String']['output']>;
-  duration?: Maybe<Scalars['String']['output']>;
-  items?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
-  description?: Maybe<Scalars['JSON']['output']>;
-};
-
-export type SeminarsDateGroupsDates = {
-  __typename?: 'SeminarsDateGroupsDates';
-  date?: Maybe<Scalars['String']['output']>;
-  location?: Maybe<Scalars['String']['output']>;
-  isFull?: Maybe<Scalars['Boolean']['output']>;
-  status?: Maybe<Scalars['String']['output']>;
-};
-
-export type SeminarsDateGroups = {
-  __typename?: 'SeminarsDateGroups';
-  headline?: Maybe<Scalars['String']['output']>;
-  subline?: Maybe<Scalars['String']['output']>;
-  dates?: Maybe<Array<Maybe<SeminarsDateGroupsDates>>>;
-};
-
-export type SeminarsInstallment = {
-  __typename?: 'SeminarsInstallment';
-  available?: Maybe<Scalars['Boolean']['output']>;
-  text?: Maybe<Scalars['String']['output']>;
-};
-
-export type Seminars = Node & Document & {
-  __typename?: 'Seminars';
-  seo?: Maybe<SeminarsSeo>;
-  category?: Maybe<Scalars['String']['output']>;
-  label?: Maybe<Scalars['String']['output']>;
-  title: Scalars['String']['output'];
-  videoSrc?: Maybe<Scalars['String']['output']>;
-  externalVideoUrl?: Maybe<Scalars['String']['output']>;
-  heroImage?: Maybe<Scalars['String']['output']>;
-  heroImageAlt?: Maybe<Scalars['String']['output']>;
-  isFull?: Maybe<Scalars['Boolean']['output']>;
-  headerIntro?: Maybe<SeminarsHeaderIntro>;
-  intro?: Maybe<SeminarsIntro>;
-  showHighlight?: Maybe<Scalars['Boolean']['output']>;
-  highlight?: Maybe<SeminarsHighlight>;
-  showWeekends?: Maybe<Scalars['Boolean']['output']>;
-  weekends?: Maybe<Array<Maybe<SeminarsWeekends>>>;
-  showCurriculum?: Maybe<Scalars['Boolean']['output']>;
-  curriculumLabel?: Maybe<Scalars['String']['output']>;
-  curriculumHeadline?: Maybe<Scalars['String']['output']>;
-  curriculumIntro?: Maybe<Scalars['String']['output']>;
-  curriculum?: Maybe<Array<Maybe<SeminarsCurriculum>>>;
-  dateGroups?: Maybe<Array<Maybe<SeminarsDateGroups>>>;
-  price?: Maybe<Scalars['String']['output']>;
-  discountPrice?: Maybe<Scalars['String']['output']>;
-  installment?: Maybe<SeminarsInstallment>;
-  id: Scalars['ID']['output'];
-  _sys: SystemInfo;
-  _values: Scalars['JSON']['output'];
-};
-
-export type SeminarsSeoFilter = {
-  title?: InputMaybe<StringFilter>;
-  description?: InputMaybe<StringFilter>;
-  canonical?: InputMaybe<StringFilter>;
-  ogImage?: InputMaybe<ImageFilter>;
-  noIndex?: InputMaybe<BooleanFilter>;
-};
-
-export type SeminarsHeaderIntroFilter = {
-  headline?: InputMaybe<StringFilter>;
-  text?: InputMaybe<RichTextFilter>;
-};
-
-export type SeminarsIntroFilter = {
-  headline?: InputMaybe<StringFilter>;
-  detailedHeadline?: InputMaybe<StringFilter>;
-  summary?: InputMaybe<StringFilter>;
-  text1?: InputMaybe<RichTextFilter>;
-  text2?: InputMaybe<RichTextFilter>;
-  text3?: InputMaybe<RichTextFilter>;
-};
-
-export type SeminarsHighlightFilter = {
-  headline?: InputMaybe<StringFilter>;
-  subline?: InputMaybe<StringFilter>;
-  text?: InputMaybe<RichTextFilter>;
-};
-
-export type SeminarsWeekendsFilter = {
-  title?: InputMaybe<StringFilter>;
-  subtitle?: InputMaybe<StringFilter>;
-  duration?: InputMaybe<StringFilter>;
-  items?: InputMaybe<StringFilter>;
-  text?: InputMaybe<RichTextFilter>;
-};
-
-export type SeminarsCurriculumFilter = {
-  id?: InputMaybe<StringFilter>;
-  title?: InputMaybe<StringFilter>;
-  duration?: InputMaybe<StringFilter>;
-  items?: InputMaybe<StringFilter>;
-  description?: InputMaybe<RichTextFilter>;
-};
-
-export type SeminarsDateGroupsDatesFilter = {
-  date?: InputMaybe<StringFilter>;
-  location?: InputMaybe<StringFilter>;
-  isFull?: InputMaybe<BooleanFilter>;
-  status?: InputMaybe<StringFilter>;
-};
-
-export type SeminarsDateGroupsFilter = {
-  headline?: InputMaybe<StringFilter>;
-  subline?: InputMaybe<StringFilter>;
-  dates?: InputMaybe<SeminarsDateGroupsDatesFilter>;
-};
-
-export type SeminarsInstallmentFilter = {
-  available?: InputMaybe<BooleanFilter>;
-  text?: InputMaybe<StringFilter>;
-};
-
-export type SeminarsFilter = {
-  seo?: InputMaybe<SeminarsSeoFilter>;
-  category?: InputMaybe<StringFilter>;
-  label?: InputMaybe<StringFilter>;
-  title?: InputMaybe<StringFilter>;
-  videoSrc?: InputMaybe<ImageFilter>;
-  externalVideoUrl?: InputMaybe<StringFilter>;
-  heroImage?: InputMaybe<ImageFilter>;
-  heroImageAlt?: InputMaybe<StringFilter>;
-  isFull?: InputMaybe<BooleanFilter>;
-  headerIntro?: InputMaybe<SeminarsHeaderIntroFilter>;
-  intro?: InputMaybe<SeminarsIntroFilter>;
-  showHighlight?: InputMaybe<BooleanFilter>;
-  highlight?: InputMaybe<SeminarsHighlightFilter>;
-  showWeekends?: InputMaybe<BooleanFilter>;
-  weekends?: InputMaybe<SeminarsWeekendsFilter>;
-  showCurriculum?: InputMaybe<BooleanFilter>;
-  curriculumLabel?: InputMaybe<StringFilter>;
-  curriculumHeadline?: InputMaybe<StringFilter>;
-  curriculumIntro?: InputMaybe<StringFilter>;
-  curriculum?: InputMaybe<SeminarsCurriculumFilter>;
-  dateGroups?: InputMaybe<SeminarsDateGroupsFilter>;
-  price?: InputMaybe<StringFilter>;
-  discountPrice?: InputMaybe<StringFilter>;
-  installment?: InputMaybe<SeminarsInstallmentFilter>;
-};
-
-export type SeminarsConnectionEdges = {
-  __typename?: 'SeminarsConnectionEdges';
-  cursor: Scalars['String']['output'];
-  node?: Maybe<Seminars>;
-};
-
-export type SeminarsConnection = Connection & {
-  __typename?: 'SeminarsConnection';
-  pageInfo: PageInfo;
-  totalCount: Scalars['Float']['output'];
-  edges?: Maybe<Array<Maybe<SeminarsConnectionEdges>>>;
 };
 
 export type RedirectsItems = {
@@ -1182,6 +1182,10 @@ export type Mutation = {
   createFolder: DocumentNode;
   updateHomepage: Homepage;
   createHomepage: Homepage;
+  updateSeminars: Seminars;
+  createSeminars: Seminars;
+  updatePage: Page;
+  createPage: Page;
   updateAnmelden: Anmelden;
   createAnmelden: Anmelden;
   updateKontakt: Kontakt;
@@ -1190,10 +1194,6 @@ export type Mutation = {
   createUeberuns: Ueberuns;
   updateSettings: Settings;
   createSettings: Settings;
-  updatePage: Page;
-  createPage: Page;
-  updateSeminars: Seminars;
-  createSeminars: Seminars;
   updateRedirects: Redirects;
   createRedirects: Redirects;
 };
@@ -1241,6 +1241,30 @@ export type MutationUpdateHomepageArgs = {
 export type MutationCreateHomepageArgs = {
   relativePath: Scalars['String']['input'];
   params: HomepageMutation;
+};
+
+
+export type MutationUpdateSeminarsArgs = {
+  relativePath: Scalars['String']['input'];
+  params: SeminarsMutation;
+};
+
+
+export type MutationCreateSeminarsArgs = {
+  relativePath: Scalars['String']['input'];
+  params: SeminarsMutation;
+};
+
+
+export type MutationUpdatePageArgs = {
+  relativePath: Scalars['String']['input'];
+  params: PageMutation;
+};
+
+
+export type MutationCreatePageArgs = {
+  relativePath: Scalars['String']['input'];
+  params: PageMutation;
 };
 
 
@@ -1292,30 +1316,6 @@ export type MutationCreateSettingsArgs = {
 };
 
 
-export type MutationUpdatePageArgs = {
-  relativePath: Scalars['String']['input'];
-  params: PageMutation;
-};
-
-
-export type MutationCreatePageArgs = {
-  relativePath: Scalars['String']['input'];
-  params: PageMutation;
-};
-
-
-export type MutationUpdateSeminarsArgs = {
-  relativePath: Scalars['String']['input'];
-  params: SeminarsMutation;
-};
-
-
-export type MutationCreateSeminarsArgs = {
-  relativePath: Scalars['String']['input'];
-  params: SeminarsMutation;
-};
-
-
 export type MutationUpdateRedirectsArgs = {
   relativePath: Scalars['String']['input'];
   params: RedirectsMutation;
@@ -1329,24 +1329,24 @@ export type MutationCreateRedirectsArgs = {
 
 export type DocumentUpdateMutation = {
   homepage?: InputMaybe<HomepageMutation>;
+  seminars?: InputMaybe<SeminarsMutation>;
+  page?: InputMaybe<PageMutation>;
   anmelden?: InputMaybe<AnmeldenMutation>;
   kontakt?: InputMaybe<KontaktMutation>;
   ueberuns?: InputMaybe<UeberunsMutation>;
   settings?: InputMaybe<SettingsMutation>;
-  page?: InputMaybe<PageMutation>;
-  seminars?: InputMaybe<SeminarsMutation>;
   redirects?: InputMaybe<RedirectsMutation>;
   relativePath?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type DocumentMutation = {
   homepage?: InputMaybe<HomepageMutation>;
+  seminars?: InputMaybe<SeminarsMutation>;
+  page?: InputMaybe<PageMutation>;
   anmelden?: InputMaybe<AnmeldenMutation>;
   kontakt?: InputMaybe<KontaktMutation>;
   ueberuns?: InputMaybe<UeberunsMutation>;
   settings?: InputMaybe<SettingsMutation>;
-  page?: InputMaybe<PageMutation>;
-  seminars?: InputMaybe<SeminarsMutation>;
   redirects?: InputMaybe<RedirectsMutation>;
 };
 
@@ -1415,6 +1415,129 @@ export type HomepageMutation = {
   about?: InputMaybe<HomepageAboutMutation>;
   quote?: InputMaybe<HomepageQuoteMutation>;
   testimonials?: InputMaybe<Array<InputMaybe<HomepageTestimonialsMutation>>>;
+};
+
+export type SeminarsSeoMutation = {
+  title?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  canonical?: InputMaybe<Scalars['String']['input']>;
+  ogImage?: InputMaybe<Scalars['String']['input']>;
+  noIndex?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type SeminarsHeaderIntroMutation = {
+  headline?: InputMaybe<Scalars['String']['input']>;
+  text?: InputMaybe<Scalars['JSON']['input']>;
+};
+
+export type SeminarsIntroMutation = {
+  headline?: InputMaybe<Scalars['String']['input']>;
+  detailedHeadline?: InputMaybe<Scalars['String']['input']>;
+  summary?: InputMaybe<Scalars['String']['input']>;
+  text1?: InputMaybe<Scalars['JSON']['input']>;
+  text2?: InputMaybe<Scalars['JSON']['input']>;
+  text3?: InputMaybe<Scalars['JSON']['input']>;
+};
+
+export type SeminarsHighlightMutation = {
+  headline?: InputMaybe<Scalars['String']['input']>;
+  subline?: InputMaybe<Scalars['String']['input']>;
+  text?: InputMaybe<Scalars['JSON']['input']>;
+};
+
+export type SeminarsWeekendsMutation = {
+  title?: InputMaybe<Scalars['String']['input']>;
+  subtitle?: InputMaybe<Scalars['String']['input']>;
+  duration?: InputMaybe<Scalars['String']['input']>;
+  items?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  text?: InputMaybe<Scalars['JSON']['input']>;
+};
+
+export type SeminarsCurriculumMutation = {
+  id?: InputMaybe<Scalars['String']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
+  duration?: InputMaybe<Scalars['String']['input']>;
+  items?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  description?: InputMaybe<Scalars['JSON']['input']>;
+};
+
+export type SeminarsDateGroupsDatesMutation = {
+  date?: InputMaybe<Scalars['String']['input']>;
+  location?: InputMaybe<Scalars['String']['input']>;
+  isFull?: InputMaybe<Scalars['Boolean']['input']>;
+  status?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type SeminarsDateGroupsMutation = {
+  headline?: InputMaybe<Scalars['String']['input']>;
+  subline?: InputMaybe<Scalars['String']['input']>;
+  dates?: InputMaybe<Array<InputMaybe<SeminarsDateGroupsDatesMutation>>>;
+};
+
+export type SeminarsInstallmentMutation = {
+  available?: InputMaybe<Scalars['Boolean']['input']>;
+  text?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type SeminarsMutation = {
+  seo?: InputMaybe<SeminarsSeoMutation>;
+  category?: InputMaybe<Scalars['String']['input']>;
+  label?: InputMaybe<Scalars['String']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
+  videoSrc?: InputMaybe<Scalars['String']['input']>;
+  externalVideoUrl?: InputMaybe<Scalars['String']['input']>;
+  heroImage?: InputMaybe<Scalars['String']['input']>;
+  heroImageAlt?: InputMaybe<Scalars['String']['input']>;
+  isFull?: InputMaybe<Scalars['Boolean']['input']>;
+  headerIntro?: InputMaybe<SeminarsHeaderIntroMutation>;
+  intro?: InputMaybe<SeminarsIntroMutation>;
+  showHighlight?: InputMaybe<Scalars['Boolean']['input']>;
+  highlight?: InputMaybe<SeminarsHighlightMutation>;
+  showWeekends?: InputMaybe<Scalars['Boolean']['input']>;
+  weekends?: InputMaybe<Array<InputMaybe<SeminarsWeekendsMutation>>>;
+  showCurriculum?: InputMaybe<Scalars['Boolean']['input']>;
+  curriculumLabel?: InputMaybe<Scalars['String']['input']>;
+  curriculumHeadline?: InputMaybe<Scalars['String']['input']>;
+  curriculumIntro?: InputMaybe<Scalars['String']['input']>;
+  curriculum?: InputMaybe<Array<InputMaybe<SeminarsCurriculumMutation>>>;
+  dateGroups?: InputMaybe<Array<InputMaybe<SeminarsDateGroupsMutation>>>;
+  price?: InputMaybe<Scalars['String']['input']>;
+  discountPrice?: InputMaybe<Scalars['String']['input']>;
+  installment?: InputMaybe<SeminarsInstallmentMutation>;
+};
+
+export type PageSeoMutation = {
+  title?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  canonical?: InputMaybe<Scalars['String']['input']>;
+  ogImage?: InputMaybe<Scalars['String']['input']>;
+  noIndex?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type PageSectionsButtonMutation = {
+  label?: InputMaybe<Scalars['String']['input']>;
+  url?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type PageSectionsMutation = {
+  type?: InputMaybe<Scalars['String']['input']>;
+  headline?: InputMaybe<Scalars['String']['input']>;
+  content?: InputMaybe<Scalars['JSON']['input']>;
+  image?: InputMaybe<Scalars['String']['input']>;
+  imageAlt?: InputMaybe<Scalars['String']['input']>;
+  button?: InputMaybe<PageSectionsButtonMutation>;
+};
+
+export type PageMutation = {
+  seo?: InputMaybe<PageSeoMutation>;
+  title?: InputMaybe<Scalars['String']['input']>;
+  heroLabel?: InputMaybe<Scalars['String']['input']>;
+  heroSubline?: InputMaybe<Scalars['String']['input']>;
+  heroImage?: InputMaybe<Scalars['String']['input']>;
+  heroImageAlt?: InputMaybe<Scalars['String']['input']>;
+  heroVideo?: InputMaybe<Scalars['String']['input']>;
+  externalVideoUrl?: InputMaybe<Scalars['String']['input']>;
+  sections?: InputMaybe<Array<InputMaybe<PageSectionsMutation>>>;
 };
 
 export type AnmeldenSeoMutation = {
@@ -1555,129 +1678,6 @@ export type SettingsMutation = {
   navLinks?: InputMaybe<Array<InputMaybe<SettingsNavLinksMutation>>>;
 };
 
-export type PageSeoMutation = {
-  title?: InputMaybe<Scalars['String']['input']>;
-  description?: InputMaybe<Scalars['String']['input']>;
-  canonical?: InputMaybe<Scalars['String']['input']>;
-  ogImage?: InputMaybe<Scalars['String']['input']>;
-  noIndex?: InputMaybe<Scalars['Boolean']['input']>;
-};
-
-export type PageSectionsButtonMutation = {
-  label?: InputMaybe<Scalars['String']['input']>;
-  url?: InputMaybe<Scalars['String']['input']>;
-};
-
-export type PageSectionsMutation = {
-  type?: InputMaybe<Scalars['String']['input']>;
-  headline?: InputMaybe<Scalars['String']['input']>;
-  content?: InputMaybe<Scalars['JSON']['input']>;
-  image?: InputMaybe<Scalars['String']['input']>;
-  imageAlt?: InputMaybe<Scalars['String']['input']>;
-  button?: InputMaybe<PageSectionsButtonMutation>;
-};
-
-export type PageMutation = {
-  seo?: InputMaybe<PageSeoMutation>;
-  title?: InputMaybe<Scalars['String']['input']>;
-  heroLabel?: InputMaybe<Scalars['String']['input']>;
-  heroSubline?: InputMaybe<Scalars['String']['input']>;
-  heroImage?: InputMaybe<Scalars['String']['input']>;
-  heroImageAlt?: InputMaybe<Scalars['String']['input']>;
-  heroVideo?: InputMaybe<Scalars['String']['input']>;
-  externalVideoUrl?: InputMaybe<Scalars['String']['input']>;
-  sections?: InputMaybe<Array<InputMaybe<PageSectionsMutation>>>;
-};
-
-export type SeminarsSeoMutation = {
-  title?: InputMaybe<Scalars['String']['input']>;
-  description?: InputMaybe<Scalars['String']['input']>;
-  canonical?: InputMaybe<Scalars['String']['input']>;
-  ogImage?: InputMaybe<Scalars['String']['input']>;
-  noIndex?: InputMaybe<Scalars['Boolean']['input']>;
-};
-
-export type SeminarsHeaderIntroMutation = {
-  headline?: InputMaybe<Scalars['String']['input']>;
-  text?: InputMaybe<Scalars['JSON']['input']>;
-};
-
-export type SeminarsIntroMutation = {
-  headline?: InputMaybe<Scalars['String']['input']>;
-  detailedHeadline?: InputMaybe<Scalars['String']['input']>;
-  summary?: InputMaybe<Scalars['String']['input']>;
-  text1?: InputMaybe<Scalars['JSON']['input']>;
-  text2?: InputMaybe<Scalars['JSON']['input']>;
-  text3?: InputMaybe<Scalars['JSON']['input']>;
-};
-
-export type SeminarsHighlightMutation = {
-  headline?: InputMaybe<Scalars['String']['input']>;
-  subline?: InputMaybe<Scalars['String']['input']>;
-  text?: InputMaybe<Scalars['JSON']['input']>;
-};
-
-export type SeminarsWeekendsMutation = {
-  title?: InputMaybe<Scalars['String']['input']>;
-  subtitle?: InputMaybe<Scalars['String']['input']>;
-  duration?: InputMaybe<Scalars['String']['input']>;
-  items?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  text?: InputMaybe<Scalars['JSON']['input']>;
-};
-
-export type SeminarsCurriculumMutation = {
-  id?: InputMaybe<Scalars['String']['input']>;
-  title?: InputMaybe<Scalars['String']['input']>;
-  duration?: InputMaybe<Scalars['String']['input']>;
-  items?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  description?: InputMaybe<Scalars['JSON']['input']>;
-};
-
-export type SeminarsDateGroupsDatesMutation = {
-  date?: InputMaybe<Scalars['String']['input']>;
-  location?: InputMaybe<Scalars['String']['input']>;
-  isFull?: InputMaybe<Scalars['Boolean']['input']>;
-  status?: InputMaybe<Scalars['String']['input']>;
-};
-
-export type SeminarsDateGroupsMutation = {
-  headline?: InputMaybe<Scalars['String']['input']>;
-  subline?: InputMaybe<Scalars['String']['input']>;
-  dates?: InputMaybe<Array<InputMaybe<SeminarsDateGroupsDatesMutation>>>;
-};
-
-export type SeminarsInstallmentMutation = {
-  available?: InputMaybe<Scalars['Boolean']['input']>;
-  text?: InputMaybe<Scalars['String']['input']>;
-};
-
-export type SeminarsMutation = {
-  seo?: InputMaybe<SeminarsSeoMutation>;
-  category?: InputMaybe<Scalars['String']['input']>;
-  label?: InputMaybe<Scalars['String']['input']>;
-  title?: InputMaybe<Scalars['String']['input']>;
-  videoSrc?: InputMaybe<Scalars['String']['input']>;
-  externalVideoUrl?: InputMaybe<Scalars['String']['input']>;
-  heroImage?: InputMaybe<Scalars['String']['input']>;
-  heroImageAlt?: InputMaybe<Scalars['String']['input']>;
-  isFull?: InputMaybe<Scalars['Boolean']['input']>;
-  headerIntro?: InputMaybe<SeminarsHeaderIntroMutation>;
-  intro?: InputMaybe<SeminarsIntroMutation>;
-  showHighlight?: InputMaybe<Scalars['Boolean']['input']>;
-  highlight?: InputMaybe<SeminarsHighlightMutation>;
-  showWeekends?: InputMaybe<Scalars['Boolean']['input']>;
-  weekends?: InputMaybe<Array<InputMaybe<SeminarsWeekendsMutation>>>;
-  showCurriculum?: InputMaybe<Scalars['Boolean']['input']>;
-  curriculumLabel?: InputMaybe<Scalars['String']['input']>;
-  curriculumHeadline?: InputMaybe<Scalars['String']['input']>;
-  curriculumIntro?: InputMaybe<Scalars['String']['input']>;
-  curriculum?: InputMaybe<Array<InputMaybe<SeminarsCurriculumMutation>>>;
-  dateGroups?: InputMaybe<Array<InputMaybe<SeminarsDateGroupsMutation>>>;
-  price?: InputMaybe<Scalars['String']['input']>;
-  discountPrice?: InputMaybe<Scalars['String']['input']>;
-  installment?: InputMaybe<SeminarsInstallmentMutation>;
-};
-
 export type RedirectsItemsMutation = {
   from?: InputMaybe<Scalars['String']['input']>;
   to?: InputMaybe<Scalars['String']['input']>;
@@ -1690,17 +1690,17 @@ export type RedirectsMutation = {
 
 export type HomepagePartsFragment = { __typename: 'Homepage', seo?: { __typename: 'HomepageSeo', title?: string | null, description?: string | null, canonical?: string | null, ogImage?: string | null, noIndex?: boolean | null } | null, hero?: { __typename: 'HomepageHero', label?: string | null, title?: string | null, subtitle?: string | null, text?: string | null, video?: string | null, externalVideoUrl?: string | null, image?: string | null, imageAlt?: string | null } | null, offer?: { __typename: 'HomepageOffer', label?: string | null, headline?: any | null, offerImage?: string | null, offerImageAlt?: string | null, text?: any | null, formatsHeadline?: string | null, formatsIntro?: any | null, trainingImage?: string | null, trainingSummary?: string | null, seminarImage?: string | null, seminarSummary?: string | null, praxiskreisImage?: string | null, praxiskreisSummary?: string | null } | null, about?: { __typename: 'HomepageAbout', label?: string | null, title?: string | null, content?: any | null, image?: string | null, imageAlt?: string | null, buttonLabel?: string | null } | null, quote?: { __typename: 'HomepageQuote', text?: string | null, label?: string | null, subline?: string | null } | null, testimonials?: Array<{ __typename: 'HomepageTestimonials', name?: string | null, training?: string | null, quote?: string | null, image?: string | null, imageAlt?: string | null } | null> | null };
 
+export type SeminarsPartsFragment = { __typename: 'Seminars', category?: string | null, label?: string | null, title: string, videoSrc?: string | null, externalVideoUrl?: string | null, heroImage?: string | null, heroImageAlt?: string | null, isFull?: boolean | null, showHighlight?: boolean | null, showWeekends?: boolean | null, showCurriculum?: boolean | null, curriculumLabel?: string | null, curriculumHeadline?: string | null, curriculumIntro?: string | null, price?: string | null, discountPrice?: string | null, seo?: { __typename: 'SeminarsSeo', title?: string | null, description?: string | null, canonical?: string | null, ogImage?: string | null, noIndex?: boolean | null } | null, headerIntro?: { __typename: 'SeminarsHeaderIntro', headline?: string | null, text?: any | null } | null, intro?: { __typename: 'SeminarsIntro', headline?: string | null, detailedHeadline?: string | null, summary?: string | null, text1?: any | null, text2?: any | null, text3?: any | null } | null, highlight?: { __typename: 'SeminarsHighlight', headline?: string | null, subline?: string | null, text?: any | null } | null, weekends?: Array<{ __typename: 'SeminarsWeekends', title?: string | null, subtitle?: string | null, duration?: string | null, items?: Array<string | null> | null, text?: any | null } | null> | null, curriculum?: Array<{ __typename: 'SeminarsCurriculum', id?: string | null, title?: string | null, duration?: string | null, items?: Array<string | null> | null, description?: any | null } | null> | null, dateGroups?: Array<{ __typename: 'SeminarsDateGroups', headline?: string | null, subline?: string | null, dates?: Array<{ __typename: 'SeminarsDateGroupsDates', date?: string | null, location?: string | null, isFull?: boolean | null, status?: string | null } | null> | null } | null> | null, installment?: { __typename: 'SeminarsInstallment', available?: boolean | null, text?: string | null } | null };
+
+export type PagePartsFragment = { __typename: 'Page', title: string, heroLabel?: string | null, heroSubline?: string | null, heroImage?: string | null, heroImageAlt?: string | null, heroVideo?: string | null, externalVideoUrl?: string | null, seo?: { __typename: 'PageSeo', title?: string | null, description?: string | null, canonical?: string | null, ogImage?: string | null, noIndex?: boolean | null } | null, sections?: Array<{ __typename: 'PageSections', type?: string | null, headline?: string | null, content?: any | null, image?: string | null, imageAlt?: string | null, button?: { __typename: 'PageSectionsButton', label?: string | null, url?: string | null } | null } | null> | null };
+
 export type AnmeldenPartsFragment = { __typename: 'Anmelden', pageIntro?: string | null, seminarLabel?: string | null, heroImage?: string | null, heroImageAlt?: string | null, heroVideo?: string | null, externalVideoUrl?: string | null, introTraining?: any | null, introSeminar?: any | null, introPraxiskreis?: any | null, legalDatenschutz?: any | null, legalTeilnahme?: any | null, legalVerschwiegenheit?: any | null, legalRuecktritt?: any | null, bankDetails?: any | null, seo?: { __typename: 'AnmeldenSeo', title?: string | null, description?: string | null, canonical?: string | null, ogImage?: string | null, noIndex?: boolean | null } | null };
 
 export type KontaktPartsFragment = { __typename: 'Kontakt', heroTitle?: string | null, heroLabel?: string | null, heroImage?: string | null, heroImageAlt?: string | null, heroVideo?: string | null, externalVideoUrl?: string | null, introHeadline?: any | null, introText?: any | null, seo?: { __typename: 'KontaktSeo', title?: string | null, description?: string | null, canonical?: string | null, ogImage?: string | null, noIndex?: boolean | null } | null, details?: { __typename: 'KontaktDetails', addressHeadline?: string | null, address1?: any | null, address2?: any | null, directHeadline?: string | null, directText?: any | null } | null };
 
 export type UeberunsPartsFragment = { __typename: 'Ueberuns', heroLabel?: string | null, heroTitle?: string | null, heroSubline?: string | null, heroImage?: string | null, heroImageAlt?: string | null, heroVideo?: string | null, externalVideoUrl?: string | null, seo?: { __typename: 'UeberunsSeo', title?: string | null, description?: string | null, canonical?: string | null, ogImage?: string | null, noIndex?: boolean | null } | null, sections?: Array<{ __typename: 'UeberunsSections', label?: string | null, title?: string | null, content?: any | null, image?: string | null, imageAlt?: string | null, imageRight?: boolean | null } | null> | null, quote?: { __typename: 'UeberunsQuote', text?: string | null, label?: string | null, subline?: string | null } | null, cta?: { __typename: 'UeberunsCta', label?: string | null, url?: string | null } | null };
 
-export type SettingsPartsFragment = { __typename: 'Settings', mailchimpUrl?: string | null, contactEmail?: string | null, contactPhone?: string | null, siteMeta?: { __typename: 'SettingsSiteMeta', siteUrl?: string | null, siteName?: string | null, defaultDescription?: string | null, defaultOgImage?: string | null } | null, address?: { __typename: 'SettingsAddress', name?: string | null, street?: string | null, city?: string | null } | null, socials?: { __typename: 'SettingsSocials', instagram?: string | null, facebook?: string | null } | null, navLinks?: Array<{ __typename: 'SettingsNavLinks', label?: string | null, url?: string | null, pageRef?: { __typename: 'Page', title: string, heroLabel?: string | null, heroSubline?: string | null, heroImage?: string | null, heroImageAlt?: string | null, heroVideo?: string | null, externalVideoUrl?: string | null, id: string, seo?: { __typename: 'PageSeo', title?: string | null, description?: string | null, canonical?: string | null, ogImage?: string | null, noIndex?: boolean | null } | null, sections?: Array<{ __typename: 'PageSections', type?: string | null, headline?: string | null, content?: any | null, image?: string | null, imageAlt?: string | null, button?: { __typename: 'PageSectionsButton', label?: string | null, url?: string | null } | null } | null> | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'Seminars', category?: string | null, label?: string | null, title: string, videoSrc?: string | null, externalVideoUrl?: string | null, heroImage?: string | null, heroImageAlt?: string | null, isFull?: boolean | null, showHighlight?: boolean | null, showWeekends?: boolean | null, showCurriculum?: boolean | null, curriculumLabel?: string | null, curriculumHeadline?: string | null, curriculumIntro?: string | null, price?: string | null, discountPrice?: string | null, id: string, seo?: { __typename: 'SeminarsSeo', title?: string | null, description?: string | null, canonical?: string | null, ogImage?: string | null, noIndex?: boolean | null } | null, headerIntro?: { __typename: 'SeminarsHeaderIntro', headline?: string | null, text?: any | null } | null, intro?: { __typename: 'SeminarsIntro', headline?: string | null, detailedHeadline?: string | null, summary?: string | null, text1?: any | null, text2?: any | null, text3?: any | null } | null, highlight?: { __typename: 'SeminarsHighlight', headline?: string | null, subline?: string | null, text?: any | null } | null, weekends?: Array<{ __typename: 'SeminarsWeekends', title?: string | null, subtitle?: string | null, duration?: string | null, items?: Array<string | null> | null, text?: any | null } | null> | null, curriculum?: Array<{ __typename: 'SeminarsCurriculum', id?: string | null, title?: string | null, duration?: string | null, items?: Array<string | null> | null, description?: any | null } | null> | null, dateGroups?: Array<{ __typename: 'SeminarsDateGroups', headline?: string | null, subline?: string | null, dates?: Array<{ __typename: 'SeminarsDateGroupsDates', date?: string | null, location?: string | null, isFull?: boolean | null, status?: string | null } | null> | null } | null> | null, installment?: { __typename: 'SeminarsInstallment', available?: boolean | null, text?: string | null } | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null, subLinks?: Array<{ __typename: 'SettingsNavLinksSubLinks', label?: string | null, url?: string | null, pageRef?: { __typename: 'Page', title: string, heroLabel?: string | null, heroSubline?: string | null, heroImage?: string | null, heroImageAlt?: string | null, heroVideo?: string | null, externalVideoUrl?: string | null, id: string, seo?: { __typename: 'PageSeo', title?: string | null, description?: string | null, canonical?: string | null, ogImage?: string | null, noIndex?: boolean | null } | null, sections?: Array<{ __typename: 'PageSections', type?: string | null, headline?: string | null, content?: any | null, image?: string | null, imageAlt?: string | null, button?: { __typename: 'PageSectionsButton', label?: string | null, url?: string | null } | null } | null> | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'Seminars', category?: string | null, label?: string | null, title: string, videoSrc?: string | null, externalVideoUrl?: string | null, heroImage?: string | null, heroImageAlt?: string | null, isFull?: boolean | null, showHighlight?: boolean | null, showWeekends?: boolean | null, showCurriculum?: boolean | null, curriculumLabel?: string | null, curriculumHeadline?: string | null, curriculumIntro?: string | null, price?: string | null, discountPrice?: string | null, id: string, seo?: { __typename: 'SeminarsSeo', title?: string | null, description?: string | null, canonical?: string | null, ogImage?: string | null, noIndex?: boolean | null } | null, headerIntro?: { __typename: 'SeminarsHeaderIntro', headline?: string | null, text?: any | null } | null, intro?: { __typename: 'SeminarsIntro', headline?: string | null, detailedHeadline?: string | null, summary?: string | null, text1?: any | null, text2?: any | null, text3?: any | null } | null, highlight?: { __typename: 'SeminarsHighlight', headline?: string | null, subline?: string | null, text?: any | null } | null, weekends?: Array<{ __typename: 'SeminarsWeekends', title?: string | null, subtitle?: string | null, duration?: string | null, items?: Array<string | null> | null, text?: any | null } | null> | null, curriculum?: Array<{ __typename: 'SeminarsCurriculum', id?: string | null, title?: string | null, duration?: string | null, items?: Array<string | null> | null, description?: any | null } | null> | null, dateGroups?: Array<{ __typename: 'SeminarsDateGroups', headline?: string | null, subline?: string | null, dates?: Array<{ __typename: 'SeminarsDateGroupsDates', date?: string | null, location?: string | null, isFull?: boolean | null, status?: string | null } | null> | null } | null> | null, installment?: { __typename: 'SeminarsInstallment', available?: boolean | null, text?: string | null } | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } | null> | null };
-
-export type PagePartsFragment = { __typename: 'Page', title: string, heroLabel?: string | null, heroSubline?: string | null, heroImage?: string | null, heroImageAlt?: string | null, heroVideo?: string | null, externalVideoUrl?: string | null, seo?: { __typename: 'PageSeo', title?: string | null, description?: string | null, canonical?: string | null, ogImage?: string | null, noIndex?: boolean | null } | null, sections?: Array<{ __typename: 'PageSections', type?: string | null, headline?: string | null, content?: any | null, image?: string | null, imageAlt?: string | null, button?: { __typename: 'PageSectionsButton', label?: string | null, url?: string | null } | null } | null> | null };
-
-export type SeminarsPartsFragment = { __typename: 'Seminars', category?: string | null, label?: string | null, title: string, videoSrc?: string | null, externalVideoUrl?: string | null, heroImage?: string | null, heroImageAlt?: string | null, isFull?: boolean | null, showHighlight?: boolean | null, showWeekends?: boolean | null, showCurriculum?: boolean | null, curriculumLabel?: string | null, curriculumHeadline?: string | null, curriculumIntro?: string | null, price?: string | null, discountPrice?: string | null, seo?: { __typename: 'SeminarsSeo', title?: string | null, description?: string | null, canonical?: string | null, ogImage?: string | null, noIndex?: boolean | null } | null, headerIntro?: { __typename: 'SeminarsHeaderIntro', headline?: string | null, text?: any | null } | null, intro?: { __typename: 'SeminarsIntro', headline?: string | null, detailedHeadline?: string | null, summary?: string | null, text1?: any | null, text2?: any | null, text3?: any | null } | null, highlight?: { __typename: 'SeminarsHighlight', headline?: string | null, subline?: string | null, text?: any | null } | null, weekends?: Array<{ __typename: 'SeminarsWeekends', title?: string | null, subtitle?: string | null, duration?: string | null, items?: Array<string | null> | null, text?: any | null } | null> | null, curriculum?: Array<{ __typename: 'SeminarsCurriculum', id?: string | null, title?: string | null, duration?: string | null, items?: Array<string | null> | null, description?: any | null } | null> | null, dateGroups?: Array<{ __typename: 'SeminarsDateGroups', headline?: string | null, subline?: string | null, dates?: Array<{ __typename: 'SeminarsDateGroupsDates', date?: string | null, location?: string | null, isFull?: boolean | null, status?: string | null } | null> | null } | null> | null, installment?: { __typename: 'SeminarsInstallment', available?: boolean | null, text?: string | null } | null };
+export type SettingsPartsFragment = { __typename: 'Settings', mailchimpUrl?: string | null, contactEmail?: string | null, contactPhone?: string | null, siteMeta?: { __typename: 'SettingsSiteMeta', siteUrl?: string | null, siteName?: string | null, defaultDescription?: string | null, defaultOgImage?: string | null } | null, address?: { __typename: 'SettingsAddress', name?: string | null, street?: string | null, city?: string | null } | null, socials?: { __typename: 'SettingsSocials', instagram?: string | null, facebook?: string | null } | null, navLinks?: Array<{ __typename: 'SettingsNavLinks', label?: string | null, url?: string | null, pageRef?: { __typename: 'Seminars', category?: string | null, label?: string | null, title: string, videoSrc?: string | null, externalVideoUrl?: string | null, heroImage?: string | null, heroImageAlt?: string | null, isFull?: boolean | null, showHighlight?: boolean | null, showWeekends?: boolean | null, showCurriculum?: boolean | null, curriculumLabel?: string | null, curriculumHeadline?: string | null, curriculumIntro?: string | null, price?: string | null, discountPrice?: string | null, id: string, seo?: { __typename: 'SeminarsSeo', title?: string | null, description?: string | null, canonical?: string | null, ogImage?: string | null, noIndex?: boolean | null } | null, headerIntro?: { __typename: 'SeminarsHeaderIntro', headline?: string | null, text?: any | null } | null, intro?: { __typename: 'SeminarsIntro', headline?: string | null, detailedHeadline?: string | null, summary?: string | null, text1?: any | null, text2?: any | null, text3?: any | null } | null, highlight?: { __typename: 'SeminarsHighlight', headline?: string | null, subline?: string | null, text?: any | null } | null, weekends?: Array<{ __typename: 'SeminarsWeekends', title?: string | null, subtitle?: string | null, duration?: string | null, items?: Array<string | null> | null, text?: any | null } | null> | null, curriculum?: Array<{ __typename: 'SeminarsCurriculum', id?: string | null, title?: string | null, duration?: string | null, items?: Array<string | null> | null, description?: any | null } | null> | null, dateGroups?: Array<{ __typename: 'SeminarsDateGroups', headline?: string | null, subline?: string | null, dates?: Array<{ __typename: 'SeminarsDateGroupsDates', date?: string | null, location?: string | null, isFull?: boolean | null, status?: string | null } | null> | null } | null> | null, installment?: { __typename: 'SeminarsInstallment', available?: boolean | null, text?: string | null } | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'Page', title: string, heroLabel?: string | null, heroSubline?: string | null, heroImage?: string | null, heroImageAlt?: string | null, heroVideo?: string | null, externalVideoUrl?: string | null, id: string, seo?: { __typename: 'PageSeo', title?: string | null, description?: string | null, canonical?: string | null, ogImage?: string | null, noIndex?: boolean | null } | null, sections?: Array<{ __typename: 'PageSections', type?: string | null, headline?: string | null, content?: any | null, image?: string | null, imageAlt?: string | null, button?: { __typename: 'PageSectionsButton', label?: string | null, url?: string | null } | null } | null> | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null, subLinks?: Array<{ __typename: 'SettingsNavLinksSubLinks', label?: string | null, url?: string | null, pageRef?: { __typename: 'Seminars', category?: string | null, label?: string | null, title: string, videoSrc?: string | null, externalVideoUrl?: string | null, heroImage?: string | null, heroImageAlt?: string | null, isFull?: boolean | null, showHighlight?: boolean | null, showWeekends?: boolean | null, showCurriculum?: boolean | null, curriculumLabel?: string | null, curriculumHeadline?: string | null, curriculumIntro?: string | null, price?: string | null, discountPrice?: string | null, id: string, seo?: { __typename: 'SeminarsSeo', title?: string | null, description?: string | null, canonical?: string | null, ogImage?: string | null, noIndex?: boolean | null } | null, headerIntro?: { __typename: 'SeminarsHeaderIntro', headline?: string | null, text?: any | null } | null, intro?: { __typename: 'SeminarsIntro', headline?: string | null, detailedHeadline?: string | null, summary?: string | null, text1?: any | null, text2?: any | null, text3?: any | null } | null, highlight?: { __typename: 'SeminarsHighlight', headline?: string | null, subline?: string | null, text?: any | null } | null, weekends?: Array<{ __typename: 'SeminarsWeekends', title?: string | null, subtitle?: string | null, duration?: string | null, items?: Array<string | null> | null, text?: any | null } | null> | null, curriculum?: Array<{ __typename: 'SeminarsCurriculum', id?: string | null, title?: string | null, duration?: string | null, items?: Array<string | null> | null, description?: any | null } | null> | null, dateGroups?: Array<{ __typename: 'SeminarsDateGroups', headline?: string | null, subline?: string | null, dates?: Array<{ __typename: 'SeminarsDateGroupsDates', date?: string | null, location?: string | null, isFull?: boolean | null, status?: string | null } | null> | null } | null> | null, installment?: { __typename: 'SeminarsInstallment', available?: boolean | null, text?: string | null } | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'Page', title: string, heroLabel?: string | null, heroSubline?: string | null, heroImage?: string | null, heroImageAlt?: string | null, heroVideo?: string | null, externalVideoUrl?: string | null, id: string, seo?: { __typename: 'PageSeo', title?: string | null, description?: string | null, canonical?: string | null, ogImage?: string | null, noIndex?: boolean | null } | null, sections?: Array<{ __typename: 'PageSections', type?: string | null, headline?: string | null, content?: any | null, image?: string | null, imageAlt?: string | null, button?: { __typename: 'PageSectionsButton', label?: string | null, url?: string | null } | null } | null> | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } | null> | null };
 
 export type RedirectsPartsFragment = { __typename: 'Redirects', items?: Array<{ __typename: 'RedirectsItems', from?: string | null, to?: string | null, status?: string | null } | null> | null };
 
@@ -1722,6 +1722,44 @@ export type HomepageConnectionQueryVariables = Exact<{
 
 
 export type HomepageConnectionQuery = { __typename?: 'Query', homepageConnection: { __typename?: 'HomepageConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'HomepageConnectionEdges', cursor: string, node?: { __typename: 'Homepage', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, seo?: { __typename: 'HomepageSeo', title?: string | null, description?: string | null, canonical?: string | null, ogImage?: string | null, noIndex?: boolean | null } | null, hero?: { __typename: 'HomepageHero', label?: string | null, title?: string | null, subtitle?: string | null, text?: string | null, video?: string | null, externalVideoUrl?: string | null, image?: string | null, imageAlt?: string | null } | null, offer?: { __typename: 'HomepageOffer', label?: string | null, headline?: any | null, offerImage?: string | null, offerImageAlt?: string | null, text?: any | null, formatsHeadline?: string | null, formatsIntro?: any | null, trainingImage?: string | null, trainingSummary?: string | null, seminarImage?: string | null, seminarSummary?: string | null, praxiskreisImage?: string | null, praxiskreisSummary?: string | null } | null, about?: { __typename: 'HomepageAbout', label?: string | null, title?: string | null, content?: any | null, image?: string | null, imageAlt?: string | null, buttonLabel?: string | null } | null, quote?: { __typename: 'HomepageQuote', text?: string | null, label?: string | null, subline?: string | null } | null, testimonials?: Array<{ __typename: 'HomepageTestimonials', name?: string | null, training?: string | null, quote?: string | null, image?: string | null, imageAlt?: string | null } | null> | null } | null } | null> | null } };
+
+export type SeminarsQueryVariables = Exact<{
+  relativePath: Scalars['String']['input'];
+}>;
+
+
+export type SeminarsQuery = { __typename?: 'Query', seminars: { __typename: 'Seminars', id: string, category?: string | null, label?: string | null, title: string, videoSrc?: string | null, externalVideoUrl?: string | null, heroImage?: string | null, heroImageAlt?: string | null, isFull?: boolean | null, showHighlight?: boolean | null, showWeekends?: boolean | null, showCurriculum?: boolean | null, curriculumLabel?: string | null, curriculumHeadline?: string | null, curriculumIntro?: string | null, price?: string | null, discountPrice?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, seo?: { __typename: 'SeminarsSeo', title?: string | null, description?: string | null, canonical?: string | null, ogImage?: string | null, noIndex?: boolean | null } | null, headerIntro?: { __typename: 'SeminarsHeaderIntro', headline?: string | null, text?: any | null } | null, intro?: { __typename: 'SeminarsIntro', headline?: string | null, detailedHeadline?: string | null, summary?: string | null, text1?: any | null, text2?: any | null, text3?: any | null } | null, highlight?: { __typename: 'SeminarsHighlight', headline?: string | null, subline?: string | null, text?: any | null } | null, weekends?: Array<{ __typename: 'SeminarsWeekends', title?: string | null, subtitle?: string | null, duration?: string | null, items?: Array<string | null> | null, text?: any | null } | null> | null, curriculum?: Array<{ __typename: 'SeminarsCurriculum', id?: string | null, title?: string | null, duration?: string | null, items?: Array<string | null> | null, description?: any | null } | null> | null, dateGroups?: Array<{ __typename: 'SeminarsDateGroups', headline?: string | null, subline?: string | null, dates?: Array<{ __typename: 'SeminarsDateGroupsDates', date?: string | null, location?: string | null, isFull?: boolean | null, status?: string | null } | null> | null } | null> | null, installment?: { __typename: 'SeminarsInstallment', available?: boolean | null, text?: string | null } | null } };
+
+export type SeminarsConnectionQueryVariables = Exact<{
+  before?: InputMaybe<Scalars['String']['input']>;
+  after?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Float']['input']>;
+  last?: InputMaybe<Scalars['Float']['input']>;
+  sort?: InputMaybe<Scalars['String']['input']>;
+  filter?: InputMaybe<SeminarsFilter>;
+}>;
+
+
+export type SeminarsConnectionQuery = { __typename?: 'Query', seminarsConnection: { __typename?: 'SeminarsConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'SeminarsConnectionEdges', cursor: string, node?: { __typename: 'Seminars', id: string, category?: string | null, label?: string | null, title: string, videoSrc?: string | null, externalVideoUrl?: string | null, heroImage?: string | null, heroImageAlt?: string | null, isFull?: boolean | null, showHighlight?: boolean | null, showWeekends?: boolean | null, showCurriculum?: boolean | null, curriculumLabel?: string | null, curriculumHeadline?: string | null, curriculumIntro?: string | null, price?: string | null, discountPrice?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, seo?: { __typename: 'SeminarsSeo', title?: string | null, description?: string | null, canonical?: string | null, ogImage?: string | null, noIndex?: boolean | null } | null, headerIntro?: { __typename: 'SeminarsHeaderIntro', headline?: string | null, text?: any | null } | null, intro?: { __typename: 'SeminarsIntro', headline?: string | null, detailedHeadline?: string | null, summary?: string | null, text1?: any | null, text2?: any | null, text3?: any | null } | null, highlight?: { __typename: 'SeminarsHighlight', headline?: string | null, subline?: string | null, text?: any | null } | null, weekends?: Array<{ __typename: 'SeminarsWeekends', title?: string | null, subtitle?: string | null, duration?: string | null, items?: Array<string | null> | null, text?: any | null } | null> | null, curriculum?: Array<{ __typename: 'SeminarsCurriculum', id?: string | null, title?: string | null, duration?: string | null, items?: Array<string | null> | null, description?: any | null } | null> | null, dateGroups?: Array<{ __typename: 'SeminarsDateGroups', headline?: string | null, subline?: string | null, dates?: Array<{ __typename: 'SeminarsDateGroupsDates', date?: string | null, location?: string | null, isFull?: boolean | null, status?: string | null } | null> | null } | null> | null, installment?: { __typename: 'SeminarsInstallment', available?: boolean | null, text?: string | null } | null } | null } | null> | null } };
+
+export type PageQueryVariables = Exact<{
+  relativePath: Scalars['String']['input'];
+}>;
+
+
+export type PageQuery = { __typename?: 'Query', page: { __typename: 'Page', id: string, title: string, heroLabel?: string | null, heroSubline?: string | null, heroImage?: string | null, heroImageAlt?: string | null, heroVideo?: string | null, externalVideoUrl?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, seo?: { __typename: 'PageSeo', title?: string | null, description?: string | null, canonical?: string | null, ogImage?: string | null, noIndex?: boolean | null } | null, sections?: Array<{ __typename: 'PageSections', type?: string | null, headline?: string | null, content?: any | null, image?: string | null, imageAlt?: string | null, button?: { __typename: 'PageSectionsButton', label?: string | null, url?: string | null } | null } | null> | null } };
+
+export type PageConnectionQueryVariables = Exact<{
+  before?: InputMaybe<Scalars['String']['input']>;
+  after?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Float']['input']>;
+  last?: InputMaybe<Scalars['Float']['input']>;
+  sort?: InputMaybe<Scalars['String']['input']>;
+  filter?: InputMaybe<PageFilter>;
+}>;
+
+
+export type PageConnectionQuery = { __typename?: 'Query', pageConnection: { __typename?: 'PageConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'PageConnectionEdges', cursor: string, node?: { __typename: 'Page', id: string, title: string, heroLabel?: string | null, heroSubline?: string | null, heroImage?: string | null, heroImageAlt?: string | null, heroVideo?: string | null, externalVideoUrl?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, seo?: { __typename: 'PageSeo', title?: string | null, description?: string | null, canonical?: string | null, ogImage?: string | null, noIndex?: boolean | null } | null, sections?: Array<{ __typename: 'PageSections', type?: string | null, headline?: string | null, content?: any | null, image?: string | null, imageAlt?: string | null, button?: { __typename: 'PageSectionsButton', label?: string | null, url?: string | null } | null } | null> | null } | null } | null> | null } };
 
 export type AnmeldenQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
@@ -1785,7 +1823,7 @@ export type SettingsQueryVariables = Exact<{
 }>;
 
 
-export type SettingsQuery = { __typename?: 'Query', settings: { __typename: 'Settings', id: string, mailchimpUrl?: string | null, contactEmail?: string | null, contactPhone?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, siteMeta?: { __typename: 'SettingsSiteMeta', siteUrl?: string | null, siteName?: string | null, defaultDescription?: string | null, defaultOgImage?: string | null } | null, address?: { __typename: 'SettingsAddress', name?: string | null, street?: string | null, city?: string | null } | null, socials?: { __typename: 'SettingsSocials', instagram?: string | null, facebook?: string | null } | null, navLinks?: Array<{ __typename: 'SettingsNavLinks', label?: string | null, url?: string | null, pageRef?: { __typename: 'Page', title: string, heroLabel?: string | null, heroSubline?: string | null, heroImage?: string | null, heroImageAlt?: string | null, heroVideo?: string | null, externalVideoUrl?: string | null, id: string, seo?: { __typename: 'PageSeo', title?: string | null, description?: string | null, canonical?: string | null, ogImage?: string | null, noIndex?: boolean | null } | null, sections?: Array<{ __typename: 'PageSections', type?: string | null, headline?: string | null, content?: any | null, image?: string | null, imageAlt?: string | null, button?: { __typename: 'PageSectionsButton', label?: string | null, url?: string | null } | null } | null> | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'Seminars', category?: string | null, label?: string | null, title: string, videoSrc?: string | null, externalVideoUrl?: string | null, heroImage?: string | null, heroImageAlt?: string | null, isFull?: boolean | null, showHighlight?: boolean | null, showWeekends?: boolean | null, showCurriculum?: boolean | null, curriculumLabel?: string | null, curriculumHeadline?: string | null, curriculumIntro?: string | null, price?: string | null, discountPrice?: string | null, id: string, seo?: { __typename: 'SeminarsSeo', title?: string | null, description?: string | null, canonical?: string | null, ogImage?: string | null, noIndex?: boolean | null } | null, headerIntro?: { __typename: 'SeminarsHeaderIntro', headline?: string | null, text?: any | null } | null, intro?: { __typename: 'SeminarsIntro', headline?: string | null, detailedHeadline?: string | null, summary?: string | null, text1?: any | null, text2?: any | null, text3?: any | null } | null, highlight?: { __typename: 'SeminarsHighlight', headline?: string | null, subline?: string | null, text?: any | null } | null, weekends?: Array<{ __typename: 'SeminarsWeekends', title?: string | null, subtitle?: string | null, duration?: string | null, items?: Array<string | null> | null, text?: any | null } | null> | null, curriculum?: Array<{ __typename: 'SeminarsCurriculum', id?: string | null, title?: string | null, duration?: string | null, items?: Array<string | null> | null, description?: any | null } | null> | null, dateGroups?: Array<{ __typename: 'SeminarsDateGroups', headline?: string | null, subline?: string | null, dates?: Array<{ __typename: 'SeminarsDateGroupsDates', date?: string | null, location?: string | null, isFull?: boolean | null, status?: string | null } | null> | null } | null> | null, installment?: { __typename: 'SeminarsInstallment', available?: boolean | null, text?: string | null } | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null, subLinks?: Array<{ __typename: 'SettingsNavLinksSubLinks', label?: string | null, url?: string | null, pageRef?: { __typename: 'Page', title: string, heroLabel?: string | null, heroSubline?: string | null, heroImage?: string | null, heroImageAlt?: string | null, heroVideo?: string | null, externalVideoUrl?: string | null, id: string, seo?: { __typename: 'PageSeo', title?: string | null, description?: string | null, canonical?: string | null, ogImage?: string | null, noIndex?: boolean | null } | null, sections?: Array<{ __typename: 'PageSections', type?: string | null, headline?: string | null, content?: any | null, image?: string | null, imageAlt?: string | null, button?: { __typename: 'PageSectionsButton', label?: string | null, url?: string | null } | null } | null> | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'Seminars', category?: string | null, label?: string | null, title: string, videoSrc?: string | null, externalVideoUrl?: string | null, heroImage?: string | null, heroImageAlt?: string | null, isFull?: boolean | null, showHighlight?: boolean | null, showWeekends?: boolean | null, showCurriculum?: boolean | null, curriculumLabel?: string | null, curriculumHeadline?: string | null, curriculumIntro?: string | null, price?: string | null, discountPrice?: string | null, id: string, seo?: { __typename: 'SeminarsSeo', title?: string | null, description?: string | null, canonical?: string | null, ogImage?: string | null, noIndex?: boolean | null } | null, headerIntro?: { __typename: 'SeminarsHeaderIntro', headline?: string | null, text?: any | null } | null, intro?: { __typename: 'SeminarsIntro', headline?: string | null, detailedHeadline?: string | null, summary?: string | null, text1?: any | null, text2?: any | null, text3?: any | null } | null, highlight?: { __typename: 'SeminarsHighlight', headline?: string | null, subline?: string | null, text?: any | null } | null, weekends?: Array<{ __typename: 'SeminarsWeekends', title?: string | null, subtitle?: string | null, duration?: string | null, items?: Array<string | null> | null, text?: any | null } | null> | null, curriculum?: Array<{ __typename: 'SeminarsCurriculum', id?: string | null, title?: string | null, duration?: string | null, items?: Array<string | null> | null, description?: any | null } | null> | null, dateGroups?: Array<{ __typename: 'SeminarsDateGroups', headline?: string | null, subline?: string | null, dates?: Array<{ __typename: 'SeminarsDateGroupsDates', date?: string | null, location?: string | null, isFull?: boolean | null, status?: string | null } | null> | null } | null> | null, installment?: { __typename: 'SeminarsInstallment', available?: boolean | null, text?: string | null } | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } | null> | null } };
+export type SettingsQuery = { __typename?: 'Query', settings: { __typename: 'Settings', id: string, mailchimpUrl?: string | null, contactEmail?: string | null, contactPhone?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, siteMeta?: { __typename: 'SettingsSiteMeta', siteUrl?: string | null, siteName?: string | null, defaultDescription?: string | null, defaultOgImage?: string | null } | null, address?: { __typename: 'SettingsAddress', name?: string | null, street?: string | null, city?: string | null } | null, socials?: { __typename: 'SettingsSocials', instagram?: string | null, facebook?: string | null } | null, navLinks?: Array<{ __typename: 'SettingsNavLinks', label?: string | null, url?: string | null, pageRef?: { __typename: 'Seminars', category?: string | null, label?: string | null, title: string, videoSrc?: string | null, externalVideoUrl?: string | null, heroImage?: string | null, heroImageAlt?: string | null, isFull?: boolean | null, showHighlight?: boolean | null, showWeekends?: boolean | null, showCurriculum?: boolean | null, curriculumLabel?: string | null, curriculumHeadline?: string | null, curriculumIntro?: string | null, price?: string | null, discountPrice?: string | null, id: string, seo?: { __typename: 'SeminarsSeo', title?: string | null, description?: string | null, canonical?: string | null, ogImage?: string | null, noIndex?: boolean | null } | null, headerIntro?: { __typename: 'SeminarsHeaderIntro', headline?: string | null, text?: any | null } | null, intro?: { __typename: 'SeminarsIntro', headline?: string | null, detailedHeadline?: string | null, summary?: string | null, text1?: any | null, text2?: any | null, text3?: any | null } | null, highlight?: { __typename: 'SeminarsHighlight', headline?: string | null, subline?: string | null, text?: any | null } | null, weekends?: Array<{ __typename: 'SeminarsWeekends', title?: string | null, subtitle?: string | null, duration?: string | null, items?: Array<string | null> | null, text?: any | null } | null> | null, curriculum?: Array<{ __typename: 'SeminarsCurriculum', id?: string | null, title?: string | null, duration?: string | null, items?: Array<string | null> | null, description?: any | null } | null> | null, dateGroups?: Array<{ __typename: 'SeminarsDateGroups', headline?: string | null, subline?: string | null, dates?: Array<{ __typename: 'SeminarsDateGroupsDates', date?: string | null, location?: string | null, isFull?: boolean | null, status?: string | null } | null> | null } | null> | null, installment?: { __typename: 'SeminarsInstallment', available?: boolean | null, text?: string | null } | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'Page', title: string, heroLabel?: string | null, heroSubline?: string | null, heroImage?: string | null, heroImageAlt?: string | null, heroVideo?: string | null, externalVideoUrl?: string | null, id: string, seo?: { __typename: 'PageSeo', title?: string | null, description?: string | null, canonical?: string | null, ogImage?: string | null, noIndex?: boolean | null } | null, sections?: Array<{ __typename: 'PageSections', type?: string | null, headline?: string | null, content?: any | null, image?: string | null, imageAlt?: string | null, button?: { __typename: 'PageSectionsButton', label?: string | null, url?: string | null } | null } | null> | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null, subLinks?: Array<{ __typename: 'SettingsNavLinksSubLinks', label?: string | null, url?: string | null, pageRef?: { __typename: 'Seminars', category?: string | null, label?: string | null, title: string, videoSrc?: string | null, externalVideoUrl?: string | null, heroImage?: string | null, heroImageAlt?: string | null, isFull?: boolean | null, showHighlight?: boolean | null, showWeekends?: boolean | null, showCurriculum?: boolean | null, curriculumLabel?: string | null, curriculumHeadline?: string | null, curriculumIntro?: string | null, price?: string | null, discountPrice?: string | null, id: string, seo?: { __typename: 'SeminarsSeo', title?: string | null, description?: string | null, canonical?: string | null, ogImage?: string | null, noIndex?: boolean | null } | null, headerIntro?: { __typename: 'SeminarsHeaderIntro', headline?: string | null, text?: any | null } | null, intro?: { __typename: 'SeminarsIntro', headline?: string | null, detailedHeadline?: string | null, summary?: string | null, text1?: any | null, text2?: any | null, text3?: any | null } | null, highlight?: { __typename: 'SeminarsHighlight', headline?: string | null, subline?: string | null, text?: any | null } | null, weekends?: Array<{ __typename: 'SeminarsWeekends', title?: string | null, subtitle?: string | null, duration?: string | null, items?: Array<string | null> | null, text?: any | null } | null> | null, curriculum?: Array<{ __typename: 'SeminarsCurriculum', id?: string | null, title?: string | null, duration?: string | null, items?: Array<string | null> | null, description?: any | null } | null> | null, dateGroups?: Array<{ __typename: 'SeminarsDateGroups', headline?: string | null, subline?: string | null, dates?: Array<{ __typename: 'SeminarsDateGroupsDates', date?: string | null, location?: string | null, isFull?: boolean | null, status?: string | null } | null> | null } | null> | null, installment?: { __typename: 'SeminarsInstallment', available?: boolean | null, text?: string | null } | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'Page', title: string, heroLabel?: string | null, heroSubline?: string | null, heroImage?: string | null, heroImageAlt?: string | null, heroVideo?: string | null, externalVideoUrl?: string | null, id: string, seo?: { __typename: 'PageSeo', title?: string | null, description?: string | null, canonical?: string | null, ogImage?: string | null, noIndex?: boolean | null } | null, sections?: Array<{ __typename: 'PageSections', type?: string | null, headline?: string | null, content?: any | null, image?: string | null, imageAlt?: string | null, button?: { __typename: 'PageSectionsButton', label?: string | null, url?: string | null } | null } | null> | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } | null> | null } };
 
 export type SettingsConnectionQueryVariables = Exact<{
   before?: InputMaybe<Scalars['String']['input']>;
@@ -1797,45 +1835,7 @@ export type SettingsConnectionQueryVariables = Exact<{
 }>;
 
 
-export type SettingsConnectionQuery = { __typename?: 'Query', settingsConnection: { __typename?: 'SettingsConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'SettingsConnectionEdges', cursor: string, node?: { __typename: 'Settings', id: string, mailchimpUrl?: string | null, contactEmail?: string | null, contactPhone?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, siteMeta?: { __typename: 'SettingsSiteMeta', siteUrl?: string | null, siteName?: string | null, defaultDescription?: string | null, defaultOgImage?: string | null } | null, address?: { __typename: 'SettingsAddress', name?: string | null, street?: string | null, city?: string | null } | null, socials?: { __typename: 'SettingsSocials', instagram?: string | null, facebook?: string | null } | null, navLinks?: Array<{ __typename: 'SettingsNavLinks', label?: string | null, url?: string | null, pageRef?: { __typename: 'Page', title: string, heroLabel?: string | null, heroSubline?: string | null, heroImage?: string | null, heroImageAlt?: string | null, heroVideo?: string | null, externalVideoUrl?: string | null, id: string, seo?: { __typename: 'PageSeo', title?: string | null, description?: string | null, canonical?: string | null, ogImage?: string | null, noIndex?: boolean | null } | null, sections?: Array<{ __typename: 'PageSections', type?: string | null, headline?: string | null, content?: any | null, image?: string | null, imageAlt?: string | null, button?: { __typename: 'PageSectionsButton', label?: string | null, url?: string | null } | null } | null> | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'Seminars', category?: string | null, label?: string | null, title: string, videoSrc?: string | null, externalVideoUrl?: string | null, heroImage?: string | null, heroImageAlt?: string | null, isFull?: boolean | null, showHighlight?: boolean | null, showWeekends?: boolean | null, showCurriculum?: boolean | null, curriculumLabel?: string | null, curriculumHeadline?: string | null, curriculumIntro?: string | null, price?: string | null, discountPrice?: string | null, id: string, seo?: { __typename: 'SeminarsSeo', title?: string | null, description?: string | null, canonical?: string | null, ogImage?: string | null, noIndex?: boolean | null } | null, headerIntro?: { __typename: 'SeminarsHeaderIntro', headline?: string | null, text?: any | null } | null, intro?: { __typename: 'SeminarsIntro', headline?: string | null, detailedHeadline?: string | null, summary?: string | null, text1?: any | null, text2?: any | null, text3?: any | null } | null, highlight?: { __typename: 'SeminarsHighlight', headline?: string | null, subline?: string | null, text?: any | null } | null, weekends?: Array<{ __typename: 'SeminarsWeekends', title?: string | null, subtitle?: string | null, duration?: string | null, items?: Array<string | null> | null, text?: any | null } | null> | null, curriculum?: Array<{ __typename: 'SeminarsCurriculum', id?: string | null, title?: string | null, duration?: string | null, items?: Array<string | null> | null, description?: any | null } | null> | null, dateGroups?: Array<{ __typename: 'SeminarsDateGroups', headline?: string | null, subline?: string | null, dates?: Array<{ __typename: 'SeminarsDateGroupsDates', date?: string | null, location?: string | null, isFull?: boolean | null, status?: string | null } | null> | null } | null> | null, installment?: { __typename: 'SeminarsInstallment', available?: boolean | null, text?: string | null } | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null, subLinks?: Array<{ __typename: 'SettingsNavLinksSubLinks', label?: string | null, url?: string | null, pageRef?: { __typename: 'Page', title: string, heroLabel?: string | null, heroSubline?: string | null, heroImage?: string | null, heroImageAlt?: string | null, heroVideo?: string | null, externalVideoUrl?: string | null, id: string, seo?: { __typename: 'PageSeo', title?: string | null, description?: string | null, canonical?: string | null, ogImage?: string | null, noIndex?: boolean | null } | null, sections?: Array<{ __typename: 'PageSections', type?: string | null, headline?: string | null, content?: any | null, image?: string | null, imageAlt?: string | null, button?: { __typename: 'PageSectionsButton', label?: string | null, url?: string | null } | null } | null> | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'Seminars', category?: string | null, label?: string | null, title: string, videoSrc?: string | null, externalVideoUrl?: string | null, heroImage?: string | null, heroImageAlt?: string | null, isFull?: boolean | null, showHighlight?: boolean | null, showWeekends?: boolean | null, showCurriculum?: boolean | null, curriculumLabel?: string | null, curriculumHeadline?: string | null, curriculumIntro?: string | null, price?: string | null, discountPrice?: string | null, id: string, seo?: { __typename: 'SeminarsSeo', title?: string | null, description?: string | null, canonical?: string | null, ogImage?: string | null, noIndex?: boolean | null } | null, headerIntro?: { __typename: 'SeminarsHeaderIntro', headline?: string | null, text?: any | null } | null, intro?: { __typename: 'SeminarsIntro', headline?: string | null, detailedHeadline?: string | null, summary?: string | null, text1?: any | null, text2?: any | null, text3?: any | null } | null, highlight?: { __typename: 'SeminarsHighlight', headline?: string | null, subline?: string | null, text?: any | null } | null, weekends?: Array<{ __typename: 'SeminarsWeekends', title?: string | null, subtitle?: string | null, duration?: string | null, items?: Array<string | null> | null, text?: any | null } | null> | null, curriculum?: Array<{ __typename: 'SeminarsCurriculum', id?: string | null, title?: string | null, duration?: string | null, items?: Array<string | null> | null, description?: any | null } | null> | null, dateGroups?: Array<{ __typename: 'SeminarsDateGroups', headline?: string | null, subline?: string | null, dates?: Array<{ __typename: 'SeminarsDateGroupsDates', date?: string | null, location?: string | null, isFull?: boolean | null, status?: string | null } | null> | null } | null> | null, installment?: { __typename: 'SeminarsInstallment', available?: boolean | null, text?: string | null } | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } | null> | null } | null } | null> | null } };
-
-export type PageQueryVariables = Exact<{
-  relativePath: Scalars['String']['input'];
-}>;
-
-
-export type PageQuery = { __typename?: 'Query', page: { __typename: 'Page', id: string, title: string, heroLabel?: string | null, heroSubline?: string | null, heroImage?: string | null, heroImageAlt?: string | null, heroVideo?: string | null, externalVideoUrl?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, seo?: { __typename: 'PageSeo', title?: string | null, description?: string | null, canonical?: string | null, ogImage?: string | null, noIndex?: boolean | null } | null, sections?: Array<{ __typename: 'PageSections', type?: string | null, headline?: string | null, content?: any | null, image?: string | null, imageAlt?: string | null, button?: { __typename: 'PageSectionsButton', label?: string | null, url?: string | null } | null } | null> | null } };
-
-export type PageConnectionQueryVariables = Exact<{
-  before?: InputMaybe<Scalars['String']['input']>;
-  after?: InputMaybe<Scalars['String']['input']>;
-  first?: InputMaybe<Scalars['Float']['input']>;
-  last?: InputMaybe<Scalars['Float']['input']>;
-  sort?: InputMaybe<Scalars['String']['input']>;
-  filter?: InputMaybe<PageFilter>;
-}>;
-
-
-export type PageConnectionQuery = { __typename?: 'Query', pageConnection: { __typename?: 'PageConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'PageConnectionEdges', cursor: string, node?: { __typename: 'Page', id: string, title: string, heroLabel?: string | null, heroSubline?: string | null, heroImage?: string | null, heroImageAlt?: string | null, heroVideo?: string | null, externalVideoUrl?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, seo?: { __typename: 'PageSeo', title?: string | null, description?: string | null, canonical?: string | null, ogImage?: string | null, noIndex?: boolean | null } | null, sections?: Array<{ __typename: 'PageSections', type?: string | null, headline?: string | null, content?: any | null, image?: string | null, imageAlt?: string | null, button?: { __typename: 'PageSectionsButton', label?: string | null, url?: string | null } | null } | null> | null } | null } | null> | null } };
-
-export type SeminarsQueryVariables = Exact<{
-  relativePath: Scalars['String']['input'];
-}>;
-
-
-export type SeminarsQuery = { __typename?: 'Query', seminars: { __typename: 'Seminars', id: string, category?: string | null, label?: string | null, title: string, videoSrc?: string | null, externalVideoUrl?: string | null, heroImage?: string | null, heroImageAlt?: string | null, isFull?: boolean | null, showHighlight?: boolean | null, showWeekends?: boolean | null, showCurriculum?: boolean | null, curriculumLabel?: string | null, curriculumHeadline?: string | null, curriculumIntro?: string | null, price?: string | null, discountPrice?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, seo?: { __typename: 'SeminarsSeo', title?: string | null, description?: string | null, canonical?: string | null, ogImage?: string | null, noIndex?: boolean | null } | null, headerIntro?: { __typename: 'SeminarsHeaderIntro', headline?: string | null, text?: any | null } | null, intro?: { __typename: 'SeminarsIntro', headline?: string | null, detailedHeadline?: string | null, summary?: string | null, text1?: any | null, text2?: any | null, text3?: any | null } | null, highlight?: { __typename: 'SeminarsHighlight', headline?: string | null, subline?: string | null, text?: any | null } | null, weekends?: Array<{ __typename: 'SeminarsWeekends', title?: string | null, subtitle?: string | null, duration?: string | null, items?: Array<string | null> | null, text?: any | null } | null> | null, curriculum?: Array<{ __typename: 'SeminarsCurriculum', id?: string | null, title?: string | null, duration?: string | null, items?: Array<string | null> | null, description?: any | null } | null> | null, dateGroups?: Array<{ __typename: 'SeminarsDateGroups', headline?: string | null, subline?: string | null, dates?: Array<{ __typename: 'SeminarsDateGroupsDates', date?: string | null, location?: string | null, isFull?: boolean | null, status?: string | null } | null> | null } | null> | null, installment?: { __typename: 'SeminarsInstallment', available?: boolean | null, text?: string | null } | null } };
-
-export type SeminarsConnectionQueryVariables = Exact<{
-  before?: InputMaybe<Scalars['String']['input']>;
-  after?: InputMaybe<Scalars['String']['input']>;
-  first?: InputMaybe<Scalars['Float']['input']>;
-  last?: InputMaybe<Scalars['Float']['input']>;
-  sort?: InputMaybe<Scalars['String']['input']>;
-  filter?: InputMaybe<SeminarsFilter>;
-}>;
-
-
-export type SeminarsConnectionQuery = { __typename?: 'Query', seminarsConnection: { __typename?: 'SeminarsConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'SeminarsConnectionEdges', cursor: string, node?: { __typename: 'Seminars', id: string, category?: string | null, label?: string | null, title: string, videoSrc?: string | null, externalVideoUrl?: string | null, heroImage?: string | null, heroImageAlt?: string | null, isFull?: boolean | null, showHighlight?: boolean | null, showWeekends?: boolean | null, showCurriculum?: boolean | null, curriculumLabel?: string | null, curriculumHeadline?: string | null, curriculumIntro?: string | null, price?: string | null, discountPrice?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, seo?: { __typename: 'SeminarsSeo', title?: string | null, description?: string | null, canonical?: string | null, ogImage?: string | null, noIndex?: boolean | null } | null, headerIntro?: { __typename: 'SeminarsHeaderIntro', headline?: string | null, text?: any | null } | null, intro?: { __typename: 'SeminarsIntro', headline?: string | null, detailedHeadline?: string | null, summary?: string | null, text1?: any | null, text2?: any | null, text3?: any | null } | null, highlight?: { __typename: 'SeminarsHighlight', headline?: string | null, subline?: string | null, text?: any | null } | null, weekends?: Array<{ __typename: 'SeminarsWeekends', title?: string | null, subtitle?: string | null, duration?: string | null, items?: Array<string | null> | null, text?: any | null } | null> | null, curriculum?: Array<{ __typename: 'SeminarsCurriculum', id?: string | null, title?: string | null, duration?: string | null, items?: Array<string | null> | null, description?: any | null } | null> | null, dateGroups?: Array<{ __typename: 'SeminarsDateGroups', headline?: string | null, subline?: string | null, dates?: Array<{ __typename: 'SeminarsDateGroupsDates', date?: string | null, location?: string | null, isFull?: boolean | null, status?: string | null } | null> | null } | null> | null, installment?: { __typename: 'SeminarsInstallment', available?: boolean | null, text?: string | null } | null } | null } | null> | null } };
+export type SettingsConnectionQuery = { __typename?: 'Query', settingsConnection: { __typename?: 'SettingsConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'SettingsConnectionEdges', cursor: string, node?: { __typename: 'Settings', id: string, mailchimpUrl?: string | null, contactEmail?: string | null, contactPhone?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, siteMeta?: { __typename: 'SettingsSiteMeta', siteUrl?: string | null, siteName?: string | null, defaultDescription?: string | null, defaultOgImage?: string | null } | null, address?: { __typename: 'SettingsAddress', name?: string | null, street?: string | null, city?: string | null } | null, socials?: { __typename: 'SettingsSocials', instagram?: string | null, facebook?: string | null } | null, navLinks?: Array<{ __typename: 'SettingsNavLinks', label?: string | null, url?: string | null, pageRef?: { __typename: 'Seminars', category?: string | null, label?: string | null, title: string, videoSrc?: string | null, externalVideoUrl?: string | null, heroImage?: string | null, heroImageAlt?: string | null, isFull?: boolean | null, showHighlight?: boolean | null, showWeekends?: boolean | null, showCurriculum?: boolean | null, curriculumLabel?: string | null, curriculumHeadline?: string | null, curriculumIntro?: string | null, price?: string | null, discountPrice?: string | null, id: string, seo?: { __typename: 'SeminarsSeo', title?: string | null, description?: string | null, canonical?: string | null, ogImage?: string | null, noIndex?: boolean | null } | null, headerIntro?: { __typename: 'SeminarsHeaderIntro', headline?: string | null, text?: any | null } | null, intro?: { __typename: 'SeminarsIntro', headline?: string | null, detailedHeadline?: string | null, summary?: string | null, text1?: any | null, text2?: any | null, text3?: any | null } | null, highlight?: { __typename: 'SeminarsHighlight', headline?: string | null, subline?: string | null, text?: any | null } | null, weekends?: Array<{ __typename: 'SeminarsWeekends', title?: string | null, subtitle?: string | null, duration?: string | null, items?: Array<string | null> | null, text?: any | null } | null> | null, curriculum?: Array<{ __typename: 'SeminarsCurriculum', id?: string | null, title?: string | null, duration?: string | null, items?: Array<string | null> | null, description?: any | null } | null> | null, dateGroups?: Array<{ __typename: 'SeminarsDateGroups', headline?: string | null, subline?: string | null, dates?: Array<{ __typename: 'SeminarsDateGroupsDates', date?: string | null, location?: string | null, isFull?: boolean | null, status?: string | null } | null> | null } | null> | null, installment?: { __typename: 'SeminarsInstallment', available?: boolean | null, text?: string | null } | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'Page', title: string, heroLabel?: string | null, heroSubline?: string | null, heroImage?: string | null, heroImageAlt?: string | null, heroVideo?: string | null, externalVideoUrl?: string | null, id: string, seo?: { __typename: 'PageSeo', title?: string | null, description?: string | null, canonical?: string | null, ogImage?: string | null, noIndex?: boolean | null } | null, sections?: Array<{ __typename: 'PageSections', type?: string | null, headline?: string | null, content?: any | null, image?: string | null, imageAlt?: string | null, button?: { __typename: 'PageSectionsButton', label?: string | null, url?: string | null } | null } | null> | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null, subLinks?: Array<{ __typename: 'SettingsNavLinksSubLinks', label?: string | null, url?: string | null, pageRef?: { __typename: 'Seminars', category?: string | null, label?: string | null, title: string, videoSrc?: string | null, externalVideoUrl?: string | null, heroImage?: string | null, heroImageAlt?: string | null, isFull?: boolean | null, showHighlight?: boolean | null, showWeekends?: boolean | null, showCurriculum?: boolean | null, curriculumLabel?: string | null, curriculumHeadline?: string | null, curriculumIntro?: string | null, price?: string | null, discountPrice?: string | null, id: string, seo?: { __typename: 'SeminarsSeo', title?: string | null, description?: string | null, canonical?: string | null, ogImage?: string | null, noIndex?: boolean | null } | null, headerIntro?: { __typename: 'SeminarsHeaderIntro', headline?: string | null, text?: any | null } | null, intro?: { __typename: 'SeminarsIntro', headline?: string | null, detailedHeadline?: string | null, summary?: string | null, text1?: any | null, text2?: any | null, text3?: any | null } | null, highlight?: { __typename: 'SeminarsHighlight', headline?: string | null, subline?: string | null, text?: any | null } | null, weekends?: Array<{ __typename: 'SeminarsWeekends', title?: string | null, subtitle?: string | null, duration?: string | null, items?: Array<string | null> | null, text?: any | null } | null> | null, curriculum?: Array<{ __typename: 'SeminarsCurriculum', id?: string | null, title?: string | null, duration?: string | null, items?: Array<string | null> | null, description?: any | null } | null> | null, dateGroups?: Array<{ __typename: 'SeminarsDateGroups', headline?: string | null, subline?: string | null, dates?: Array<{ __typename: 'SeminarsDateGroupsDates', date?: string | null, location?: string | null, isFull?: boolean | null, status?: string | null } | null> | null } | null> | null, installment?: { __typename: 'SeminarsInstallment', available?: boolean | null, text?: string | null } | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | { __typename: 'Page', title: string, heroLabel?: string | null, heroSubline?: string | null, heroImage?: string | null, heroImageAlt?: string | null, heroVideo?: string | null, externalVideoUrl?: string | null, id: string, seo?: { __typename: 'PageSeo', title?: string | null, description?: string | null, canonical?: string | null, ogImage?: string | null, noIndex?: boolean | null } | null, sections?: Array<{ __typename: 'PageSections', type?: string | null, headline?: string | null, content?: any | null, image?: string | null, imageAlt?: string | null, button?: { __typename: 'PageSectionsButton', label?: string | null, url?: string | null } | null } | null> | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } | null> | null } | null } | null> | null } };
 
 export type RedirectsQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
@@ -1916,6 +1916,121 @@ export const HomepagePartsFragmentDoc = gql`
     quote
     image
     imageAlt
+  }
+}
+    `;
+export const SeminarsPartsFragmentDoc = gql`
+    fragment SeminarsParts on Seminars {
+  __typename
+  seo {
+    __typename
+    title
+    description
+    canonical
+    ogImage
+    noIndex
+  }
+  category
+  label
+  title
+  videoSrc
+  externalVideoUrl
+  heroImage
+  heroImageAlt
+  isFull
+  headerIntro {
+    __typename
+    headline
+    text
+  }
+  intro {
+    __typename
+    headline
+    detailedHeadline
+    summary
+    text1
+    text2
+    text3
+  }
+  showHighlight
+  highlight {
+    __typename
+    headline
+    subline
+    text
+  }
+  showWeekends
+  weekends {
+    __typename
+    title
+    subtitle
+    duration
+    items
+    text
+  }
+  showCurriculum
+  curriculumLabel
+  curriculumHeadline
+  curriculumIntro
+  curriculum {
+    __typename
+    id
+    title
+    duration
+    items
+    description
+  }
+  dateGroups {
+    __typename
+    headline
+    subline
+    dates {
+      __typename
+      date
+      location
+      isFull
+      status
+    }
+  }
+  price
+  discountPrice
+  installment {
+    __typename
+    available
+    text
+  }
+}
+    `;
+export const PagePartsFragmentDoc = gql`
+    fragment PageParts on Page {
+  __typename
+  seo {
+    __typename
+    title
+    description
+    canonical
+    ogImage
+    noIndex
+  }
+  title
+  heroLabel
+  heroSubline
+  heroImage
+  heroImageAlt
+  heroVideo
+  externalVideoUrl
+  sections {
+    __typename
+    type
+    headline
+    content
+    image
+    imageAlt
+    button {
+      __typename
+      label
+      url
+    }
   }
 }
     `;
@@ -2301,121 +2416,6 @@ export const SettingsPartsFragmentDoc = gql`
   }
 }
     `;
-export const PagePartsFragmentDoc = gql`
-    fragment PageParts on Page {
-  __typename
-  seo {
-    __typename
-    title
-    description
-    canonical
-    ogImage
-    noIndex
-  }
-  title
-  heroLabel
-  heroSubline
-  heroImage
-  heroImageAlt
-  heroVideo
-  externalVideoUrl
-  sections {
-    __typename
-    type
-    headline
-    content
-    image
-    imageAlt
-    button {
-      __typename
-      label
-      url
-    }
-  }
-}
-    `;
-export const SeminarsPartsFragmentDoc = gql`
-    fragment SeminarsParts on Seminars {
-  __typename
-  seo {
-    __typename
-    title
-    description
-    canonical
-    ogImage
-    noIndex
-  }
-  category
-  label
-  title
-  videoSrc
-  externalVideoUrl
-  heroImage
-  heroImageAlt
-  isFull
-  headerIntro {
-    __typename
-    headline
-    text
-  }
-  intro {
-    __typename
-    headline
-    detailedHeadline
-    summary
-    text1
-    text2
-    text3
-  }
-  showHighlight
-  highlight {
-    __typename
-    headline
-    subline
-    text
-  }
-  showWeekends
-  weekends {
-    __typename
-    title
-    subtitle
-    duration
-    items
-    text
-  }
-  showCurriculum
-  curriculumLabel
-  curriculumHeadline
-  curriculumIntro
-  curriculum {
-    __typename
-    id
-    title
-    duration
-    items
-    description
-  }
-  dateGroups {
-    __typename
-    headline
-    subline
-    dates {
-      __typename
-      date
-      location
-      isFull
-      status
-    }
-  }
-  price
-  discountPrice
-  installment {
-    __typename
-    available
-    text
-  }
-}
-    `;
 export const RedirectsPartsFragmentDoc = gql`
     fragment RedirectsParts on Redirects {
   __typename
@@ -2484,6 +2484,120 @@ export const HomepageConnectionDocument = gql`
   }
 }
     ${HomepagePartsFragmentDoc}`;
+export const SeminarsDocument = gql`
+    query seminars($relativePath: String!) {
+  seminars(relativePath: $relativePath) {
+    ... on Document {
+      _sys {
+        filename
+        basename
+        hasReferences
+        breadcrumbs
+        path
+        relativePath
+        extension
+      }
+      id
+    }
+    ...SeminarsParts
+  }
+}
+    ${SeminarsPartsFragmentDoc}`;
+export const SeminarsConnectionDocument = gql`
+    query seminarsConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: SeminarsFilter) {
+  seminarsConnection(
+    before: $before
+    after: $after
+    first: $first
+    last: $last
+    sort: $sort
+    filter: $filter
+  ) {
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
+    totalCount
+    edges {
+      cursor
+      node {
+        ... on Document {
+          _sys {
+            filename
+            basename
+            hasReferences
+            breadcrumbs
+            path
+            relativePath
+            extension
+          }
+          id
+        }
+        ...SeminarsParts
+      }
+    }
+  }
+}
+    ${SeminarsPartsFragmentDoc}`;
+export const PageDocument = gql`
+    query page($relativePath: String!) {
+  page(relativePath: $relativePath) {
+    ... on Document {
+      _sys {
+        filename
+        basename
+        hasReferences
+        breadcrumbs
+        path
+        relativePath
+        extension
+      }
+      id
+    }
+    ...PageParts
+  }
+}
+    ${PagePartsFragmentDoc}`;
+export const PageConnectionDocument = gql`
+    query pageConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: PageFilter) {
+  pageConnection(
+    before: $before
+    after: $after
+    first: $first
+    last: $last
+    sort: $sort
+    filter: $filter
+  ) {
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
+    totalCount
+    edges {
+      cursor
+      node {
+        ... on Document {
+          _sys {
+            filename
+            basename
+            hasReferences
+            breadcrumbs
+            path
+            relativePath
+            extension
+          }
+          id
+        }
+        ...PageParts
+      }
+    }
+  }
+}
+    ${PagePartsFragmentDoc}`;
 export const AnmeldenDocument = gql`
     query anmelden($relativePath: String!) {
   anmelden(relativePath: $relativePath) {
@@ -2712,120 +2826,6 @@ export const SettingsConnectionDocument = gql`
   }
 }
     ${SettingsPartsFragmentDoc}`;
-export const PageDocument = gql`
-    query page($relativePath: String!) {
-  page(relativePath: $relativePath) {
-    ... on Document {
-      _sys {
-        filename
-        basename
-        hasReferences
-        breadcrumbs
-        path
-        relativePath
-        extension
-      }
-      id
-    }
-    ...PageParts
-  }
-}
-    ${PagePartsFragmentDoc}`;
-export const PageConnectionDocument = gql`
-    query pageConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: PageFilter) {
-  pageConnection(
-    before: $before
-    after: $after
-    first: $first
-    last: $last
-    sort: $sort
-    filter: $filter
-  ) {
-    pageInfo {
-      hasPreviousPage
-      hasNextPage
-      startCursor
-      endCursor
-    }
-    totalCount
-    edges {
-      cursor
-      node {
-        ... on Document {
-          _sys {
-            filename
-            basename
-            hasReferences
-            breadcrumbs
-            path
-            relativePath
-            extension
-          }
-          id
-        }
-        ...PageParts
-      }
-    }
-  }
-}
-    ${PagePartsFragmentDoc}`;
-export const SeminarsDocument = gql`
-    query seminars($relativePath: String!) {
-  seminars(relativePath: $relativePath) {
-    ... on Document {
-      _sys {
-        filename
-        basename
-        hasReferences
-        breadcrumbs
-        path
-        relativePath
-        extension
-      }
-      id
-    }
-    ...SeminarsParts
-  }
-}
-    ${SeminarsPartsFragmentDoc}`;
-export const SeminarsConnectionDocument = gql`
-    query seminarsConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: SeminarsFilter) {
-  seminarsConnection(
-    before: $before
-    after: $after
-    first: $first
-    last: $last
-    sort: $sort
-    filter: $filter
-  ) {
-    pageInfo {
-      hasPreviousPage
-      hasNextPage
-      startCursor
-      endCursor
-    }
-    totalCount
-    edges {
-      cursor
-      node {
-        ... on Document {
-          _sys {
-            filename
-            basename
-            hasReferences
-            breadcrumbs
-            path
-            relativePath
-            extension
-          }
-          id
-        }
-        ...SeminarsParts
-      }
-    }
-  }
-}
-    ${SeminarsPartsFragmentDoc}`;
 export const RedirectsDocument = gql`
     query redirects($relativePath: String!) {
   redirects(relativePath: $relativePath) {
@@ -2892,6 +2892,18 @@ export type Requester<C= {}> = <R, V>(doc: DocumentNode, vars?: V, options?: C) 
     homepageConnection(variables?: HomepageConnectionQueryVariables, options?: C): Promise<{data: HomepageConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: HomepageConnectionQueryVariables, query: string}> {
         return requester<{data: HomepageConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: HomepageConnectionQueryVariables, query: string}, HomepageConnectionQueryVariables>(HomepageConnectionDocument, variables, options);
       },
+    seminars(variables: SeminarsQueryVariables, options?: C): Promise<{data: SeminarsQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: SeminarsQueryVariables, query: string}> {
+        return requester<{data: SeminarsQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: SeminarsQueryVariables, query: string}, SeminarsQueryVariables>(SeminarsDocument, variables, options);
+      },
+    seminarsConnection(variables?: SeminarsConnectionQueryVariables, options?: C): Promise<{data: SeminarsConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: SeminarsConnectionQueryVariables, query: string}> {
+        return requester<{data: SeminarsConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: SeminarsConnectionQueryVariables, query: string}, SeminarsConnectionQueryVariables>(SeminarsConnectionDocument, variables, options);
+      },
+    page(variables: PageQueryVariables, options?: C): Promise<{data: PageQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: PageQueryVariables, query: string}> {
+        return requester<{data: PageQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: PageQueryVariables, query: string}, PageQueryVariables>(PageDocument, variables, options);
+      },
+    pageConnection(variables?: PageConnectionQueryVariables, options?: C): Promise<{data: PageConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: PageConnectionQueryVariables, query: string}> {
+        return requester<{data: PageConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: PageConnectionQueryVariables, query: string}, PageConnectionQueryVariables>(PageConnectionDocument, variables, options);
+      },
     anmelden(variables: AnmeldenQueryVariables, options?: C): Promise<{data: AnmeldenQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: AnmeldenQueryVariables, query: string}> {
         return requester<{data: AnmeldenQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: AnmeldenQueryVariables, query: string}, AnmeldenQueryVariables>(AnmeldenDocument, variables, options);
       },
@@ -2915,18 +2927,6 @@ export type Requester<C= {}> = <R, V>(doc: DocumentNode, vars?: V, options?: C) 
       },
     settingsConnection(variables?: SettingsConnectionQueryVariables, options?: C): Promise<{data: SettingsConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: SettingsConnectionQueryVariables, query: string}> {
         return requester<{data: SettingsConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: SettingsConnectionQueryVariables, query: string}, SettingsConnectionQueryVariables>(SettingsConnectionDocument, variables, options);
-      },
-    page(variables: PageQueryVariables, options?: C): Promise<{data: PageQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: PageQueryVariables, query: string}> {
-        return requester<{data: PageQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: PageQueryVariables, query: string}, PageQueryVariables>(PageDocument, variables, options);
-      },
-    pageConnection(variables?: PageConnectionQueryVariables, options?: C): Promise<{data: PageConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: PageConnectionQueryVariables, query: string}> {
-        return requester<{data: PageConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: PageConnectionQueryVariables, query: string}, PageConnectionQueryVariables>(PageConnectionDocument, variables, options);
-      },
-    seminars(variables: SeminarsQueryVariables, options?: C): Promise<{data: SeminarsQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: SeminarsQueryVariables, query: string}> {
-        return requester<{data: SeminarsQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: SeminarsQueryVariables, query: string}, SeminarsQueryVariables>(SeminarsDocument, variables, options);
-      },
-    seminarsConnection(variables?: SeminarsConnectionQueryVariables, options?: C): Promise<{data: SeminarsConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: SeminarsConnectionQueryVariables, query: string}> {
-        return requester<{data: SeminarsConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: SeminarsConnectionQueryVariables, query: string}, SeminarsConnectionQueryVariables>(SeminarsConnectionDocument, variables, options);
       },
     redirects(variables: RedirectsQueryVariables, options?: C): Promise<{data: RedirectsQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: RedirectsQueryVariables, query: string}> {
         return requester<{data: RedirectsQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: RedirectsQueryVariables, query: string}, RedirectsQueryVariables>(RedirectsDocument, variables, options);
